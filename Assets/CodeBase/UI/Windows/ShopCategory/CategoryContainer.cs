@@ -7,6 +7,7 @@ using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.StaticData;
+using CodeBase.StaticData.Hook;
 using CodeBase.StaticData.Lure;
 using CodeBase.UI.Windows.Shop;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace CodeBase.UI.Windows.ShopCategory
         private PlayerProgress _progress;
         private ISaveLoadService _saveLoadService;
 
-        private readonly List<GameObject> _products = new List<GameObject>();
+        private readonly List<GameObject> _hooks = new List<GameObject>();
 
         public void Construct(PlayerProgress progressServiceProgress, IStaticDataService staticData, IAssetProvider assetsProvider)
         {
@@ -38,23 +39,17 @@ namespace CodeBase.UI.Windows.ShopCategory
 
         private async void RefreshAvailableItems()
         {
-           // foreach (KeyValuePair<LureTypeId, LureStaticData> lure in _staticData.Lures())
+            foreach (KeyValuePair<HookTypeId, HookStaticData> hook in _staticData.Hooks())
             {
-                
+                HookStaticData value = hook.Value;
 
-                 await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
-                 await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
-                 await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
-                 await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
-                 await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
-                 await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
+                GameObject productObject=  await _assetsProvider.Instantiate(Constants.ShopCardPath, Parent);
                
-               
-              //  ShopItem productItem = productObject.GetComponent<ShopItem>();
-                // productItem.Construct(_progress, lure.Value, _saveLoadService, _assetsProvider);
-             //   productItem.Initialize();
+                CategoryItem productItem = productObject.GetComponent<CategoryItem>();
+                productItem.Construct((int)ItemTypeId.Hook);
+                productItem.Initialize(value.HookName, (int)value.HookTypeId);
 
-              //  _products.Add(productObject);
+                //  _hooks.Add(productObject);
             }
         }
     }

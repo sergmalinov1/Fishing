@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Assets.CodeBase.StaticData.Hook
+namespace CodeBase.StaticData.Hook
 {
     [CreateAssetMenu(fileName = "HookData", menuName = "StaticData/Hook", order = 0)]
     public class HookStaticData : ScriptableObject
@@ -19,7 +19,7 @@ namespace Assets.CodeBase.StaticData.Hook
         [Range(0, 1)]
         public float ChanceGettingOffHook = 1;
 
-        public AssetReferenceGameObject PrefabReference;
+   //     public AssetReferenceGameObject PrefabReference;
     }
 }
 
