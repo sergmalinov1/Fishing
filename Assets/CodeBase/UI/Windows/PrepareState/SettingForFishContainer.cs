@@ -40,7 +40,7 @@ namespace CodeBase.UI.Windows.PrepareState
 
     private async void RefreshAvailableItems()
     {
-      foreach (InventoryItem item in _progress.Inventory.InventoryItems)
+      foreach (InventoryLure item in _progress.Inventory.InventoryLures)
       {
         GameObject itemObject = await _assetsProvider.Instantiate(Constants.LureItemPreparePath, Parent);
         LureItemPrepare lureItem = itemObject.GetComponent<LureItemPrepare>();

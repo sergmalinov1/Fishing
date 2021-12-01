@@ -24,7 +24,7 @@ namespace CodeBase.UI.Windows.PrepareState
     private PrepareWindow _prepareWindow;
     
     private LureStaticData _lureStaticData;
-    private InventoryItem _item;
+    private InventoryLure _item;
 
 
     public void Construct(
@@ -41,7 +41,7 @@ namespace CodeBase.UI.Windows.PrepareState
       _prepareWindow = prepareWindow;
     }
     
-    public async void Initialize(InventoryItem item)
+    public async void Initialize(InventoryLure item)
     {
       _item = item;
       SelectItemButton.onClick.AddListener(OnBuyItemClick);
@@ -57,7 +57,7 @@ namespace CodeBase.UI.Windows.PrepareState
 
     private void OnBuyItemClick()
     {
-      _progress.Inventory.SelectItem(_item.Name);
+      _progress.Inventory.SelectItemLure(_item.Name);
       _progress.FishOnHook.SelectLure(_lureStaticData.LureTypeId);
       _prepareWindow.CloseWindow();
     }

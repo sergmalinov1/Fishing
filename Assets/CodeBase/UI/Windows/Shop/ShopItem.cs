@@ -52,7 +52,7 @@ namespace CodeBase.UI.Windows.Shop
     private void OnBuyItemClick()
     {
       _progress.MoneyData.Subtract(_lureValue.Price);
-      _progress.Inventory.AddItem(_lureValue.LureName, _lureValue.LureTypeId);
+      _progress.Inventory.AddItemLure(_lureValue.LureName, _lureValue.LureTypeId);
 
       _saveLoadService.SaveProgress();
       ProductPrice.text = "Куплено!";
