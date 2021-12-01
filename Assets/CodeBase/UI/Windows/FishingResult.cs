@@ -1,0 +1,56 @@
+﻿using CodeBase.Data;
+using CodeBase.Infrastructure.SaveLoad;
+using CodeBase.Infrastructure.Services;
+using TMPro;
+using UnityEngine;
+
+namespace CodeBase.UI.Windows
+{
+  public class FishingResult : BaseWindow
+  {
+    public TextMeshProUGUI FishName;
+    public TextMeshProUGUI FishSize;
+    public TextMeshProUGUI PrizeAmmount;
+    public TextMeshProUGUI PrizePoints;
+
+    private PlayerProgress _playerProgress;
+    private ISaveLoadService _saveLoadService;
+
+    public void Construct(PlayerProgress playerProgress)
+    {
+      _playerProgress = playerProgress;
+      _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
+    }
+    
+    protected override void Initialize()
+    {
+      SetFishData();
+    }
+    
+    protected override void SubscribeUpdate()
+    {
+    }
+
+    protected override void Cleanup()
+    {
+    }
+    
+    private void SetFishData()
+    {
+      if (_playerProgress.FishOnHook.IsFishOnHook)
+      {
+        FishName.text = $"{_playerProgress.FishOnHook.FishName}";
+        FishSize.text = $"12 sm";
+        PrizeAmmount.text = $"{_playerProgress.FishOnHook.PrizeMoney}";
+        PrizePoints.text = $"777";
+      }
+      else
+      {
+        FishName.text = $"Попробуй";
+        FishSize.text = $"еще раз";
+        PrizeAmmount.text = "0";
+        PrizePoints.text = "0";
+      }
+    }
+  }
+}

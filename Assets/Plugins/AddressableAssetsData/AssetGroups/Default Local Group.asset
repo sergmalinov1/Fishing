@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 70d39cf1263118547927fc7146d6e707
+  m_SerializeEntries:
+  - m_GUID: 316aab8082b0dcf428885632144277a4
+    m_Address: HUD/Hud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a7f321ebea9057c42bbd753f8b9b746d
+    m_Address: BobberSpawner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5549194571faf9a4bb131b3cfb1228e3
+    m_Address: Bobber
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4111a63ec6a85c744a305e1dfd0869f9
+    m_Address: Sardine
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 01e0ef892fcafe94cbebce3da5a2e617
+    m_Address: SmallSplash_Size_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a176afa3f08aea4fabe20d14587ce4b
+    m_Address: SmallSplash_Size_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd2a5cf43b238f24fbaaa9f242f2419c
+    m_Address: SmallSplash_Size_C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 648422de6a5066b4a8be80d49e569126
+    m_Address: Bobber2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 54d0a8d4762854b428a7d5b35862cb93
+    m_Address: GameLogic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac220226aa3d21d48bbfc108c0b77b72
+    m_Address: UIRoot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7da709cf842c3644d956dcbf31e962d3
+    m_Address: AchieveItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad74c6e30a7737c47821dcdf14f53e15
+    m_Address: ShopItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d203e10ddd623fb44b598d12f598d006
+    m_Address: Icon_9
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8dec9b79ee4f79e49808bbb1f36f263c
+    m_Address: Icon_13
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 76bb11de4757020449ca660d88a14ee7
+    m_Address: Icon_15
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51ec15ab8502bf648bf6d2dc70be32b3
+    m_Address: Icon_16
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4fa27fb910b6ecb46a03290921bf6b79
+    m_Address: LureItemPrepare
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf39501f567b9af46be05e10e9bba899
+    m_Address: Amberjack_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7cac861ea5353f94a9046eb54271e09c
+    m_Address: Carp_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3ed0a15177e99a49840e2d50612a866
+    m_Address: Clownfish_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 536bf722d6b3efc42b4a39dad25ac961
+    m_Address: SelectShopCard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f1b1980157de66c409f6d2a5da04db82
+    m_Address: ShopCardOld
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e75ae33030248fd4483153a46289297a
+    m_Address: ShopCard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bfae0f3a8267cbf438ae5140c7e7bdb7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 629b7b5e76083944a9cd034ee83e019a, type: 2}
+    - {fileID: 11400000, guid: 225f722c4d2afad49aadc62c57843110, type: 2}

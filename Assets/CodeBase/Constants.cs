@@ -1,0 +1,22 @@
+namespace CodeBase
+{
+  public class Constants
+  {
+    public const string InitialScene = "Initial";
+    public const string LoginScene = "Login";
+    public const string MenuScene = "Menu";
+    public const string GameScene = "Game";
+    
+    
+    public const string UIRootPath = "UIRoot";
+    
+    public const string AchieveItemPath = "AchieveItem";
+
+    public const string ShopItemPath = "ShopItem";
+    public const string ShopCardPath = "ShopCard";
+
+
+
+    public const string LureItemPreparePath = "LureItemPrepare";
+  }
+}
