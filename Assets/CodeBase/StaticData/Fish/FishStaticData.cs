@@ -11,6 +11,9 @@ namespace CodeBase.StaticData.Fish
 
     public string FishName;
 
+    [Range(1, 6)]
+    public int Rating = 1;
+
     [Range(1, 100)] 
     public int PrizeMoney = 1;
 

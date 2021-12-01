@@ -11,7 +11,10 @@ namespace CodeBase.StaticData.Lure
 
     public string LureName;
 
-    [Range(1, 100)] 
+    [Range(1, 6)]
+    public int Rating = 1;
+
+   [Range(1, 100)] 
     public int Price = 1;
 
 
