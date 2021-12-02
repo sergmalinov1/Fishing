@@ -21,13 +21,13 @@ namespace CodeBase.UI.Windows.ShopCategory
         {
 
 
-               CategoryContainer.Construct(progressServiceProgress, staticData, assetsProvider);
+            //   CategoryContainer.Construct(progressServiceProgress, staticData, assetsProvider);
         }
 
         protected override void Initialize()
         {
             Title.text = "Shop";
-            CategoryContainer.Initialize();
+           // CategoryContainer.Initialize();
         }
 
         protected override void SubscribeUpdate() { }

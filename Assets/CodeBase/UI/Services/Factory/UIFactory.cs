@@ -88,7 +88,7 @@ namespace CodeBase.UI.Services.Factory
 
         public BaseWindow CreateShopCategory()
         {
-            WindowConfig config = _staticData.ForWindow(WindowId.ShopCategory);
+            WindowConfig config = _staticData.ForWindow(WindowId.CategoryEquipment);
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
             ShopCategoryWindow categoryWindows = window as ShopCategoryWindow;

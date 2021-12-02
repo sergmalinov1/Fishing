@@ -8,7 +8,8 @@
     AchievementsWindow = 3,
     SettingWindow = 4,
     PrepareWindow = 5,
-    ShopCategory = 6, 
-    
-  }
+    CategoryEquipment = 6,
+    ListEquipment = 7,
+
+    }
 }

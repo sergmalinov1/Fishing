@@ -39,7 +39,7 @@ namespace CodeBase.UI.Windows.ShopCategory
 
         private async void RefreshAvailableItems()
         {
-            foreach (KeyValuePair<HookTypeId, HookStaticData> hook in _staticData.Hooks())
+           /* foreach (KeyValuePair<HookTypeId, HookStaticData> hook in _staticData.Hooks())
             {
                 HookStaticData value = hook.Value;
 
@@ -50,7 +50,7 @@ namespace CodeBase.UI.Windows.ShopCategory
                 productItem.Initialize(value.HookName, (int)value.HookTypeId);
 
                 //  _hooks.Add(productObject);
-            }
+            }*/
         }
     }
 }

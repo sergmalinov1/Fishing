@@ -36,7 +36,7 @@ namespace CodeBase.UI.Services.WindowsService
         case WindowId.SettingWindow:
           return _uiFactory.CreateSettingWindow();
                 
-        case WindowId.ShopCategory:
+        case WindowId.CategoryEquipment:
           return _uiFactory.CreateShopCategory();
       }
 
