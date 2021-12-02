@@ -1,5 +1,5 @@
 ﻿using System;
-using CodeBase.StaticData.Lure;
+using CodeBase.StaticData;
 
 namespace CodeBase.Data
 {

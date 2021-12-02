@@ -1,5 +1,5 @@
 ﻿
-namespace CodeBase.StaticData.FishingRod
+namespace CodeBase.StaticData
 {
     public enum FishingRodId
     { 

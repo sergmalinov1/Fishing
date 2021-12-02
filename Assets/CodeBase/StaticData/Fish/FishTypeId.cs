@@ -1,4 +1,4 @@
-﻿namespace CodeBase.StaticData.Fish
+﻿namespace CodeBase.StaticData
 {
   public enum FishTypeId
   {

@@ -6,7 +6,6 @@ using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.StaticData;
-using CodeBase.StaticData.Lure;
 using UnityEngine;
 
 namespace CodeBase.UI.Windows.Shop

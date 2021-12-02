@@ -300,8 +300,9 @@ GameObject:
   - component: {fileID: 3395461239951971703}
   - component: {fileID: 7326594938802298908}
   - component: {fileID: 4649805478103090535}
+  - component: {fileID: 6229117769757606101}
   m_Layer: 5
-  m_Name: SelectShopCard
+  m_Name: SelectedEquipmentCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,6 +430,23 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6229117769757606101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046634486761084229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30382980b837e3944b0a0dac12e8ebf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CategoryName: {fileID: 4353559622624066299}
+  BuyItemButton: {fileID: 0}
+  SelectItemButton: {fileID: 0}
+  Rating: {fileID: 8127934713043884275}
+  EquipmentPicture: {fileID: 1123287268962656624}
 --- !u!1 &8170447905847611487
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +459,7 @@ GameObject:
   - component: {fileID: 5484914231885562309}
   - component: {fileID: 1123287268962656624}
   m_Layer: 5
-  m_Name: Image
+  m_Name: EquipmentPicture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,4 @@
-﻿namespace CodeBase.StaticData.Lure
+﻿namespace CodeBase.StaticData
 {
   public enum LureTypeId
   {

@@ -1,5 +1,5 @@
 ﻿
-namespace CodeBase.StaticData.Hook
+namespace CodeBase.StaticData
 {
     public enum HookTypeId
     {

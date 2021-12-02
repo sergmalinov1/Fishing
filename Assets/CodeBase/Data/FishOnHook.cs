@@ -1,6 +1,6 @@
 ﻿using System;
 using CodeBase.StaticData.Fish;
-using CodeBase.StaticData.Lure;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Data

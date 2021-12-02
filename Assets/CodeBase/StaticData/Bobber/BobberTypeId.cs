@@ -1,6 +1,6 @@
 ﻿
 
-namespace CodeBase.StaticData.Bobber
+namespace CodeBase.StaticData
 {
     public enum BobberTypeId
     {

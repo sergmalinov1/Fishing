@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace CodeBase.StaticData.FishingLine
+namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "FishingLineData", menuName = "StaticData/FishingLine", order = 0)]
-    public class FishingLineStaticData : ScriptableObject
+    public class FishingLineStaticData : ScriptableObject, IEquipment
     {
         public FishingLineId FishingLineId;
 
@@ -19,10 +19,15 @@ namespace CodeBase.StaticData.FishingLine
         [Range(1, 10000)]
         public int MaxLiftWeight = 200;
 
-        [Range(1, 10)]
-        public int Distance = 1;
 
         public AssetReferenceGameObject PrefabReference;
+
+        private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingLine;
+        public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
+
+        public string GetName() => FishingLineName;
+
+        public int GetRating() => Rating;
     }
 
 }

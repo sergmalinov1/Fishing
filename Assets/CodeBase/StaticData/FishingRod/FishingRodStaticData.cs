@@ -2,14 +2,16 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 
-namespace CodeBase.StaticData.FishingRod
+namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "FishingRodData", menuName = "StaticData/FishingRod", order = 0)]
-    public class FishingRodStaticData : ScriptableObject
+    public class FishingRodStaticData : ScriptableObject, IEquipment
     {
         public FishingRodId FishingRodId;
 
         public string FishingRodName;
+
+       
 
         [Range(1, 6)]
         public int Rating = 1;
@@ -27,6 +29,13 @@ namespace CodeBase.StaticData.FishingRod
         public int Distance = 1;
 
         public AssetReferenceGameObject PrefabReference;
+
+        private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingRod;
+        public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
+
+        public string GetName() => FishingRodName;
+
+        public int GetRating() => Rating;
     }
 }
 

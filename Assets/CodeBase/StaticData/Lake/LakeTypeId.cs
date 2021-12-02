@@ -1,6 +1,6 @@
 ﻿
 
-namespace CodeBase.StaticData.Lake
+namespace CodeBase.StaticData
 {
     public enum LakeTypeId
     {

@@ -2,7 +2,6 @@
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.StaticData;
-using CodeBase.StaticData.Lure;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace CodeBase.StaticData.Hook
+namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "HookData", menuName = "StaticData/Hook", order = 0)]
-    public class HookStaticData : ScriptableObject
+    public class HookStaticData : ScriptableObject, IEquipment
     {
         public HookTypeId HookTypeId;
+
+        private KindEquipmentId _kindEquipmentId = KindEquipmentId.Hook;
 
         public string HookName;
 
@@ -19,7 +21,16 @@ namespace CodeBase.StaticData.Hook
         [Range(0, 1)]
         public float ChanceGettingOffHook = 1;
 
-   //     public AssetReferenceGameObject PrefabReference;
+        public KindEquipmentId GetKindEquipment()
+        {
+            return _kindEquipmentId;
+        }
+
+        public string GetName() => HookName;
+
+        public int GetRating() => Rating;
+
+        //     public AssetReferenceGameObject PrefabReference;
     }
 }
 

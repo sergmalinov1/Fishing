@@ -13,10 +13,12 @@ namespace CodeBase
     public const string AchieveItemPath = "AchieveItem";
 
     public const string ShopItemPath = "ShopItem";
-    public const string ShopCardPath = "ShopCard";
 
 
+    public const string EquipmentCardPath = "EquipmentCard";
+    public const string SelectedEquipmentCardPath = "SelectedEquipmentCard";
 
-    public const string LureItemPreparePath = "LureItemPrepare";
+
+        public const string LureItemPreparePath = "LureItemPrepare";
   }
 }

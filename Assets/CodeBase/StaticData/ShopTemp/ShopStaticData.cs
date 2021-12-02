@@ -1,4 +1,4 @@
-﻿using CodeBase.StaticData.Lure;
+﻿
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

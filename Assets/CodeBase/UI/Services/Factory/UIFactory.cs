@@ -1,16 +1,14 @@
 ﻿using System.Threading.Tasks;
 using CodeBase.Infrastructure.AssetManagement;
-using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Windows;
 using CodeBase.UI.Services.WindowsService;
 using CodeBase.UI.Windows;
 using CodeBase.UI.Windows.Achieve;
+using CodeBase.UI.Windows.EquipmentCategory;
 using CodeBase.UI.Windows.PrepareState;
-using CodeBase.UI.Windows.Setting;
 using CodeBase.UI.Windows.Shop;
-using CodeBase.UI.Windows.ShopCategory;
 using UnityEngine;
 
 namespace CodeBase.UI.Services.Factory
@@ -91,7 +89,7 @@ namespace CodeBase.UI.Services.Factory
             WindowConfig config = _staticData.ForWindow(WindowId.CategoryEquipment);
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
-            ShopCategoryWindow categoryWindows = window as ShopCategoryWindow;
+            EquipmentCategoryWindow categoryWindows = window as EquipmentCategoryWindow;
             categoryWindows.Construct(_progressService.Progress, _staticData, _assetsProvider);
 
 

@@ -5,7 +5,6 @@ using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.States;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Fish;
-using CodeBase.StaticData.Lure;
 using UnityEngine;
 
 namespace CodeBase.GameLogic.States

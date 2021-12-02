@@ -3,7 +3,6 @@ using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Fish;
-using CodeBase.StaticData.Lure;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.RandomService

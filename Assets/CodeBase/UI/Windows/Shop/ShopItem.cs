@@ -3,7 +3,7 @@ using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services.PersistentProgress;
-using CodeBase.StaticData.Lure;
+using CodeBase.StaticData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

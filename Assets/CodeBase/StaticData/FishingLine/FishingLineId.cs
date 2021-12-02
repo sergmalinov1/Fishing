@@ -1,6 +1,6 @@
 ﻿
 
-namespace CodeBase.StaticData.FishingLine
+namespace CodeBase.StaticData
 {
     public enum FishingLineId
     {

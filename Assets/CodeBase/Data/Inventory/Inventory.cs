@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeBase.StaticData.Lure;
 using CodeBase.StaticData;
 
 namespace CodeBase.Data
@@ -8,8 +7,20 @@ namespace CodeBase.Data
   [Serializable]
     public class Inventory
     {
+
+        public List<InstalledEquipment> InstalledEquipments = new List<InstalledEquipment>();     
+
         public List<InventoryLure> InventoryLures = new List<InventoryLure>();
-        public List<InventoryItem> InventoryHook = new List<InventoryItem>();
+        public List<InventoryEquipment> InventoryHook = new List<InventoryEquipment>();
+
+        public Inventory()
+        {
+            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.Lake, 0));
+            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.Bobber, 0));
+            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.FishingRod, 0));
+            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.Hook, 0));
+            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.FishingLine, 0));
+        }
 
         public void AddStartPack()
         {
@@ -49,14 +60,14 @@ namespace CodeBase.Data
         }
 
 
-        public void AddItemByType(ItemTypeId itemTypeId, string itemName, int typeId)
+        public void AddItemByType(KindEquipmentId itemTypeId, string itemName, int typeId)
         {
             switch (itemTypeId)
             {
-                case ItemTypeId.Bobber:
+                case KindEquipmentId.Bobber:
                     break;
 
-                case ItemTypeId.Hook:
+                case KindEquipmentId.Hook:
                     AddItem(InventoryHook, itemName, typeId);
                     break;
 
@@ -66,9 +77,9 @@ namespace CodeBase.Data
         }
 
 
-        private void AddItem(List<InventoryItem> InventoryList, string itemName, int typeId)
+        private void AddItem(List<InventoryEquipment> InventoryList, string itemName, int typeId)
         {
-            foreach (InventoryItem item in InventoryList)
+            foreach (InventoryEquipment item in InventoryList)
             {
                 if (item.TypeId == typeId)
                 {
@@ -77,10 +88,10 @@ namespace CodeBase.Data
                 }
             }
 
-            InventoryList.Add(new InventoryItem(itemName, typeId));
+            InventoryList.Add(new InventoryEquipment(itemName, typeId));
         }
 
-        private void SelectItem(List<InventoryItem> InventoryList, string itemName)
+        private void SelectItem(List<InventoryEquipment> InventoryList, string itemName)
         {
             foreach (InventoryLure item in InventoryLures)
             {
