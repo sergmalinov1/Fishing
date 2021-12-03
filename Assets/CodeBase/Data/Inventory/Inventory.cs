@@ -8,28 +8,29 @@ namespace CodeBase.Data
     public class Inventory
     {
 
-        public List<InstalledEquipment> InstalledEquipments = new List<InstalledEquipment>();     
+        public List<CategoryEquipment> InstalledEquipments = new List<CategoryEquipment>();     
 
-        public List<InventoryLure> InventoryLures = new List<InventoryLure>();
-        public List<InventoryEquipment> InventoryHook = new List<InventoryEquipment>();
+     //   public List<InventoryLure> InventoryLures = new List<InventoryLure>();
+
+      
+
 
         public Inventory()
         {
-            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.Lake, 0));
-            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.Bobber, 0));
-            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.FishingRod, 0));
-            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.Hook, 0));
-            InstalledEquipments.Add(new InstalledEquipment(KindEquipmentId.FishingLine, 0));
+         
         }
 
         public void AddStartPack()
         {
-            InventoryLures.Add(new InventoryLure("Хлеб", LureTypeId.Bread));
-            InventoryLures[0].Count = 10;
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lake, 0));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Bobber, 0));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingRod, 0));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Hook, 0));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingLine, 1));
 
         }
 
-        public void AddItemLure(string itemName, LureTypeId lureType)
+   /*     public void AddItemLure(string itemName, LureTypeId lureType)
         {
             foreach (InventoryLure item in InventoryLures)
             {
@@ -95,7 +96,7 @@ namespace CodeBase.Data
         {
             foreach (InventoryLure item in InventoryLures)
             {
-                /*if (item.Name == itemName)
+                if (item.Name == itemName)
                 {
                     item.Count--;
                     if (item.Count <= 0)
@@ -103,10 +104,9 @@ namespace CodeBase.Data
                         InventoryLures.Remove(item);
                     }
                     return;
-                }*/
+                }
             }
         }
-
-
+        */
     }
 }

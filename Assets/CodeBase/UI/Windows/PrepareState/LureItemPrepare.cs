@@ -56,7 +56,7 @@ namespace CodeBase.UI.Windows.PrepareState
 
     private void OnBuyItemClick()
     {
-      _progress.Inventory.SelectItemLure(_item.Name);
+      //_progress.Inventory.SelectItemLure(_item.Name);
       _progress.FishOnHook.SelectLure(_lureStaticData.LureTypeId);
       _prepareWindow.CloseWindow();
     }

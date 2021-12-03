@@ -42,24 +42,24 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         {
             
 
-            foreach(InstalledEquipment item in _progress.Inventory.InstalledEquipments)
+            foreach(CategoryEquipment item in _progress.Inventory.InstalledEquipments)
             {
                 switch(item.KindEquipmentId)
                 {
                     case (KindEquipmentId.Bobber):
-                        _staticDataObject.Add(_staticData.ForBobber((BobberTypeId)item.EquipmentTypeId));
+                        _staticDataObject.Add(_staticData.ForBobber((BobberTypeId)item.SelectedEquipmentTypeId));
                         break;
 
                     case (KindEquipmentId.FishingLine):
-                        _staticDataObject.Add(_staticData.ForFishingLine((FishingLineId)item.EquipmentTypeId));
+                        _staticDataObject.Add(_staticData.ForFishingLine((FishingLineId)item.SelectedEquipmentTypeId));
                         break;
 
                     case (KindEquipmentId.FishingRod):
-                        _staticDataObject.Add(_staticData.ForFishingRod((FishingRodId)item.EquipmentTypeId));
+                        _staticDataObject.Add(_staticData.ForFishingRod((FishingRodId)item.SelectedEquipmentTypeId));
                         break;
 
                     case (KindEquipmentId.Hook):
-                        _staticDataObject.Add(_staticData.ForHook((HookTypeId)item.EquipmentTypeId));
+                        _staticDataObject.Add(_staticData.ForHook((HookTypeId)item.SelectedEquipmentTypeId));
                         break;
                 }
             }   

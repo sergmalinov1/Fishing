@@ -40,14 +40,14 @@ namespace CodeBase.UI.Windows.PrepareState
 
     private async void RefreshAvailableItems()
     {
-      foreach (InventoryLure item in _progress.Inventory.InventoryLures)
+    /*  foreach (InventoryLure item in _progress.Inventory.InventoryLures)
       {
         GameObject itemObject = await _assetsProvider.Instantiate(Constants.LureItemPreparePath, Parent);
         LureItemPrepare lureItem = itemObject.GetComponent<LureItemPrepare>();
         lureItem.Construct(_progress, _saveLoadService, _assetsProvider, _staticData, _prepareWindow);
         lureItem.Initialize(item);
         
-      }
+      }*/
     }
   }
 }

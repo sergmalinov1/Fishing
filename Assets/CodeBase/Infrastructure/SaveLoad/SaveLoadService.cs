@@ -1,6 +1,7 @@
 ﻿using CodeBase.Data;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services.PersistentProgress;
+using System.IO;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.SaveLoad
@@ -17,17 +18,23 @@ namespace CodeBase.Infrastructure.SaveLoad
       //_gameFactory = gameFactory;
     }
 
-    public void SaveProgress()
-    {
-      /*foreach (ISavedProgress progressWriter in _gameFactory.ProgressWriters)
-      {
-        progressWriter.UpdateProgress(_progressService.Progress);
-      }*/
+        public void SaveProgress()
+        {
+            /*foreach (ISavedProgress progressWriter in _gameFactory.ProgressWriters)
+            {
+              progressWriter.UpdateProgress(_progressService.Progress);
+            }*/
 
-      PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
-    }
+            string json = _progressService.Progress.ToJson();
+            PlayerPrefs.SetString(ProgressKey, json);
 
-    public PlayerProgress LoadProgress() =>
+
+            File.WriteAllText("WriteLines.txt", json);
+        }
+
+
+
+        public PlayerProgress LoadProgress() =>
       PlayerPrefs.GetString(ProgressKey)?
         .ToDeserialized<PlayerProgress>();
   }

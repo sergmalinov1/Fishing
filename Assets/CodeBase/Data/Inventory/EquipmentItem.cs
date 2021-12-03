@@ -4,15 +4,13 @@
 namespace CodeBase.Data
 {
     [Serializable]
-    public class InventoryEquipment
+    public class EquipmentItem
     {
-        public string Name;
         public int Count;
         public int TypeId;
 
-        public InventoryEquipment(string itemName, int typeId)
+        public EquipmentItem(int typeId)
         {
-            Name = itemName;
             TypeId = typeId;
             Count = 1;
         }
