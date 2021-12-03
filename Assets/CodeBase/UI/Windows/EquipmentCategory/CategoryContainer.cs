@@ -5,6 +5,7 @@ using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.StaticData;
+using CodeBase.UI.Services.Factory;
 using UnityEngine;
 
 
@@ -17,19 +18,17 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         private IAssetProvider _assetsProvider;
         private IStaticDataService _staticData;
         private PlayerProgress _progress;
-   
+        private UIFactory _UIFactory;
 
         private List<IEquipment> _staticDataObject = new List<IEquipment>();
 
-        // private readonly List<GameObject> _hooks = new List<GameObject>();
 
-        public void Construct(PlayerProgress progressServiceProgress, IStaticDataService staticData, IAssetProvider assetsProvider)
+        internal void Construct(UIFactory UIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
         {
-            _progress = progressServiceProgress;
+            _UIFactory = UIFactory;
+            _progress = progress;
             _assetsProvider = assetsProvider;
             _staticData = staticData;
-
-
         }
 
         public void Initialize()
@@ -41,7 +40,6 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         private void IdentificationInstalledEequipment()
         {
             
-
             foreach(CategoryEquipment item in _progress.Inventory.InstalledEquipments)
             {
                 switch(item.KindEquipmentId)
@@ -75,6 +73,7 @@ namespace CodeBase.UI.Windows.EquipmentCategory
 
 
                 IEquipment equipment = _staticDataObject[i];
+                selectedItem.Construct(_progress, equipment.GetKindEquipment());
                 selectedItem.Initialize(equipment.GetName(), equipment.GetRating());
 
             }

@@ -12,9 +12,6 @@ namespace CodeBase.Data
 
      //   public List<InventoryLure> InventoryLures = new List<InventoryLure>();
 
-      
-
-
         public Inventory()
         {
          

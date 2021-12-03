@@ -73,16 +73,13 @@ namespace CodeBase.UI.Services.Factory
       return window;
     }
 
-    public BaseWindow CreateSettingWindow()
-    {
-      WindowConfig config = _staticData.ForWindow(WindowId.SettingWindow);
-      BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
-      
-      
-
+        public BaseWindow CreateSettingWindow()
+        {
+            WindowConfig config = _staticData.ForWindow(WindowId.SettingWindow);
+            BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
             return window;
-    }
+        }
 
         public BaseWindow CreateShopCategory()
         {
@@ -90,8 +87,7 @@ namespace CodeBase.UI.Services.Factory
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
             EquipmentCategoryWindow categoryWindows = window as EquipmentCategoryWindow;
-            categoryWindows.Construct(_progressService.Progress, _staticData, _assetsProvider);
-
+            categoryWindows.Construct(this, _progressService.Progress, _assetsProvider, _staticData);
 
 
             return window;

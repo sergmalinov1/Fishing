@@ -2,6 +2,8 @@ using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.StaticData;
+using CodeBase.UI.Services.Factory;
+using System;
 using TMPro;
 
 
@@ -14,15 +16,12 @@ namespace CodeBase.UI.Windows.EquipmentCategory
 
         public CategoryContainer CategoryContainer;
 
-        public void Construct(
-          PlayerProgress progressServiceProgress,
-          IStaticDataService staticData,
-          IAssetProvider assetsProvider)
+
+        public void Construct(UIFactory uIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
         {
-
-
-            CategoryContainer.Construct(progressServiceProgress, staticData, assetsProvider);
+            CategoryContainer.Construct(uIFactory, progress, assetsProvider, staticData);
         }
+
 
         protected override void Initialize()
         {
@@ -33,6 +32,8 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         protected override void SubscribeUpdate() { }
 
         protected override void Cleanup() { }
+
+        
     }
 }
 
