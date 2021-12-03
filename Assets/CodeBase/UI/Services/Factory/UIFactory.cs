@@ -6,7 +6,8 @@ using CodeBase.StaticData.Windows;
 using CodeBase.UI.Services.WindowsService;
 using CodeBase.UI.Windows;
 using CodeBase.UI.Windows.Achieve;
-using CodeBase.UI.Windows.EquipmentCategory;
+using CodeBase.UI.Windows.EquipmentsCategory;
+using CodeBase.UI.Windows.EquipmentsList;
 using CodeBase.UI.Windows.PrepareState;
 using CodeBase.UI.Windows.Shop;
 using UnityEngine;
@@ -88,6 +89,19 @@ namespace CodeBase.UI.Services.Factory
 
             EquipmentCategoryWindow categoryWindows = window as EquipmentCategoryWindow;
             categoryWindows.Construct(this, _progressService.Progress, _assetsProvider, _staticData);
+
+
+            return window;
+
+        }
+
+        public BaseWindow CreateListEquipment()
+        {
+            WindowConfig config = _staticData.ForWindow(WindowId.ListEquipment);
+            BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
+
+            ListEquipmentsWindow listEquipments = window as ListEquipmentsWindow;
+            listEquipments.Construct(_progressService.Progress);
 
 
             return window;

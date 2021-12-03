@@ -1,11 +1,12 @@
 ﻿using CodeBase.Data;
 using CodeBase.StaticData;
+using CodeBase.UI.Services.Factory;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.UI.Windows.EquipmentCategory
+namespace CodeBase.UI.Windows.EquipmentsCategory
 {
     public class EquipmentSelectedItem : MonoBehaviour
     {
@@ -16,13 +17,17 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         public Image Rating;
         public Image EquipmentPicture;
 
+        private EquipmentCategoryWindow _equipmentCategoryWindow;
+        private IUIFactory _UIFactory;
         private PlayerProgress _progress;
         private KindEquipmentId _categoryTypeId;
         private int _typeId;
 
 
-        public void Construct(Data.PlayerProgress progress, KindEquipmentId categoryTypeId)
+        public void Construct(EquipmentCategoryWindow equipmentCategoryWindow, IUIFactory UIFactory, PlayerProgress progress, KindEquipmentId categoryTypeId)
         {
+            _equipmentCategoryWindow = equipmentCategoryWindow;
+            _UIFactory = UIFactory;
             _progress = progress;
             _categoryTypeId = categoryTypeId;
         }
@@ -39,6 +44,9 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         private void OnItemClick()
         {
             _progress.SettingWindow.KindOpenedWindowsList = _categoryTypeId;
+            _equipmentCategoryWindow.CloseWindow();
+            _UIFactory.CreateListEquipment();
+
         }
 
 

@@ -37,6 +37,9 @@ namespace CodeBase.UI.Services.WindowsService
 
                 case WindowId.CategoryEquipment:
                     return _uiFactory.CreateShopCategory();
+
+                case WindowId.ListEquipment:
+                    return _uiFactory.CreateListEquipment();
             }
 
             return null;

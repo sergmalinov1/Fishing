@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
-using CodeBase.Infrastructure.SaveLoad;
-using CodeBase.Infrastructure.Services;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
 using UnityEngine;
 
 
-namespace CodeBase.UI.Windows.EquipmentCategory
+namespace CodeBase.UI.Windows.EquipmentsCategory
 {
     public class CategoryContainer : MonoBehaviour
     {
@@ -18,13 +15,15 @@ namespace CodeBase.UI.Windows.EquipmentCategory
         private IAssetProvider _assetsProvider;
         private IStaticDataService _staticData;
         private PlayerProgress _progress;
-        private UIFactory _UIFactory;
+        private IUIFactory _UIFactory;
+        private EquipmentCategoryWindow _equipmentCategoryWindow;
 
         private List<IEquipment> _staticDataObject = new List<IEquipment>();
 
 
-        internal void Construct(UIFactory UIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
+        public void Construct(EquipmentCategoryWindow equipmentCategory, IUIFactory UIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
         {
+            _equipmentCategoryWindow = equipmentCategory;
             _UIFactory = UIFactory;
             _progress = progress;
             _assetsProvider = assetsProvider;
@@ -73,7 +72,7 @@ namespace CodeBase.UI.Windows.EquipmentCategory
 
 
                 IEquipment equipment = _staticDataObject[i];
-                selectedItem.Construct(_progress, equipment.GetKindEquipment());
+                selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress,  equipment.GetKindEquipment());
                 selectedItem.Initialize(equipment.GetName(), equipment.GetRating());
 
             }

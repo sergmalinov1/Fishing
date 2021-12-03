@@ -26,4 +26,4 @@ MonoBehaviour:
   - WindowId: 6
     Prefab: {fileID: 687984080369344420, guid: 57e25fb45329b1c48b40686a4fe73934, type: 3}
   - WindowId: 7
-    Prefab: {fileID: 6989023365185112472, guid: afd4ec269fd72fa46bad6470365c8369, type: 3}
+    Prefab: {fileID: 5265408790393779421, guid: afd4ec269fd72fa46bad6470365c8369, type: 3}

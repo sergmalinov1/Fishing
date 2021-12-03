@@ -6,12 +6,13 @@ namespace CodeBase.UI.Services.Factory
 {
   public interface IUIFactory : IService
   {
-    Task CreateUIRoot();
-    BaseWindow CreateResult();
-    BaseWindow CreateShop();
-    BaseWindow CreateAchievements();
-    BaseWindow CreatePrepareWindow();
-    BaseWindow CreateSettingWindow();
-    BaseWindow CreateShopCategory();
-  }
+        Task CreateUIRoot();
+        BaseWindow CreateResult();
+        BaseWindow CreateShop();
+        BaseWindow CreateAchievements();
+        BaseWindow CreatePrepareWindow();
+        BaseWindow CreateSettingWindow();
+        BaseWindow CreateShopCategory();
+        BaseWindow CreateListEquipment();
+    }
 }
