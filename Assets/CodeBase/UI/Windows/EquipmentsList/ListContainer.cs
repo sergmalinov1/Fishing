@@ -51,7 +51,7 @@ namespace CodeBase.UI.Windows.EquipmentsList
                     GameObject productObject = await _assetsProvider.Instantiate(Constants.SelectedEquipmentCardPath, SelectedItemTransform);
                     EquipmentSelectedItem selectedItem = productObject.GetComponent<EquipmentSelectedItem>();
                     
-                    //selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, equipment.GetKindEquipment());
+                    selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, equipment.GetKindEquipment());
                     selectedItem.Initialize(item.GetName(), item.GetRating());
                     continue; 
                 }
