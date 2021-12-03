@@ -4,7 +4,9 @@
   {
     Bread = 0,
     Corn = 1,
-    Spoon = 2,
     Worms = 3,
+    Oparish = 4,
+    Boil = 5,
+    Mics = 6,
   }
 }

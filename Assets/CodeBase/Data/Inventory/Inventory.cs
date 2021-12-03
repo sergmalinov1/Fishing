@@ -24,86 +24,112 @@ namespace CodeBase.Data
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingRod, 0));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Hook, 0));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingLine, 1));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lure, 0));
 
         }
 
-   /*     public void AddItemLure(string itemName, LureTypeId lureType)
+        public List<EquipmentItem> GetListEquipmentByKind(KindEquipmentId kindEquipmentId)
         {
-            foreach (InventoryLure item in InventoryLures)
+            foreach (CategoryEquipment item in InstalledEquipments)
             {
-                if (item.Name == itemName)
+                if(item.KindEquipmentId == kindEquipmentId)
                 {
-                    item.Count++;
-                    return;
+                    return item.PurchasedEquipment;
                 }
             }
-
-            InventoryLures.Add(new InventoryLure(itemName, lureType));
+            return null;
         }
 
-        public void SelectItemLure(string itemName)
+        public int GetTypeEquipmentByKind(KindEquipmentId kindEquipmentId)
         {
-            foreach (InventoryLure item in InventoryLures)
+            foreach (CategoryEquipment item in InstalledEquipments)
             {
-                if (item.Name == itemName)
+                if (item.KindEquipmentId == kindEquipmentId)
                 {
-                    item.Count--;
-                    if (item.Count <= 0)
-                    {
-                        InventoryLures.Remove(item);
-                    }
-                    return;
+                    return item.SelectedEquipmentTypeId;
                 }
             }
+            return 0;
         }
 
 
-        public void AddItemByType(KindEquipmentId itemTypeId, string itemName, int typeId)
-        {
-            switch (itemTypeId)
-            {
-                case KindEquipmentId.Bobber:
-                    break;
+        /*     public void AddItemLure(string itemName, LureTypeId lureType)
+             {
+                 foreach (InventoryLure item in InventoryLures)
+                 {
+                     if (item.Name == itemName)
+                     {
+                         item.Count++;
+                         return;
+                     }
+                 }
 
-                case KindEquipmentId.Hook:
-                    AddItem(InventoryHook, itemName, typeId);
-                    break;
+                 InventoryLures.Add(new InventoryLure(itemName, lureType));
+             }
+
+             public void SelectItemLure(string itemName)
+             {
+                 foreach (InventoryLure item in InventoryLures)
+                 {
+                     if (item.Name == itemName)
+                     {
+                         item.Count--;
+                         if (item.Count <= 0)
+                         {
+                             InventoryLures.Remove(item);
+                         }
+                         return;
+                     }
+                 }
+             }
+
+
+             public void AddItemByType(KindEquipmentId itemTypeId, string itemName, int typeId)
+             {
+                 switch (itemTypeId)
+                 {
+                     case KindEquipmentId.Bobber:
+                         break;
+
+                     case KindEquipmentId.Hook:
+                         AddItem(InventoryHook, itemName, typeId);
+                         break;
 
 
 
-            }
-        }
+                 }
+             }
 
 
-        private void AddItem(List<InventoryEquipment> InventoryList, string itemName, int typeId)
-        {
-            foreach (InventoryEquipment item in InventoryList)
-            {
-                if (item.TypeId == typeId)
-                {
-                   // item.Count++;
-                    return;
-                }
-            }
+             private void AddItem(List<InventoryEquipment> InventoryList, string itemName, int typeId)
+             {
+                 foreach (InventoryEquipment item in InventoryList)
+                 {
+                     if (item.TypeId == typeId)
+                     {
+                        // item.Count++;
+                         return;
+                     }
+                 }
 
-            InventoryList.Add(new InventoryEquipment(itemName, typeId));
-        }
+                 InventoryList.Add(new InventoryEquipment(itemName, typeId));
+             }
 
-        private void SelectItem(List<InventoryEquipment> InventoryList, string itemName)
-        {
-            foreach (InventoryLure item in InventoryLures)
-            {
-                if (item.Name == itemName)
-                {
-                    item.Count--;
-                    if (item.Count <= 0)
-                    {
-                        InventoryLures.Remove(item);
-                    }
-                    return;
-                }
-            }
-        }
-        */
+             private void SelectItem(List<InventoryEquipment> InventoryList, string itemName)
+             {
+                 foreach (InventoryLure item in InventoryLures)
+                 {
+                     if (item.Name == itemName)
+                     {
+                         item.Count--;
+                         if (item.Count <= 0)
+                         {
+                             InventoryLures.Remove(item);
+                         }
+                         return;
+                     }
+                 }
+             }
+             */
     }
 }

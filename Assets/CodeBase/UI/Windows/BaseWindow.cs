@@ -8,8 +8,6 @@ namespace CodeBase.UI.Windows
     
     public Button CloseButton;
     
-    public void Construct() { }
-
 
     public void CloseWindow() => Destroy(gameObject);
 

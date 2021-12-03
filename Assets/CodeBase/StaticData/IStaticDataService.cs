@@ -17,6 +17,8 @@ namespace CodeBase.StaticData
         Dictionary<FishingLineId, FishingLineStaticData> FishingLine();
         Dictionary<FishingRodId, FishingRodStaticData> FishingRod();
 
+        Dictionary<LakeTypeId, LakeStaticData> Lake();
+
 
         WindowConfig ForWindow(WindowId windowId);
         FishStaticData ForFish(FishTypeId typeId);
@@ -26,5 +28,8 @@ namespace CodeBase.StaticData
         
         FishingLineStaticData ForFishingLine(FishingLineId fishingLineTypeId);
         FishingRodStaticData ForFishingRod(FishingRodId fishingRodTypeId);
+        List<IEquipment> GetListByKind(KindEquipmentId kindEquipmentId);
+        LakeStaticData ForLake(LakeTypeId lakeTypeId);
+       
     }
 }

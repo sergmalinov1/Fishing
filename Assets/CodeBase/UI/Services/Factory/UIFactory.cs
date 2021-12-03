@@ -101,7 +101,8 @@ namespace CodeBase.UI.Services.Factory
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
             ListEquipmentsWindow listEquipments = window as ListEquipmentsWindow;
-            listEquipments.Construct(_progressService.Progress);
+            listEquipments.Construct(this, _progressService.Progress, _assetsProvider, _staticData);
+
 
 
             return window;

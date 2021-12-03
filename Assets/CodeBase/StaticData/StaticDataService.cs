@@ -16,6 +16,7 @@ namespace CodeBase.StaticData
         private const string StaticDataBobberPath = "StaticData/Bobber";
         private const string StaticDataFishingLinePath = "StaticData/FishingLine";
         private const string StaticDataFishingRodPath = "StaticData/FishingRod";
+        private const string StaticDataLakePath = "StaticData/Lake";
 
 
         private const string StaticDataWindowsPath = "StaticData/Windows/WindowStaticData";
@@ -34,6 +35,8 @@ namespace CodeBase.StaticData
 
         private Dictionary<FishingRodId, FishingRodStaticData> _fishingRod;
 
+        private Dictionary<LakeTypeId, LakeStaticData> _lake;
+
 
         public Dictionary<FishTypeId, FishStaticData> Fishes() => _fishes;
 
@@ -44,6 +47,8 @@ namespace CodeBase.StaticData
         public Dictionary<FishingLineId, FishingLineStaticData> FishingLine() => _fishingLine;
 
         public Dictionary<FishingRodId, FishingRodStaticData> FishingRod() => _fishingRod;
+
+        public Dictionary<LakeTypeId, LakeStaticData> Lake() => _lake;
 
         public void Load()
         {
@@ -77,6 +82,10 @@ namespace CodeBase.StaticData
             _fishingRod = Resources
                 .LoadAll<FishingRodStaticData>(StaticDataFishingRodPath)
                 .ToDictionary(x => x.FishingRodId, x => x);
+
+            _lake = Resources
+                .LoadAll<LakeStaticData>(StaticDataLakePath)
+                .ToDictionary(x => x.LakeTypeId, x => x);
 
         }
 
@@ -117,6 +126,61 @@ namespace CodeBase.StaticData
           ? config
           : null;
 
+        public LakeStaticData ForLake(LakeTypeId lakeTypeId) =>
+         _lake.TryGetValue(lakeTypeId, out LakeStaticData config)
+          ? config
+          : null;
 
+
+        public List<IEquipment> GetListByKind(KindEquipmentId kindEquipmentId)
+        {
+            List<IEquipment> equipments = new List<IEquipment>();
+            switch (kindEquipmentId)
+            {
+                case (KindEquipmentId.Bobber):                   
+                    foreach (var item in _bobber)
+                    {
+                        equipments.Add(item.Value);
+                    }                    
+                    break;
+
+                case (KindEquipmentId.FishingRod):
+                    foreach (var item in _fishingRod)
+                    {
+                        equipments.Add(item.Value);
+                    }
+                    break;
+
+                case (KindEquipmentId.FishingLine):
+                    foreach (var item in _fishingLine)
+                    {
+                        equipments.Add(item.Value);
+                    }
+                    break;
+
+                case (KindEquipmentId.Hook):
+                    foreach (var item in _hooks)
+                    {
+                        equipments.Add(item.Value);
+                    }
+                    break;
+
+                case (KindEquipmentId.Lure):
+                    foreach (var item in _lure)
+                    {
+                        equipments.Add(item.Value);
+                    }
+                    break;
+
+                case (KindEquipmentId.Lake):
+                    foreach (var item in _lake)
+                    {
+                        equipments.Add(item.Value);
+                    }
+                    break;
+
+            }
+            return equipments;
+        }
     }
 }

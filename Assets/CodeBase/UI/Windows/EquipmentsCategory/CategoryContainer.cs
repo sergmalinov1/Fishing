@@ -58,6 +58,14 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
                     case (KindEquipmentId.Hook):
                         _staticDataObject.Add(_staticData.ForHook((HookTypeId)item.SelectedEquipmentTypeId));
                         break;
+
+                    case (KindEquipmentId.Lake):
+                        _staticDataObject.Add(_staticData.ForLake((LakeTypeId)item.SelectedEquipmentTypeId));
+                        break;
+
+                    case (KindEquipmentId.Lure):
+                        _staticDataObject.Add(_staticData.ForLure((LureTypeId)item.SelectedEquipmentTypeId));
+                        break;
                 }
             }   
         }
@@ -72,7 +80,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
 
                 IEquipment equipment = _staticDataObject[i];
-                selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress,  equipment.GetKindEquipment());
+                selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, _assetsProvider, equipment.GetKindEquipment());
                 selectedItem.Initialize(equipment.GetName(), equipment.GetRating());
 
             }

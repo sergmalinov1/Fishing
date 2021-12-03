@@ -23,5 +23,7 @@ namespace CodeBase.StaticData
         public string GetName() => LakeName;
 
         public int GetRating() => Rating;
+
+        public int GetTypeId() => (int)LakeTypeId;
     }
 }

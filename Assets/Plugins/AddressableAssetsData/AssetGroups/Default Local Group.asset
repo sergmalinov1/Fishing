@@ -113,6 +113,30 @@ MonoBehaviour:
     m_Address: SelectedEquipmentCard
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: e5cdb94d6321e3b46beee9403627a21b
+    m_Address: grade_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cb00ced3d1d47184ebbfea1b5b7e6963
+    m_Address: grade_6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 605e05b714ff9b14b837d3a0587871b2
+    m_Address: grade_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc8ac55a82fb8f1419c2327860ccb856
+    m_Address: grade_5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9b0193479ae091d48a047fc45bbc3ab6
+    m_Address: grade_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2910a117d85b5b648851b6b41c32d63f
+    m_Address: grade_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bfae0f3a8267cbf438ae5140c7e7bdb7, type: 2}
   m_SchemaSet:

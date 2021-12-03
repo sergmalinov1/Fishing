@@ -1,4 +1,5 @@
 ﻿using CodeBase.Data;
+using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
 using System;
@@ -21,24 +22,31 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         private IUIFactory _UIFactory;
         private PlayerProgress _progress;
         private KindEquipmentId _categoryTypeId;
-        private int _typeId;
+        private IAssetProvider _assetProvider;
 
 
-        public void Construct(EquipmentCategoryWindow equipmentCategoryWindow, IUIFactory UIFactory, PlayerProgress progress, KindEquipmentId categoryTypeId)
+
+        public void Construct(
+            EquipmentCategoryWindow equipmentCategoryWindow, 
+            IUIFactory UIFactory, 
+            PlayerProgress progress, 
+            IAssetProvider assetProvider, 
+            KindEquipmentId categoryTypeId)
         {
             _equipmentCategoryWindow = equipmentCategoryWindow;
             _UIFactory = UIFactory;
             _progress = progress;
             _categoryTypeId = categoryTypeId;
+            _assetProvider = assetProvider;
         }
 
-        public async void Initialize(string name, int typeId)
+        public async void Initialize(string name, int rating)
         {
             CategoryButton.onClick.AddListener(OnItemClick);
 
 
             CategoryName.text = name;
-            _typeId = typeId;
+            DefineRating(rating);
         }
 
         private void OnItemClick()
@@ -47,6 +55,12 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
             _equipmentCategoryWindow.CloseWindow();
             _UIFactory.CreateListEquipment();
 
+        }
+
+        private async void DefineRating(int rating)
+        {
+            Debug.Log($"grade_" + rating);
+            Rating.sprite = await _assetProvider.Load<Sprite>($"grade_" + rating);
         }
 
 

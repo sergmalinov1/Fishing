@@ -36,6 +36,9 @@ namespace CodeBase.StaticData
         public string GetName() => FishingRodName;
 
         public int GetRating() => Rating;
+
+        public int GetTypeId() => (int)FishingRodId;
+
     }
 }
 

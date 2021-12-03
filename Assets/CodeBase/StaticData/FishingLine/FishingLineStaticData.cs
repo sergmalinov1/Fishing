@@ -28,6 +28,8 @@ namespace CodeBase.StaticData
         public string GetName() => FishingLineName;
 
         public int GetRating() => Rating;
+
+        public int GetTypeId() => (int)FishingLineId;
     }
 
 }

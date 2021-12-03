@@ -28,6 +28,8 @@ namespace CodeBase.StaticData
         public string GetName() => BobberName;
 
         public int GetRating() => Rating;
+
+        public int GetTypeId() => (int)BobberTypeId;
     }
 }
 
