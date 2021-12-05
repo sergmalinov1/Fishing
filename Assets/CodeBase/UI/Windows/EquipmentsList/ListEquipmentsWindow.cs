@@ -19,12 +19,15 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         public Button BackButton;
 
+
+      
+
         private IUIFactory _UIfactory;
 
         public void Construct(IUIFactory UIfactory,  PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
         {
             _UIfactory = UIfactory;
-            ListContainer.Construct(this, progress, assetsProvider, staticData, UIfactory);
+            ListContainer.Construct(progress, assetsProvider, staticData);
         }
 
 

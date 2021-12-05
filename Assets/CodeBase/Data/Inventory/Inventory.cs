@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CodeBase.StaticData;
+using UnityEngine;
 
 namespace CodeBase.Data
 {
@@ -19,22 +20,51 @@ namespace CodeBase.Data
 
         public void AddStartPack()
         {
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lake, 0));
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Bobber, 0));
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingRod, 0));
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Hook, 0));
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingLine, 1));
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lure, 0));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lake, 0, false));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Bobber, 0, false));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingRod, 0, false));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Hook, 0, true));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingLine, 0, true));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lure, 0, true));
 
+        }
+
+        public void ButEquipmentItem(KindEquipmentId kindEquipmentId, int typeEquipmentId)
+        {
+            foreach (CategoryEquipment category in InstalledEquipments)
+            {
+                if (category.KindEquipmentId == kindEquipmentId)
+                {
+                    category.BuyEquipment(typeEquipmentId);
+                    return;
+                }
+            }
+
+            Debug.Log("NOT FIND KindEquipmentId");
+        }
+
+
+        public void SelectEquipmentItem(KindEquipmentId kindEquipmentId, int typeEquipmentId)
+        {
+            foreach (CategoryEquipment category in InstalledEquipments)
+            {
+                if (category.KindEquipmentId == kindEquipmentId)
+                {
+                    category.SetSelectedItem(typeEquipmentId);
+                    return;
+                }
+            }
+
+            Debug.Log("NOT FIND KindEquipmentId");
         }
 
         public List<EquipmentItem> GetListEquipmentByKind(KindEquipmentId kindEquipmentId)
         {
-            foreach (CategoryEquipment item in InstalledEquipments)
+            foreach (CategoryEquipment category in InstalledEquipments)
             {
-                if(item.KindEquipmentId == kindEquipmentId)
+                if(category.KindEquipmentId == kindEquipmentId)
                 {
-                    return item.PurchasedEquipment;
+                    return category.PurchasedEquipment;
                 }
             }
             return null;
@@ -42,11 +72,11 @@ namespace CodeBase.Data
 
         public int GetTypeEquipmentByKind(KindEquipmentId kindEquipmentId)
         {
-            foreach (CategoryEquipment item in InstalledEquipments)
+            foreach (CategoryEquipment category in InstalledEquipments)
             {
-                if (item.KindEquipmentId == kindEquipmentId)
+                if (category.KindEquipmentId == kindEquipmentId)
                 {
-                    return item.SelectedEquipmentTypeId;
+                    return category.SelectedEquipmentTypeId;
                 }
             }
             return 0;

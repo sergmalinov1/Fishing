@@ -84,7 +84,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774147515309580629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -825,10 +825,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectButton: {fileID: 5209008731349842919}
+  BuyLebel: {fileID: 6090017553446876769}
+  SelectLabel: {fileID: 774147515309580629}
   EquipmentName: {fileID: 3090201106508483231}
   Rating: {fileID: 4936938595932949490}
   EquipmentPicture: {fileID: 4936938595202275980}
-  Price: {fileID: 0}
+  Price: {fileID: 9131753172303685966}
+  QtyAvailableItems: {fileID: 7033909637923680060}
 --- !u!1 &4936938594508685708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1327,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6090017553446876769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 

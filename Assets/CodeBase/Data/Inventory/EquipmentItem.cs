@@ -8,11 +8,11 @@ namespace CodeBase.Data
     {
         public int Count;
         public int TypeId;
-
-        public EquipmentItem(int typeId)
+        
+        public EquipmentItem(int typeId, int qtyItemsInOrder)
         {
             TypeId = typeId;
-            Count = 1;
+            Count = qtyItemsInOrder;
         }
     }
 }

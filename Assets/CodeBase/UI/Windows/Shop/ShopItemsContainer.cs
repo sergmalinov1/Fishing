@@ -26,7 +26,7 @@ namespace CodeBase.UI.Windows.Shop
       _progress = progressServiceProgress;
       _assetsProvider = assetsProvider;
       _staticData = staticData;
-      _saveLoadService = AllServices.Container.Single<ISaveLoadService>();;
+      _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
 
     }
     

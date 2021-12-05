@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6772e46ff6f570746b39aabaf4303e68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a6d3e391bc328642b6240f64881245f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 786353341706110834}
   - component: {fileID: 786353341706110828}
   - component: {fileID: 786353341706110835}
+  - component: {fileID: 7394380960547433211}
   m_Layer: 5
   m_Name: NoMoneyPopUp
   m_TagString: Untagged
@@ -151,6 +152,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7394380960547433211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786353341706110833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100800adb789b744380609035f290daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClosePopupButton: {fileID: 786353342178629540}
+  Popup: {fileID: 786353341706110833}
 --- !u!1 &786353341975510115
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c80598ccadbe2542b80de6a807cff95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f00e6074234fb7b469b6c14f24ab9c3e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -430,7 +445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be723fad74532e24ba436840329c0329, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bae15e260506941428c80349176c8fa8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
