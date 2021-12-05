@@ -33,7 +33,6 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private async void DefineRating(int rating)
         {
-            Debug.Log($"grade_" + rating);
             Rating.sprite = await _assetProvider.Load<Sprite>($"grade_" + rating);
         }
     }

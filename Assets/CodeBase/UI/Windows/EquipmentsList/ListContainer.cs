@@ -2,6 +2,7 @@
 using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.StaticData;
+using CodeBase.UI.Services.Factory;
 using CodeBase.UI.Windows.EquipmentsCategory;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,24 @@ namespace CodeBase.UI.Windows.EquipmentsList
         private PlayerProgress _progress;
         private IAssetProvider _assetsProvider;
         private IStaticDataService _staticData;
+        private IUIFactory _UIFactory;
+        private BaseWindow _baseWindow;
 
         private List<IEquipment> _staticDataObject = new List<IEquipment>();
 
-        public void Construct(PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
+        public void Construct(
+            ListEquipmentsWindow listEquipmentsWindow,
+            PlayerProgress progress, 
+            IAssetProvider assetsProvider, 
+            IStaticDataService staticData, 
+            IUIFactory uIfactory)
         {
+            _baseWindow = listEquipmentsWindow as BaseWindow;
+
             _progress = progress;
             _assetsProvider = assetsProvider;
             _staticData = staticData;
+            _UIFactory = uIfactory;
         }
 
         public void Initialize()
@@ -35,7 +46,7 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private async void DefineItems()
         {
-            KindEquipmentId kindEquipmentId = _progress.SettingWindow.KindOpenedWindowsList;
+            KindEquipmentId kindEquipmentId = _progress.SettingWindow.KindOpenedWindowList;
 
             List<IEquipment> allEquipments = _staticData.GetListByKind(kindEquipmentId);
             List<EquipmentItem> purchasedEquipment = _progress.Inventory.GetListEquipmentByKind(kindEquipmentId);
@@ -48,10 +59,11 @@ namespace CodeBase.UI.Windows.EquipmentsList
             {
                 if(item.GetTypeId() == typePurchaseditem)
                 {
-                    GameObject productObject = await _assetsProvider.Instantiate(Constants.SelectedEquipmentCardPath, SelectedItemTransform);
-                    EquipmentSelectedItem selectedItem = productObject.GetComponent<EquipmentSelectedItem>();
-                    
-                    selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, equipment.GetKindEquipment());
+                    GameObject productObject = await _assetsProvider.Instantiate(Constants.SelectedICardtemPath, SelectedItemTransform);
+                    SelectedICardtem selectedItem = productObject.GetComponent<SelectedICardtem>();
+
+                    //_equipmentCategoryWindow
+                    selectedItem.Construct(_progress, _assetsProvider);
                     selectedItem.Initialize(item.GetName(), item.GetRating());
                     continue; 
                 }

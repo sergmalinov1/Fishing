@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace CodeBase.UI.Windows.EquipmentsCategory
 {
-    public class EquipmentSelectedItem : MonoBehaviour
+    public class CategoryCardtem : MonoBehaviour
     {
         public TextMeshProUGUI CategoryName;
         
@@ -51,7 +51,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
         private void OnItemClick()
         {
-            _progress.SettingWindow.KindOpenedWindowsList = _categoryTypeId;
+            _progress.SettingWindow.KindOpenedWindowList = _categoryTypeId;
             _equipmentCategoryWindow.CloseWindow();
             _UIFactory.CreateListEquipment();
 
@@ -59,7 +59,6 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
         private async void DefineRating(int rating)
         {
-            Debug.Log($"grade_" + rating);
             Rating.sprite = await _assetProvider.Load<Sprite>($"grade_" + rating);
         }
 

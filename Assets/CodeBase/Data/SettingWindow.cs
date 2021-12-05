@@ -6,6 +6,6 @@ namespace CodeBase.Data
     [Serializable]
     public class SettingWindow
     {
-        public KindEquipmentId KindOpenedWindowsList = KindEquipmentId.Bobber;
+        public KindEquipmentId KindOpenedWindowList = KindEquipmentId.Bobber;
     }
 }

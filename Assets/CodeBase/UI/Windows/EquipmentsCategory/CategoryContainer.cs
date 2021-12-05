@@ -75,8 +75,8 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
             for(int i=0; i < _staticDataObject.Count; i++)
             {
 
-                GameObject productObject = await _assetsProvider.Instantiate(Constants.SelectedEquipmentCardPath, ParentCard[i]);
-                EquipmentSelectedItem selectedItem = productObject.GetComponent<EquipmentSelectedItem>();
+                GameObject productObject = await _assetsProvider.Instantiate(Constants.CategoryCardtemPath, ParentCard[i]);
+                CategoryCardtem selectedItem = productObject.GetComponent<CategoryCardtem>();
 
 
                 IEquipment equipment = _staticDataObject[i];

@@ -110,7 +110,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 1a24cf4ff72934c43be2707f0c540481
-    m_Address: SelectedEquipmentCard
+    m_Address: CategoryCardtem
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e5cdb94d6321e3b46beee9403627a21b
@@ -135,6 +135,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 2910a117d85b5b648851b6b41c32d63f
     m_Address: grade_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 81e867373d3aec7419adfcc398611a39
+    m_Address: SelectedICardtem
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

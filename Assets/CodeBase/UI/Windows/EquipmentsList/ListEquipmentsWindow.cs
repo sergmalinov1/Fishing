@@ -24,7 +24,7 @@ namespace CodeBase.UI.Windows.EquipmentsList
         public void Construct(IUIFactory UIfactory,  PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
         {
             _UIfactory = UIfactory;
-            ListContainer.Construct(progress, assetsProvider, staticData);
+            ListContainer.Construct(this, progress, assetsProvider, staticData, UIfactory);
         }
 
 
