@@ -1,4 +1,6 @@
-﻿namespace CodeBase.Infrastructure.Services
+﻿using System;
+
+namespace CodeBase.Infrastructure.Services
 {
   public class AllServices
   {
@@ -15,5 +17,10 @@
     {
       public static TService ServiceInstance;
     }
-  }
+
+  /*      internal void RegisterSingle<T>(InventoryService inventoryService)
+        {
+            throw new NotImplementedException();
+        }*/
+    }
 }

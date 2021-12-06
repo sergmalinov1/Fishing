@@ -15,7 +15,7 @@ namespace CodeBase.StaticData
         public int Rating = 1;
 
         [Range(1, 100)]
-        public int Cost = 1;
+        public int Price = 1;
 
         public AssetReferenceGameObject PrefabReference;
 
@@ -30,6 +30,8 @@ namespace CodeBase.StaticData
         public int GetRating() => Rating;
 
         public int GetTypeId() => (int)BobberTypeId;
+
+        public int GetPrice() => Price;
     }
 }
 

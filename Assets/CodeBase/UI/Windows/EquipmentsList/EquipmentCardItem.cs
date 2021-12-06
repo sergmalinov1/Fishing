@@ -1,5 +1,6 @@
 ﻿using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.StaticData;
 using System;
 using TMPro;
@@ -27,8 +28,9 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private IAssetProvider _assetProvider;
         private ListContainer _listContainer;
-        private IEquipment _equipment;
-        private int _numberOfPurchasedItems;
+
+        private EquipmentConfig _equipment;
+        private int _QtyOfPurchasedItems;
 
         public void Constuct(ListContainer listContainer, IAssetProvider assetProvider)
         {
@@ -36,24 +38,25 @@ namespace CodeBase.UI.Windows.EquipmentsList
             _assetProvider = assetProvider;
         }
 
-        public void Initialize(IEquipment itemEquipment, int numberOfPurchasedItems)
-        {
-            _equipment = itemEquipment;
-            _numberOfPurchasedItems = numberOfPurchasedItems;
-            EquipmentName.text = _equipment.GetName();
 
+        public void Initialize(EquipmentConfig equipment)
+        {
             SelectButton.onClick.AddListener(SelectCard);
 
+            _equipment = equipment;
+            _QtyOfPurchasedItems = equipment.QtyPurchasedEquipment;
+            EquipmentName.text = equipment.Name;
+
             DefineLabel();
-            DefineRating(_equipment.GetRating());
+            DefineRating(equipment.Rating);
         }
 
         private void DefineLabel()
         {
-            if (_numberOfPurchasedItems > 0)
+            if (_QtyOfPurchasedItems > 0)
             {
                 SelectLabel.SetActive(true);
-                QtyAvailableItems.text = $"Select " + _numberOfPurchasedItems;
+                QtyAvailableItems.text = $"Select " + _QtyOfPurchasedItems;
 
             }
             else
@@ -70,9 +73,9 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private void SelectCard()
         {
-            if(_numberOfPurchasedItems > 0)
+            if(_QtyOfPurchasedItems > 0)
             {
-                _listContainer.SelectItemCard(_equipment.GetTypeId());
+                _listContainer.SelectItemCard(_equipment.TypeId);
             }
             else
             {
@@ -82,6 +85,6 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         }
 
-        
+       
     }
 }

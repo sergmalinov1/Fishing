@@ -8,6 +8,8 @@ namespace CodeBase.StaticData
         public string GetName();
         public int GetRating();
 
+        public int GetPrice();
+
         public KindEquipmentId GetKindEquipment();
     }
 }

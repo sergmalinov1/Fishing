@@ -14,7 +14,7 @@ namespace CodeBase.StaticData
         public int Rating = 1;
 
         [Range(1, 100)]
-        public int Cost = 1;
+        public int Price = 1;
 
         [Range(1, 10000)]
         public int MaxLiftWeight = 200;
@@ -30,6 +30,8 @@ namespace CodeBase.StaticData
         public int GetRating() => Rating;
 
         public int GetTypeId() => (int)FishingLineId;
+
+        public int GetPrice() => Price;
     }
 
 }

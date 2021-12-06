@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Windows;
@@ -20,13 +21,19 @@ namespace CodeBase.UI.Services.Factory
     private readonly IStaticDataService _staticData;
     private readonly IAssetProvider _assetsProvider;
     private readonly IPersistentProgress _progressService;
-    private Transform _uiRoot;
+        private readonly IInventoryService _inventoryService;
+        private Transform _uiRoot;
 
-    public UIFactory(IStaticDataService staticData, IAssetProvider assetsProvider, IPersistentProgress progressService)
+    public UIFactory(
+        IStaticDataService staticData, 
+        IAssetProvider assetsProvider, 
+        IPersistentProgress progressService, 
+        IInventoryService inventoryService)
     {
       _staticData = staticData;
       _assetsProvider = assetsProvider;
       _progressService = progressService;
+            _inventoryService = inventoryService;
     }
     
     public async Task CreateUIRoot()
@@ -101,7 +108,7 @@ namespace CodeBase.UI.Services.Factory
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
             ListEquipmentsWindow listEquipments = window as ListEquipmentsWindow;
-            listEquipments.Construct(this, _progressService.Progress, _assetsProvider, _staticData);
+            listEquipments.Construct(this, _progressService.Progress, _assetsProvider, _inventoryService);
 
 
 

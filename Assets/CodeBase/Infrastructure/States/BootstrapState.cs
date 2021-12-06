@@ -2,6 +2,7 @@
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Input;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
@@ -41,40 +42,55 @@ namespace CodeBase.Infrastructure.States
     private void EnterMenuScene() => 
       _stateMachine.Enter<LoadProgressState>();
 
-    private void RegisterServices()
-    {
-      RegisterStaticData();
-      _services.RegisterSingle<IGameStateMachine>(_stateMachine);
-      _services.RegisterSingle<IInputService>(RegisterInputService());
-      _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-      
-      _services.RegisterSingle<IPersistentProgress>(new PersistentProgress());
+        private void RegisterServices()
+        {
+            RegisterStaticData();
 
-      _services.RegisterSingle<IUIFactory>(new UIFactory(
-        _services.Single<IStaticDataService>(), 
-        _services.Single<IAssetProvider>(),
-        _services.Single<IPersistentProgress>()));
-      
-      _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
+            _services.RegisterSingle<IInputService>(RegisterInputService());
+            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
 
-      _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
-        _services.Single<IPersistentProgress>()));
+            _services.RegisterSingle<IPersistentProgress>(new PersistentProgress());
 
-      _services.RegisterSingle<IRandomService>(new UnityRandomService(
-        _services.Single<IAssetProvider>(),
-        _services.Single<IPersistentProgress>(), 
-        _services.Single<IStaticDataService>()));
-      
-      _services.RegisterSingle<IGameFactory>(new GameFactory(
-        _services.Single<IAssetProvider>(),
-        _services.Single<IWindowService>(), 
-        _services.Single<IPersistentProgress>(), 
-        _services.Single<IStaticDataService>(),
-        _services.Single<ISaveLoadService>(),
-        _services.Single<IRandomService>()));
-    }
+            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
+                _services.Single<IPersistentProgress>()));
 
-    private void RegisterStaticData()
+            _services.RegisterSingle<IInventoryService>(new InventoryService(
+            _services.Single<IAssetProvider>(),
+            _services.Single<IPersistentProgress>(),
+            _services.Single<IStaticDataService>(),
+            _services.Single<ISaveLoadService>()));
+
+            _services.RegisterSingle<IUIFactory>(new UIFactory(
+                _services.Single<IStaticDataService>(),
+                _services.Single<IAssetProvider>(),
+                _services.Single<IPersistentProgress>(),
+                _services.Single<IInventoryService>()));
+
+            _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
+
+
+
+            _services.RegisterSingle<IRandomService>(new UnityRandomService(
+              _services.Single<IAssetProvider>(),
+              _services.Single<IPersistentProgress>(),
+              _services.Single<IStaticDataService>()));
+
+
+
+            _services.RegisterSingle<IGameFactory>(new GameFactory(
+                _services.Single<IAssetProvider>(),
+                _services.Single<IWindowService>(),
+                _services.Single<IPersistentProgress>(),
+                _services.Single<IStaticDataService>(),
+                _services.Single<ISaveLoadService>(),
+                _services.Single<IRandomService>(),
+                _services.Single<IInventoryService>()));
+
+
+        }
+
+        private void RegisterStaticData()
     {
       IStaticDataService staticData = new StaticDataService();
       staticData.Load();
