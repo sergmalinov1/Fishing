@@ -17,7 +17,7 @@ namespace CodeBase.StaticData
         public int Rating = 1;
 
         [Range(1, 100)]
-        public int Cost = 1;
+        public int Price = 1;
 
         [Range(1, 10000)]
         public int MinFishWeight = 100;
@@ -34,6 +34,9 @@ namespace CodeBase.StaticData
         public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
 
         public string GetName() => FishingRodName;
+
+        public int GetPrice() => Price;
+
 
         public int GetRating() => Rating;
 

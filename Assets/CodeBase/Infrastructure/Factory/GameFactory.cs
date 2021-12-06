@@ -4,6 +4,7 @@ using CodeBase.BobberLogic;
 using CodeBase.BobberObject.DisplayCatchedFish;
 using CodeBase.GameLogic;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services.PersistentProgress;
@@ -31,7 +32,8 @@ namespace CodeBase.Infrastructure.Factory
       IPersistentProgress progressService, 
       IStaticDataService staticData, 
       ISaveLoadService saveLoadService, 
-      IRandomService randomService)
+      IRandomService randomService,
+      IInventoryService inventoryService)
     {
       _assets = assets;
       _windowService = windowService;

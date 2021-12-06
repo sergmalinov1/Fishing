@@ -16,7 +16,7 @@ namespace CodeBase.StaticData
         public int Rating = 1;
 
         [Range(1, 100)]
-        public int Cost = 1;
+        public int Price = 1;
 
         [Range(0, 1)]
         public float ChanceGettingOffHook = 1;
@@ -31,6 +31,8 @@ namespace CodeBase.StaticData
         public int GetRating() => Rating;
 
         public int GetTypeId() => (int)HookTypeId;
+
+        public int GetPrice() => Price;
 
         //     public AssetReferenceGameObject PrefabReference;
     }

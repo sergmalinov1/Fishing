@@ -1,5 +1,6 @@
 using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
 using System;
@@ -24,10 +25,14 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private IUIFactory _UIfactory;
 
-        public void Construct(IUIFactory UIfactory,  PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
+        public void Construct(
+            IUIFactory UIfactory,  
+            PlayerProgress progress, 
+            IAssetProvider assetsProvider,
+            IInventoryService inventoryService)
         {
             _UIfactory = UIfactory;
-            ListContainer.Construct(progress, assetsProvider, staticData);
+            ListContainer.Construct(progress, assetsProvider, inventoryService);
         }
 
 

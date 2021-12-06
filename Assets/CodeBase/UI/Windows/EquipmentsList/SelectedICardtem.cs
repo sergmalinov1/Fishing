@@ -1,6 +1,8 @@
 ﻿using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.StaticData;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,16 +18,11 @@ namespace CodeBase.UI.Windows.EquipmentsList
         public Image Rating;
         public Image EquipmentPicture;
 
-        private PlayerProgress _progress;
         private IAssetProvider _assetProvider;
 
 
-
-        public void Construct(
-            PlayerProgress progress,
-            IAssetProvider assetProvider)
+        public void Construct(IAssetProvider assetProvider)
         {
-            _progress = progress;
             _assetProvider = assetProvider;
         }
 
@@ -33,9 +30,15 @@ namespace CodeBase.UI.Windows.EquipmentsList
         {
             CategoryButton.onClick.AddListener(OnItemClick);
 
-
             CategoryName.text = name;
             DefineRating(rating);
+        }
+
+        public async void Initialize(EquipmentConfig equipment)
+        {
+            CategoryButton.onClick.AddListener(OnItemClick);
+            CategoryName.text = equipment.Name;
+            DefineRating(equipment.Rating);
         }
 
         private void OnItemClick()
@@ -47,5 +50,7 @@ namespace CodeBase.UI.Windows.EquipmentsList
         {
             Rating.sprite = await _assetProvider.Load<Sprite>($"grade_" + rating);
         }
+
+     
     }
 }

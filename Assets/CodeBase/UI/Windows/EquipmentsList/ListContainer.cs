@@ -1,6 +1,7 @@
 ﻿
 using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.StaticData;
@@ -33,23 +34,21 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private PlayerProgress _progress;
         private IAssetProvider _assetsProvider;
-        private IStaticDataService _staticData;
         private KindEquipmentId _kindEquipmentId;
-        private ISaveLoadService _saveLoadService;
+        private IInventoryService _inventoryService;
 
         private List<GameObject> _cardListItems = new List<GameObject>();
 
-        private IEquipment _itemToBuy;
+        private EquipmentConfig _itemToBuy;
 
         public void Construct(
             PlayerProgress progress, 
             IAssetProvider assetsProvider, 
-            IStaticDataService staticData)
+            IInventoryService inventoryService)
         {
             _progress = progress;
             _assetsProvider = assetsProvider;
-            _staticData = staticData;
-            _saveLoadService = AllServices.Container.Single<ISaveLoadService>(); //логику нужно вынести в отдельный сервис
+            _inventoryService = inventoryService;   
         } 
 
         public void Initialize()
@@ -60,83 +59,68 @@ namespace CodeBase.UI.Windows.EquipmentsList
             DefineItems();
         }
 
-        public void ShowPopupToBuyItem(IEquipment equipment)
+
+        public void ShowPopupToBuyItem(EquipmentConfig equipment)
         {
             _itemToBuy = equipment;
-
-            PopupItemName.text = _itemToBuy.GetName();
-            PopupPrice.text = "66";
-
+            PopupItemName.text = equipment.Name;
+            PopupPrice.text = equipment.Price.ToString();
             PopupBuyItem.SetActive(true);
         }
 
-
         public void BuyCardItem()
         {
-            //  if(IsNotEnoughMoney())
-            //     return;
+            
+            if (!_inventoryService.IsCanBuy(_itemToBuy.Price))
+            {
+                PopupBuyItem.SetActive(false);
+                PopupNoMoney.SetActive(true);
+                return;
+            }
+               
 
-            _progress.Inventory.ButEquipmentItem(_kindEquipmentId, _itemToBuy.GetTypeId());
+            _inventoryService.BuyEquipment(_kindEquipmentId, _itemToBuy.TypeId, _itemToBuy.Price);
+
             PopupBuyItem.SetActive(false);
             RefreshListAndSaveData();
         }
 
         public void SelectItemCard(int equipmentTypeId)
         {
-            _progress.Inventory.SelectEquipmentItem(_kindEquipmentId, equipmentTypeId);
+            _inventoryService.SelectEquipment(_kindEquipmentId, equipmentTypeId);
             RefreshListAndSaveData();
         }
 
-       
-
         private async void DefineItems()
         {
-            List<IEquipment> allEquipments = _staticData.GetListByKind(_kindEquipmentId);
-            List<EquipmentItem> purchasedEquipment = _progress.Inventory.GetListEquipmentByKind(_kindEquipmentId);
+            List<EquipmentConfig> equipmentsList = _inventoryService.GetEquipmentsConfig();
 
-            int typePurchaseditem = _progress.Inventory.GetTypeEquipmentByKind(_kindEquipmentId);
-
-            foreach (IEquipment item in allEquipments)
+            foreach(EquipmentConfig equipment in equipmentsList)
             {
-                if(item.GetTypeId() == typePurchaseditem)
+                GameObject equipmentCard = null;
+
+                if(equipment.IsSelectetitem)
                 {
-                    GameObject selectedObject = await _assetsProvider.Instantiate(Constants.SelectedICardtemPath, SelectedItemTransform);
-                    SelectedICardtem selectedItem = selectedObject.GetComponent<SelectedICardtem>();
-                    _cardListItems.Add(selectedObject);
+                    equipmentCard = await _assetsProvider.Instantiate(Constants.SelectedICardtemPath, SelectedItemTransform);
+                    SelectedICardtem selectedItem = equipmentCard.GetComponent<SelectedICardtem>();
 
-
-                    //_equipmentCategoryWindow
-                    selectedItem.Construct(_progress, _assetsProvider);
-                    selectedItem.Initialize(item.GetName(), item.GetRating());
-                    continue; 
+                    selectedItem.Construct(_assetsProvider);
+                    selectedItem.Initialize(equipment);
                 }
-
-                GameObject cardObject = await _assetsProvider.Instantiate(Constants.EquipmentCardPath, CardsListTransform);
-                EquipmentCardItem itemToSelect = cardObject.GetComponent<EquipmentCardItem>();
-                _cardListItems.Add(cardObject);
-
-                itemToSelect.Constuct(this, _assetsProvider);
-
-
-                int numberOfPurchasedItems = 0;
-                foreach (EquipmentItem purchasedItem in purchasedEquipment)
+                else
                 {
-                    if(item.GetTypeId() == purchasedItem.TypeId)
-                    {
-                        numberOfPurchasedItems = purchasedItem.Count;
+                    equipmentCard = await _assetsProvider.Instantiate(Constants.EquipmentCardPath, CardsListTransform);
+                    EquipmentCardItem itemToSelect = equipmentCard.GetComponent<EquipmentCardItem>();
+            
 
-                    }
+                    itemToSelect.Constuct(this, _assetsProvider);
+                    itemToSelect.Initialize(equipment);
                 }
-
-                itemToSelect.Initialize(item, numberOfPurchasedItems);
-            }
-        }       
-
-        private bool IsNotEnoughMoney()
-        {
-            PopupNoMoney.SetActive(true);
-            return true;
+                _cardListItems.Add(equipmentCard);
+            }    
         }
+
+
 
         private void ClearCardList()
         {
@@ -149,10 +133,8 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private void RefreshListAndSaveData()
         {
-            _saveLoadService.SaveProgress();
             ClearCardList();
             DefineItems();
         }
-             
     }
 }

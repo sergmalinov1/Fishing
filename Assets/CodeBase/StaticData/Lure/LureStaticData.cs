@@ -33,5 +33,7 @@ namespace CodeBase.StaticData
         public int GetRating() => Rating;
 
         public int GetTypeId() => (int)LureTypeId;
+
+        public int GetPrice() => Price;
     }
 }

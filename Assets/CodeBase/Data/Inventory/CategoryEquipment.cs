@@ -44,23 +44,6 @@ namespace CodeBase.Data
             SelectedEquipmentTypeId = equipmentTypeId;
         }
 
-        public bool IsTypeIdPurchased(int typeId)
-        {
-            foreach (EquipmentItem item in PurchasedEquipment)
-            {
-                if (item.TypeId == typeId)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /* public LakeTypeId LakeId = LakeTypeId.Simple;
-         public BobberTypeId BobberId = BobberTypeId.Simple;
-         public FishingRodId FishingRodId = FishingRodId.Simple;      
-         public HookTypeId HookId = HookTypeId.Simple;
-         public FishingLineId FishingId = FishingLineId.Simple;*/
 
 
     }
