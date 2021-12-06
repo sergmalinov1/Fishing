@@ -19,6 +19,7 @@ namespace CodeBase.UI.Windows.EquipmentsList
         public Image EquipmentPicture;
 
         private IAssetProvider _assetProvider;
+        private EquipmentConfig _equipment;
 
 
         public void Construct(IAssetProvider assetProvider)
@@ -26,24 +27,24 @@ namespace CodeBase.UI.Windows.EquipmentsList
             _assetProvider = assetProvider;
         }
 
-        public async void Initialize(string name, int rating)
-        {
-            CategoryButton.onClick.AddListener(OnItemClick);
-
-            CategoryName.text = name;
-            DefineRating(rating);
-        }
 
         public async void Initialize(EquipmentConfig equipment)
         {
+            _equipment = equipment;
             CategoryButton.onClick.AddListener(OnItemClick);
             CategoryName.text = equipment.Name;
+            SetImage();
             DefineRating(equipment.Rating);
         }
 
         private void OnItemClick()
         {
 
+        }
+
+        private async void SetImage()
+        {
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(_equipment.ImageName);
         }
 
         private async void DefineRating(int rating)

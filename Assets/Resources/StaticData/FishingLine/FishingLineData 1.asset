@@ -15,10 +15,11 @@ MonoBehaviour:
   FishingLineId: 0
   FishingLineName: Line 1
   Rating: 1
-  Cost: 1
+  Price: 1
   MaxLiftWeight: 500
   PrefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  MainImage: fishline1

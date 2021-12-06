@@ -22,6 +22,8 @@ namespace CodeBase.StaticData
         [Range(0, 1)]
         public float CoefficientOfLuck = 1;
 
+       
+
         private KindEquipmentId _kindEquipmentId = KindEquipmentId.Bobber;
         public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
 
@@ -32,6 +34,9 @@ namespace CodeBase.StaticData
         public int GetTypeId() => (int)BobberTypeId;
 
         public int GetPrice() => Price;
+
+        public string MainImage;
+        public string GetImageName() => MainImage;
     }
 }
 

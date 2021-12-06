@@ -34,6 +34,8 @@ namespace CodeBase.StaticData
 
         public int GetPrice() => Price;
 
+        public string MainImage;
+        public string GetImageName() => MainImage;
         //     public AssetReferenceGameObject PrefabReference;
     }
 }

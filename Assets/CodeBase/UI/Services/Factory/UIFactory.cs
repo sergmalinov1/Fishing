@@ -95,7 +95,7 @@ namespace CodeBase.UI.Services.Factory
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
             EquipmentCategoryWindow categoryWindows = window as EquipmentCategoryWindow;
-            categoryWindows.Construct(this, _progressService.Progress, _assetsProvider, _staticData);
+            categoryWindows.Construct(this, _progressService.Progress, _assetsProvider, _staticData, _inventoryService);
 
 
             return window;

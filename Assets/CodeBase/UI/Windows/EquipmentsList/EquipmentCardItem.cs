@@ -45,8 +45,11 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
             _equipment = equipment;
             _QtyOfPurchasedItems = equipment.QtyPurchasedEquipment;
-            EquipmentName.text = equipment.Name;
 
+            EquipmentName.text = equipment.Name;
+            Price.text = equipment.Price.ToString();
+
+            SetImage();
             DefineLabel();
             DefineRating(equipment.Rating);
         }
@@ -64,6 +67,11 @@ namespace CodeBase.UI.Windows.EquipmentsList
                 BuyLebel.SetActive(true);
 
             }
+        }
+
+        private async void SetImage()
+        {
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(_equipment.ImageName);
         }
 
         private async void DefineRating(int rating)

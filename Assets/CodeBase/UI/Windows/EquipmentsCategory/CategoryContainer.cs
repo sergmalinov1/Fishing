@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
 using UnityEngine;
@@ -17,26 +18,34 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         private PlayerProgress _progress;
         private IUIFactory _UIFactory;
         private EquipmentCategoryWindow _equipmentCategoryWindow;
+        private IInventoryService _inventoryService;
 
-        private List<IEquipment> _staticDataObject = new List<IEquipment>();
+        private List<IEquipment> _staticDataObject = null;
 
 
-        public void Construct(EquipmentCategoryWindow equipmentCategory, IUIFactory UIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
+        public void Construct(
+            EquipmentCategoryWindow equipmentCategory, 
+            IUIFactory UIFactory, 
+            PlayerProgress progress,
+            IAssetProvider assetsProvider, 
+            IStaticDataService staticData,
+            IInventoryService inventoryService)
         {
             _equipmentCategoryWindow = equipmentCategory;
             _UIFactory = UIFactory;
             _progress = progress;
             _assetsProvider = assetsProvider;
             _staticData = staticData;
+            _inventoryService = inventoryService;
         }
 
         public void Initialize()
         {
-            IdentificationInstalledEequipment();
+            _staticDataObject = _inventoryService.GetSelectedEquipments();
             RefreshAvailableItems();
         }
 
-        private void IdentificationInstalledEequipment()
+    /*    private void IdentificationInstalledEequipment()
         {
             
             foreach(CategoryEquipment item in _progress.Inventory.InstalledEquipments)
@@ -68,7 +77,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
                         break;
                 }
             }   
-        }
+        }*/
 
         private async void RefreshAvailableItems()
         {
@@ -81,7 +90,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
                 IEquipment equipment = _staticDataObject[i];
                 selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, _assetsProvider, equipment.GetKindEquipment());
-                selectedItem.Initialize(equipment.GetName(), equipment.GetRating());
+                selectedItem.Initialize(equipment);
 
             }
         }   

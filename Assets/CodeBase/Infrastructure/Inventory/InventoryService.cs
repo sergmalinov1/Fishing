@@ -31,8 +31,44 @@ namespace CodeBase.Infrastructure.Inventory
         }
 
 
+        public List<IEquipment> GetSelectedEquipments()
+        {
+            List<IEquipment> _staticDataObject = new List<IEquipment>();
+            foreach (CategoryEquipment item in _persistentService.Progress.Inventory.InstalledEquipments)
+            {
+                switch (item.KindEquipmentId)
+                {
+                    case (KindEquipmentId.Bobber):
+                        _staticDataObject.Add(_staticData.ForBobber((BobberTypeId)item.SelectedEquipmentTypeId));
+                        break;
 
-        public List<EquipmentConfig> GetEquipmentsConfig()
+                    case (KindEquipmentId.FishingLine):
+                        _staticDataObject.Add(_staticData.ForFishingLine((FishingLineId)item.SelectedEquipmentTypeId));
+                        break;
+
+                    case (KindEquipmentId.FishingRod):
+                        _staticDataObject.Add(_staticData.ForFishingRod((FishingRodId)item.SelectedEquipmentTypeId));
+                        break;
+
+                    case (KindEquipmentId.Hook):
+                        _staticDataObject.Add(_staticData.ForHook((HookTypeId)item.SelectedEquipmentTypeId));
+                        break;
+
+                    case (KindEquipmentId.Lake):
+                        _staticDataObject.Add(_staticData.ForLake((LakeTypeId)item.SelectedEquipmentTypeId));
+                        break;
+
+                    case (KindEquipmentId.Lure):
+                        _staticDataObject.Add(_staticData.ForLure((LureTypeId)item.SelectedEquipmentTypeId));
+                        break;
+                }
+            }
+
+            return _staticDataObject;
+        }
+
+
+        public List<EquipmentConfig> GetEquipmentsConfigByKind()
         {
             List<EquipmentConfig> equipmentsList = new List<EquipmentConfig>();
 

@@ -1,5 +1,6 @@
 using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
@@ -17,9 +18,9 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         public CategoryContainer CategoryContainer;
 
 
-        public void Construct(IUIFactory uIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData)
+        public void Construct(IUIFactory uIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData, IInventoryService _inventoryService)
         {
-            CategoryContainer.Construct(this, uIFactory, progress, assetsProvider, staticData);
+            CategoryContainer.Construct(this, uIFactory, progress, assetsProvider, staticData, _inventoryService);
         }
 
 

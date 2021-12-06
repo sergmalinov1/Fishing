@@ -1,0 +1,114 @@
+[33mcommit 497e38894cef2f3ce392cfcc22af26ff7173b31b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 309fbd5 40aadf5
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Mon Dec 6 19:49:14 2021 +0200
+
+    fix conflict
+
+[33mcommit 40aadf5366e1404503cd4e0f7eda5f99ee436496[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: sergit <sergit@quartsoft.com>
+Date:   Mon Dec 6 17:37:39 2021 +0200
+
+    Add inventory system
+
+[33mcommit 309fbd55032dc3bdb02ec2913c7da6ff0d902a62[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Mon Dec 6 08:34:44 2021 +0200
+
+    Start working on Random logic
+
+[33mcommit 4a97839c6107361f86f2c21eb80a085a3ee3998f[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Sun Dec 5 22:32:31 2021 +0200
+
+    Add popup
+
+[33mcommit db4ae73d79cb2d61b77ee72a639f591107ebfde9[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Sun Dec 5 17:46:18 2021 +0200
+
+    Rename Card item name
+
+[33mcommit 406d544bb04851d9f3d5349fe807c9b49c0c4b7e[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Sat Dec 4 01:49:38 2021 +0200
+
+    fix
+
+[33mcommit 2e831366fc5c8efab630d7acf03324dedfaa5ca3[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Sat Dec 4 01:48:20 2021 +0200
+
+    Add logic popup
+
+[33mcommit 8318894246cf15a899063e5a8755bae93296970b[m
+Author: sergit <sergit@quartsoft.com>
+Date:   Fri Dec 3 17:54:41 2021 +0200
+
+    Add list equipment windows
+
+[33mcommit dca7f09b3295f05ba03e614525e9994eb58a89f3[m
+Author: sergit <sergit@quartsoft.com>
+Date:   Fri Dec 3 15:42:41 2021 +0200
+
+    Add Setting windows
+
+[33mcommit 1c342561985fe3d6dc6b10f95305b0a250d7efb5[m
+Author: sergit <sergit@quartsoft.com>
+Date:   Fri Dec 3 14:26:56 2021 +0200
+
+    Change Invetory logic
+
+[33mcommit f0edf682d68a85510429d5e5bf34eda60aec02db[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Fri Dec 3 01:05:32 2021 +0200
+
+    Add Equipment logic and static data
+
+[33mcommit fdfe93d1c258f874479d366b1efd75a8eeb6f291[m
+Author: sergit <sergit@quartsoft.com>
+Date:   Thu Dec 2 17:39:26 2021 +0200
+
+    Fix change
+
+[33mcommit 8082b677a674018b0f55f488f3b88d3702881ba0[m
+Author: sergit <sergit@quartsoft.com>
+Date:   Thu Dec 2 17:18:05 2021 +0200
+
+    Add equipment windows
+
+[33mcommit 4b78093ddf69c3e807174e8d57f8aa0d928eb262[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Wed Dec 1 23:33:14 2021 +0200
+
+    Create category container
+
+[33mcommit 52fd03477c10227dd260aa6bb17d3ae2a5497d09[m
+Author: sergmalinov <sergmalinov@gmail.com>
+Date:   Wed Dec 1 20:57:16 2021 +0200
+
+    Change windows category
+
+[33mcommit 9bb6f27636a629f3668ffa61c607ae1abc2d44ed[m
+Author: SergMalinov <sergmalinov@gmail.com>
+Date:   Wed Dec 1 17:50:54 2021 +0200
+
+    Save update scene
+
+[33mcommit dfa3c80ddf6de6bfda3025599a70403cfd153e19[m
+Author: SergMalinov <sergmalinov@gmail.com>
+Date:   Wed Dec 1 17:30:37 2021 +0200
+
+    AnimationRandom
+
+[33mcommit 51b2672c12e962190b7161000d777d1f6bd9a8b5[m
+Author: SergMalinov <sergmalinov@gmail.com>
+Date:   Wed Dec 1 16:56:28 2021 +0200
+
+    Add static data
+
+[33mcommit 84adb8a5820fbddb6289436e235411b1b708a179[m
+Author: SergMalinov <sergmalinov@gmail.com>
+Date:   Wed Dec 1 13:54:10 2021 +0200
+
+    First commit

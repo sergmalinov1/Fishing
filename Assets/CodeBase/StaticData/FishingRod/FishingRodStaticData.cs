@@ -42,6 +42,9 @@ namespace CodeBase.StaticData
 
         public int GetTypeId() => (int)FishingRodId;
 
+        public string MainImage;
+        public string GetImageName() => MainImage;
+
     }
 }
 

@@ -15,4 +15,5 @@ MonoBehaviour:
   LakeTypeId: 0
   LakeName: lake 1
   Rating: 1
-  Cost: 1
+  Price: 1
+  MainImage: Lake_01

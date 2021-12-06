@@ -27,5 +27,8 @@ namespace CodeBase.StaticData
         public int GetTypeId() => (int)LakeTypeId;
 
         public int GetPrice() => Price;
+
+        public string MainImage;
+        public string GetImageName() => MainImage;
     }
 }

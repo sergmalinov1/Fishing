@@ -35,5 +35,8 @@ namespace CodeBase.StaticData
         public int GetTypeId() => (int)LureTypeId;
 
         public int GetPrice() => Price;
+
+        public string MainImage;
+        public string GetImageName() => MainImage;
     }
 }

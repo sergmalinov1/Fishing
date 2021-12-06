@@ -65,22 +65,6 @@ MonoBehaviour:
     m_Address: ShopItem
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d203e10ddd623fb44b598d12f598d006
-    m_Address: Icon_9
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8dec9b79ee4f79e49808bbb1f36f263c
-    m_Address: Icon_13
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 76bb11de4757020449ca660d88a14ee7
-    m_Address: Icon_15
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 51ec15ab8502bf648bf6d2dc70be32b3
-    m_Address: Icon_16
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 4fa27fb910b6ecb46a03290921bf6b79
     m_Address: LureItemPrepare
     m_ReadOnly: 0
@@ -139,6 +123,86 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 81e867373d3aec7419adfcc398611a39
     m_Address: SelectedICardtem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a43fa0f5b0de59343b503c26eeec6942
+    m_Address: bobber_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4ad64938475b5c74c8b466f4622b93d4
+    m_Address: bobber_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 73b1edf8d4abdd845ba9e67d377fcb12
+    m_Address: bobber_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e6f07f4624cf2444abb3632f124a34e
+    m_Address: hook_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e12233398f3476479d477dbbd3fa570
+    m_Address: hook_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 348e8612ba1e2f2409eaffdd246746f5
+    m_Address: hook_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5f3d9d40020d7d6419bcee9631b8b373
+    m_Address: rod_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e8c109fa65444194bae64f56e62b2d5b
+    m_Address: rod_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3786c831f9f22c4a9f2e9daab5a8abb
+    m_Address: rod_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e539fc90cb75faa40b3b1052fd12a4bc
+    m_Address: rod_04
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5eea6b774db9d294b9922de59c9b7c59
+    m_Address: rod_05
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 39fe1423e2bab304995a7ce22c675fb5
+    m_Address: Lake_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9201780938d30c40af70f909b0c693b
+    m_Address: Lake_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64122b0a80839cc4eb9a9320d0925c93
+    m_Address: Lake_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9eb6fceaf167aa444b6b305c2a1536e3
+    m_Address: Kooka
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a99df51e9f64c84ba24e950f1a65f15
+    m_Address: Bread
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 764125bf965ad9c4c93084531d516ff0
+    m_Address: fishline3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3299b42f5be30584a9d3e1b6a9dae6bb
+    m_Address: fishline4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3ee8c18e712285447b2d61b5b2c68e2e
+    m_Address: fishline1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a594afc077dcf69438693aac24418ac6
+    m_Address: fishline2
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -93,7 +93,7 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private async void DefineItems()
         {
-            List<EquipmentConfig> equipmentsList = _inventoryService.GetEquipmentsConfig();
+            List<EquipmentConfig> equipmentsList = _inventoryService.GetEquipmentsConfigByKind();
 
             foreach(EquipmentConfig equipment in equipmentsList)
             {

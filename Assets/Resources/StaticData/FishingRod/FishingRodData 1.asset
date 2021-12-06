@@ -15,7 +15,7 @@ MonoBehaviour:
   FishingRodId: 0
   FishingRodName: Rod 1
   Rating: 1
-  Cost: 1
+  Price: 1
   MinFishWeight: 100
   MaxFishWeight: 200
   Distance: 2
@@ -24,3 +24,4 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  MainImage: rod_01

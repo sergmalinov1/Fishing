@@ -15,10 +15,11 @@ MonoBehaviour:
   BobberTypeId: 5
   BobberName: Bob 6
   Rating: 6
-  Cost: 1
+  Price: 1
   PrefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CoefficientOfLuck: 1
+  MainImage: bobber_03

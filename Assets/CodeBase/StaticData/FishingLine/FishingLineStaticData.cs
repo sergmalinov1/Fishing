@@ -32,6 +32,9 @@ namespace CodeBase.StaticData
         public int GetTypeId() => (int)FishingLineId;
 
         public int GetPrice() => Price;
+
+        public string MainImage;
+        public string GetImageName() => MainImage;
     }
 
 }

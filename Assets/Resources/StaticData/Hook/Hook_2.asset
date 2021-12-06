@@ -15,5 +15,6 @@ MonoBehaviour:
   HookTypeId: 1
   HookName: Hook 2
   Rating: 2
-  Cost: 1
+  Price: 1
   ChanceGettingOffHook: 0.85
+  MainImage: hook_02

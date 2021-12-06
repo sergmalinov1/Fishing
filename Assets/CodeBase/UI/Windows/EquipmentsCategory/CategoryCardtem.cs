@@ -40,13 +40,15 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
             _assetProvider = assetProvider;
         }
 
-        public async void Initialize(string name, int rating)
+
+        public async void Initialize(IEquipment equipment)
         {
             CategoryButton.onClick.AddListener(OnItemClick);
 
 
-            CategoryName.text = name;
-            DefineRating(rating);
+            CategoryName.text = equipment.GetName();
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(equipment.GetImageName());
+            DefineRating(equipment.GetRating());
         }
 
         private void OnItemClick()
@@ -62,6 +64,6 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
             Rating.sprite = await _assetProvider.Load<Sprite>($"grade_" + rating);
         }
 
-
+        
     }
 }

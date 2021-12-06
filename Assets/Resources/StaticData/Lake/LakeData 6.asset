@@ -15,4 +15,5 @@ MonoBehaviour:
   LakeTypeId: 5
   LakeName: lake 6
   Rating: 6
-  Cost: 1
+  Price: 1
+  MainImage: Lake_03

@@ -26,6 +26,7 @@ namespace CodeBase.Infrastructure.Inventory
             Name = item.GetName();
             Rating = item.GetRating();
             Price = item.GetPrice();
+            ImageName = item.GetImageName();
         }
     }
 }
