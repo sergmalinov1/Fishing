@@ -8,7 +8,8 @@ namespace CodeBase.Infrastructure.Inventory
 {
     public interface IInventoryService : IService
     {
-        List<IEquipment> GetSelectedEquipments();
+        List<EquipmentConfig> GetSelectedEquipments();
+
         List<EquipmentConfig> GetEquipmentsConfigByKind();
         void BuyEquipment(KindEquipmentId kindEquipmentId, int typeId, int price);
         void SelectEquipment(KindEquipmentId kindEquipmentId, int equipmentTypeId);

@@ -8,6 +8,7 @@ namespace CodeBase.Data
     public class CategoryEquipment
     {
         private const int QtyItemsInOrder = 10;
+        private const int MaxQty = 999;
 
         public KindEquipmentId KindEquipmentId;
         public int SelectedEquipmentTypeId;
@@ -26,17 +27,26 @@ namespace CodeBase.Data
 
         public void BuyEquipment(int typeId)
         {
+            int qty = 0;
+            if (IsQuantitative == true) //эту логику необходимо вынести
+                qty = QtyItemsInOrder;
+            else
+                qty = MaxQty;
+
+
             foreach (EquipmentItem item in PurchasedEquipment)
             {
                 if (item.TypeId == typeId)
                 {
-                    item.Count += QtyItemsInOrder;
+                    item.Count += qty;
                     return;
                 }
             }
 
             SetSelectedItem(typeId);
-            PurchasedEquipment.Add(new EquipmentItem(typeId, QtyItemsInOrder));
+
+
+            PurchasedEquipment.Add(new EquipmentItem(typeId, qty));
         }
 
         public void SetSelectedItem(int equipmentTypeId)
@@ -44,8 +54,17 @@ namespace CodeBase.Data
             SelectedEquipmentTypeId = equipmentTypeId;
         }
 
-
+        public EquipmentItem FindPurchasedByTypeId(int typeId)
+        {
+            foreach (EquipmentItem item in PurchasedEquipment)
+            {
+                if (item.TypeId == typeId)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
 
     }
-
 }

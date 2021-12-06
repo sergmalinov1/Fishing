@@ -20,7 +20,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         private EquipmentCategoryWindow _equipmentCategoryWindow;
         private IInventoryService _inventoryService;
 
-        private List<IEquipment> _staticDataObject = null;
+        private List<EquipmentConfig> _selectedEquipments = null;
 
 
         public void Construct(
@@ -41,7 +41,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
         public void Initialize()
         {
-            _staticDataObject = _inventoryService.GetSelectedEquipments();
+            _selectedEquipments = _inventoryService.GetSelectedEquipments();
             RefreshAvailableItems();
         }
 
@@ -81,15 +81,15 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
         private async void RefreshAvailableItems()
         {
-            for(int i=0; i < _staticDataObject.Count; i++)
+            for(int i=0; i < _selectedEquipments.Count; i++)
             {
 
                 GameObject productObject = await _assetsProvider.Instantiate(Constants.CategoryCardtemPath, ParentCard[i]);
                 CategoryCardtem selectedItem = productObject.GetComponent<CategoryCardtem>();
 
 
-                IEquipment equipment = _staticDataObject[i];
-                selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, _assetsProvider, equipment.GetKindEquipment());
+                EquipmentConfig equipment = _selectedEquipments[i];
+                selectedItem.Construct(_equipmentCategoryWindow, _UIFactory, _progress, _assetsProvider, equipment.KindEquipmentId);
                 selectedItem.Initialize(equipment);
 
             }

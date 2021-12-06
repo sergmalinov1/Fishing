@@ -1,5 +1,6 @@
 ﻿using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Inventory;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
 using System;
@@ -12,6 +13,8 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
     public class CategoryCardtem : MonoBehaviour
     {
         public TextMeshProUGUI CategoryName;
+        public TextMeshProUGUI CountProduct;
+
         
         public Button CategoryButton;
 
@@ -41,14 +44,15 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         }
 
 
-        public async void Initialize(IEquipment equipment)
+        public async void Initialize(EquipmentConfig equipment)
         {
             CategoryButton.onClick.AddListener(OnItemClick);
 
+            CategoryName.text = equipment.Name;
+            CountProduct.text = $"Qty: "+ equipment.QtyPurchasedEquipment.ToString();
 
-            CategoryName.text = equipment.GetName();
-            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(equipment.GetImageName());
-            DefineRating(equipment.GetRating());
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(equipment.ImageName);
+            DefineRating(equipment.Rating);
         }
 
         private void OnItemClick()
