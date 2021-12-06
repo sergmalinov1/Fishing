@@ -8,6 +8,8 @@ namespace CodeBase.Data
   [Serializable]
     public class Inventory
     {
+        public Action ChangedInventoryConfig;
+
 
         public List<CategoryEquipment> InstalledEquipments = new List<CategoryEquipment>();     
 
@@ -36,6 +38,7 @@ namespace CodeBase.Data
                 if (category.KindEquipmentId == kindEquipmentId)
                 {
                     category.BuyEquipment(typeEquipmentId);
+                    ChangedInventoryConfig?.Invoke();
                     return;
                 }
             }
@@ -51,6 +54,7 @@ namespace CodeBase.Data
                 if (category.KindEquipmentId == kindEquipmentId)
                 {
                     category.SetSelectedItem(typeEquipmentId);
+                    ChangedInventoryConfig?.Invoke();
                     return;
                 }
             }
