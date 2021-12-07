@@ -5,10 +5,15 @@ using UnityEngine.AddressableAssets;
 namespace CodeBase.StaticData
 {
   [CreateAssetMenu(fileName = "LureData", menuName = "StaticData/Lure", order = 1)]
-    public class LureStaticData : ScriptableObject, IEquipment
+    public class LureStaticData : Equipment
     {
         public LureTypeId LureTypeId;
 
+        public override int GetTypeId() => (int)LureTypeId;
+
+        public FishTypeId[] TypeFishEat;
+
+        /*
         public string LureName;
 
         [Range(1, 6)]
@@ -18,7 +23,7 @@ namespace CodeBase.StaticData
         public int Price = 1;
 
 
-        public FishTypeId[] TypeFishEat;
+        
 
 
         public string ProductDescription;
@@ -32,11 +37,11 @@ namespace CodeBase.StaticData
 
         public int GetRating() => Rating;
 
-        public int GetTypeId() => (int)LureTypeId;
+
 
         public int GetPrice() => Price;
 
         public string MainImage;
-        public string GetImageName() => MainImage;
+        public string GetImageName() => MainImage;*/
     }
 }

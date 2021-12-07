@@ -12,5 +12,6 @@ namespace CodeBase.StaticData
 
         public KindEquipmentId GetKindEquipment();
         string GetImageName();
+       // int GetTypeId();
     }
 }

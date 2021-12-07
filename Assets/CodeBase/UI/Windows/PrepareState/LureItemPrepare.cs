@@ -49,8 +49,8 @@ namespace CodeBase.UI.Windows.PrepareState
       
       ProductItem.text = item.Name;
       _lureStaticData = _staticData.ForLure(item.LureType);
-      ProductDescription.text = _lureStaticData.ProductDescription;
-      Icon.sprite = await _assetProvider.Load<Sprite>(_lureStaticData.Icon);
+     // ProductDescription.text = _lureStaticData.ProductDescription;
+    //  Icon.sprite = await _assetProvider.Load<Sprite>(_lureStaticData.Icon);
 
     }
 

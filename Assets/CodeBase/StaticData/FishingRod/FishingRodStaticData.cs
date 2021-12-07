@@ -5,19 +5,10 @@ using UnityEngine.AddressableAssets;
 namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "FishingRodData", menuName = "StaticData/FishingRod", order = 0)]
-    public class FishingRodStaticData : ScriptableObject, IEquipment
+    public class FishingRodStaticData : Equipment
     {
         public FishingRodId FishingRodId;
 
-        public string FishingRodName;
-
-       
-
-        [Range(1, 6)]
-        public int Rating = 1;
-
-        [Range(1, 100)]
-        public int Price = 1;
 
         [Range(1, 10000)]
         public int MinFishWeight = 100;
@@ -27,8 +18,19 @@ namespace CodeBase.StaticData
 
         [Range(1, 10)]
         public int Distance = 1;
+        public override int GetTypeId() => (int)FishingRodId;
 
-        public AssetReferenceGameObject PrefabReference;
+    /*
+
+    public string FishingRodName;
+
+    [Range(1, 6)]
+    public int Rating = 1;
+
+    [Range(1, 100)]
+    public int Price = 1;
+
+    public AssetReferenceGameObject PrefabReference;
 
         private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingRod;
         public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
@@ -40,10 +42,11 @@ namespace CodeBase.StaticData
 
         public int GetRating() => Rating;
 
-        public int GetTypeId() => (int)FishingRodId;
+        
 
         public string MainImage;
         public string GetImageName() => MainImage;
+    */
 
     }
 }

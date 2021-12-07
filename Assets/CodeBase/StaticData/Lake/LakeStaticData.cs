@@ -5,9 +5,13 @@ using UnityEngine;
 namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "LakeData", menuName = "StaticData/Lake", order = 0)]
-    public class LakeStaticData : ScriptableObject, IEquipment
+    public class LakeStaticData : Equipment
     {
         public LakeTypeId LakeTypeId;
+
+        public override int GetTypeId() => (int)LakeTypeId;
+
+        /*
 
         public string LakeName;
 
@@ -24,11 +28,11 @@ namespace CodeBase.StaticData
 
         public int GetRating() => Rating;
 
-        public int GetTypeId() => (int)LakeTypeId;
+       
 
         public int GetPrice() => Price;
 
         public string MainImage;
-        public string GetImageName() => MainImage;
+        public string GetImageName() => MainImage;*/
     }
 }

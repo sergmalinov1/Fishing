@@ -4,39 +4,40 @@ using UnityEngine.AddressableAssets;
 namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "BobberData", menuName = "StaticData/Bobber", order = 0)]
-    public class BobberStaticData : ScriptableObject, IEquipment
+    public class BobberStaticData : Equipment
     {
 
         public BobberTypeId BobberTypeId;
 
-        public string BobberName;
-
-        [Range(1, 6)]
-        public int Rating = 1;
-
-        [Range(1, 100)]
-        public int Price = 1;
-
-        public AssetReferenceGameObject PrefabReference;
-
         [Range(0, 1)]
         public float CoefficientOfLuck = 1;
 
-       
+        public override int GetTypeId() => (int)BobberTypeId;
 
-        private KindEquipmentId _kindEquipmentId = KindEquipmentId.Bobber;
-        public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
+        /*  public string BobberName;
 
-        public string GetName() => BobberName;
+          [Range(1, 6)]
+          public int Rating = 1;
 
-        public int GetRating() => Rating;
+          [Range(1, 100)]
+          public int Price = 1;
 
-        public int GetTypeId() => (int)BobberTypeId;
+          public AssetReferenceGameObject PrefabReference;*/
 
-        public int GetPrice() => Price;
 
-        public string MainImage;
-        public string GetImageName() => MainImage;
+        /*  private KindEquipmentId _kindEquipmentId = KindEquipmentId.Bobber;
+          public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
+
+          public string GetName() => BobberName;
+
+          public int GetRating() => Rating;
+
+          
+
+          public int GetPrice() => Price;
+
+          public string MainImage;
+          public string GetImageName() => MainImage;*/
     }
 }
 

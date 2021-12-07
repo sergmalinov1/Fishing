@@ -42,10 +42,10 @@ namespace CodeBase.UI.Windows.Shop
     {
       BuyItemButton.onClick.AddListener(OnBuyItemClick);
       
-      ProductItem.text = _lureValue.LureName;
-      ProductDescription.text = _lureValue.ProductDescription;
-      ProductPrice.text = $"BUY {_lureValue.Price} $" ;
-      Icon.sprite = await _assetProvider.Load<Sprite>(_lureValue.Icon);
+      //ProductItem.text = _lureValue.LureName;
+     // ProductDescription.text = _lureValue.ProductDescription;
+    //  ProductPrice.text = $"BUY {_lureValue.Price} $" ;
+     // Icon.sprite = await _assetProvider.Load<Sprite>(_lureValue.Icon);
         
     }
 

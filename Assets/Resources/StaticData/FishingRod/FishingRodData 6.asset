@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd57698d3e133d45b3bf23ece275821, type: 3}
   m_Name: FishingRodData 6
   m_EditorClassIdentifier: 
-  FishingRodId: 5
-  FishingRodName: Rod 6
+  _kindEquipmentId: 3
+  Name: Rod6
   Rating: 6
   Price: 1
-  MinFishWeight: 2000
-  MaxFishWeight: 4000
-  Distance: 8
+  MainImage: rod_01
   PrefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  MainImage: rod_01
+  FishingRodId: 5
+  MinFishWeight: 2000
+  MaxFishWeight: 4000
+  Distance: 8

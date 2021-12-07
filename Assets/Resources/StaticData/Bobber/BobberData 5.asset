@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901a415ef3dd9584e8559c4600170523, type: 3}
   m_Name: BobberData 5
   m_EditorClassIdentifier: 
-  BobberTypeId: 4
-  BobberName: Bob 5
+  _kindEquipmentId: 2
+  Name: Bob5
   Rating: 5
   Price: 1
+  MainImage: bobber_02
   PrefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  BobberTypeId: 4
   CoefficientOfLuck: 0.9
-  MainImage: bobber_02

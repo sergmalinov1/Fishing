@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8ef994112c981408659a5b55e92c37, type: 3}
   m_Name: LakeData 3
   m_EditorClassIdentifier: 
-  LakeTypeId: 2
-  LakeName: Lake 3
+  _kindEquipmentId: 0
+  Name: Lake3
   Rating: 3
   Price: 1
   MainImage: Lake_03
+  PrefabReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  LakeTypeId: 2

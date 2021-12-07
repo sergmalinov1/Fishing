@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c706e0a33df427140b45e47dec4780f3, type: 3}
   m_Name: FishingLineData 5
   m_EditorClassIdentifier: 
-  FishingLineId: 4
-  FishingLineName: Line 5
+  _kindEquipmentId: 4
+  Name: Line5
   Rating: 5
   Price: 1
-  MaxLiftWeight: 2000
+  MainImage: fishline1
   PrefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  MainImage: fishline1
+  MaxLiftWeight: 2000
+  FishingLineId: 4

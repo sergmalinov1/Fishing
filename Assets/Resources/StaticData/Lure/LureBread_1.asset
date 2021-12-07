@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59e378d0d7b4b5bab0a2e15d3760f25, type: 3}
   m_Name: LureBread_1
   m_EditorClassIdentifier: 
-  LureTypeId: 0
-  LureName: "\u0425\u043B\u0435\u0431"
+  _kindEquipmentId: 1
+  Name: Lure1
   Rating: 1
   Price: 10
-  TypeFishEat: 00000000
-  ProductDescription: "\u0414\u043B\u044F \u043C\u0435\u043B\u043A\u043E\u0439 \u0440\u044B\u0431\u0435\u0448\u043A\u0438"
-  Icon: Icon_13
   MainImage: Kooka
+  PrefabReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  LureTypeId: 0
+  TypeFishEat: 00000000

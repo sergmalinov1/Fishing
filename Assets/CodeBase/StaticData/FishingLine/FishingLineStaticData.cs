@@ -4,37 +4,46 @@ using UnityEngine.AddressableAssets;
 namespace CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "FishingLineData", menuName = "StaticData/FishingLine", order = 0)]
-    public class FishingLineStaticData : ScriptableObject, IEquipment
+    public class FishingLineStaticData : Equipment
     {
-        public FishingLineId FishingLineId;
-
-        public string FishingLineName;
-
-        [Range(1, 6)]
-        public int Rating = 1;
-
-        [Range(1, 100)]
-        public int Price = 1;
 
         [Range(1, 10000)]
         public int MaxLiftWeight = 200;
 
 
-        public AssetReferenceGameObject PrefabReference;
 
-        private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingLine;
-        public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
+        public FishingLineId FishingLineId;
 
-        public string GetName() => FishingLineName;
+        public override int GetTypeId() => (int)FishingLineId;
 
-        public int GetRating() => Rating;
 
-        public int GetTypeId() => (int)FishingLineId;
 
-        public int GetPrice() => Price;
+        /* public string FishingLineName;
 
-        public string MainImage;
-        public string GetImageName() => MainImage;
+         [Range(1, 6)]
+         public int Rating = 1;
+
+         [Range(1, 100)]
+         public int Price = 1;*/
+
+
+
+
+        /*   public AssetReferenceGameObject PrefabReference;
+
+           private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingLine;
+           public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
+
+           public string GetName() => FishingLineName;
+
+           public int GetRating() => Rating;
+
+
+
+           public int GetPrice() => Price;
+
+           public string MainImage;
+           public string GetImageName() => MainImage;*/
     }
 
 }

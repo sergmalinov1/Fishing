@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b189e35c1a617a4da3d2d386ac67ddd, type: 3}
   m_Name: Hook_5
   m_EditorClassIdentifier: 
-  HookTypeId: 4
-  HookName: Hook 5
+  _kindEquipmentId: 5
+  Name: Hook5
   Rating: 5
   Price: 1
-  ChanceGettingOffHook: 0.95
   MainImage: hook_02
+  PrefabReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  HookTypeId: 4
+  ChanceGettingOffHook: 0.95
