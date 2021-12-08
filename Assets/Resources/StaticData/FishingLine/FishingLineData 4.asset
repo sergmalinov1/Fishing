@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c706e0a33df427140b45e47dec4780f3, type: 3}
   m_Name: FishingLineData 4
   m_EditorClassIdentifier: 
+  EquipmentTypeId: 504
   _kindEquipmentId: 4
   Name: Line4
   Rating: 1

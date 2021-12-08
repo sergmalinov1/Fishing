@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd57698d3e133d45b3bf23ece275821, type: 3}
   m_Name: FishingRodData 5
   m_EditorClassIdentifier: 
+  EquipmentTypeId: 405
   _kindEquipmentId: 3
   Name: Rod5
   Rating: 5

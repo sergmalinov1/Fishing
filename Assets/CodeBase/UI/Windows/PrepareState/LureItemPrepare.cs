@@ -48,7 +48,7 @@ namespace CodeBase.UI.Windows.PrepareState
       SelectItemButtonText.text = $"выбрать " + item.Count;
       
       ProductItem.text = item.Name;
-      _lureStaticData = _staticData.ForLure(item.LureType);
+     // _lureStaticData = _staticData.ForLure(item.LureType);
      // ProductDescription.text = _lureStaticData.ProductDescription;
     //  Icon.sprite = await _assetProvider.Load<Sprite>(_lureStaticData.Icon);
 

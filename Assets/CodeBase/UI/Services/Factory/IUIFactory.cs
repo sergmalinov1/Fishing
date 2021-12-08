@@ -8,7 +8,6 @@ namespace CodeBase.UI.Services.Factory
   {
         Task CreateUIRoot();
         BaseWindow CreateResult();
-        BaseWindow CreateShop();
         BaseWindow CreateAchievements();
         BaseWindow CreatePrepareWindow();
         BaseWindow CreateSettingWindow();

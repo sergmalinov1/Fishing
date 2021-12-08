@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59e378d0d7b4b5bab0a2e15d3760f25, type: 3}
   m_Name: LureBread_1
   m_EditorClassIdentifier: 
+  EquipmentTypeId: 201
   _kindEquipmentId: 1
   Name: Lure1
   Rating: 1

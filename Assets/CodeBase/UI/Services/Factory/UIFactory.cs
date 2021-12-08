@@ -10,7 +10,6 @@ using CodeBase.UI.Windows.Achieve;
 using CodeBase.UI.Windows.EquipmentsCategory;
 using CodeBase.UI.Windows.EquipmentsList;
 using CodeBase.UI.Windows.PrepareState;
-using CodeBase.UI.Windows.Shop;
 using UnityEngine;
 
 namespace CodeBase.UI.Services.Factory
@@ -50,16 +49,6 @@ namespace CodeBase.UI.Services.Factory
       FishingResult result = window as FishingResult;
       result.Construct(_progressService.Progress);
       return window;
-    }
-
-    public BaseWindow CreateShop()
-    {
-      WindowConfig config = _staticData.ForWindow(WindowId.ShopWindow);
-      BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
-      ShopWindow shop = window as ShopWindow;
-      shop.Construct(_progressService.Progress, _staticData, _assetsProvider);
-      return window;
-  
     }
     
     public BaseWindow CreateAchievements()

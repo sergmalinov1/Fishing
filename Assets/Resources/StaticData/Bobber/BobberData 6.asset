@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901a415ef3dd9584e8559c4600170523, type: 3}
   m_Name: BobberData 6
   m_EditorClassIdentifier: 
+  EquipmentTypeId: 306
   _kindEquipmentId: 2
   Name: Bob6
   Rating: 6

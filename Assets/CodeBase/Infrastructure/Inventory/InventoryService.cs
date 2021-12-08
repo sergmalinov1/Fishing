@@ -31,13 +31,12 @@ namespace CodeBase.Infrastructure.Inventory
             _saveLoadService = saveLoadService;
         }
 
-        public List<EquipmentConfig> GetEquipmentsConfigByKind()
+        public List<EquipmentConfig> GetEquipmentsConfigByKindNew()
         {
             List<EquipmentConfig> equipmentsList = new List<EquipmentConfig>();
 
-
             KindEquipmentId _kindEquipmentId = _persistentService.Progress.SettingWindow.KindOpenedWindowList;
-            List<IEquipment> allEquipments = _staticData.GetListByKind(_kindEquipmentId);
+            List<Equipment> allEquipments = _staticData.GetListByKindNew(_kindEquipmentId);
             List<EquipmentItem> purchasedEquipment = _persistentService.Progress.Inventory.GetListEquipmentByKind(_kindEquipmentId);
 
             int typePurchaseditem = _persistentService.Progress.Inventory.GetTypeEquipmentByKind(_kindEquipmentId);
@@ -70,40 +69,9 @@ namespace CodeBase.Infrastructure.Inventory
         public List<EquipmentConfig> GetSelectedEquipments()
         {
             List<EquipmentConfig> _selectedEquipments = new List<EquipmentConfig>();
-
             foreach (CategoryEquipment item in _persistentService.Progress.Inventory.InstalledEquipments)
             {
-                IEquipment itemEquipment = null;
-                switch (item.KindEquipmentId)
-                {
-                    case (KindEquipmentId.Bobber):
-                        itemEquipment = _staticData.ForBobber((BobberTypeId)item.SelectedEquipmentTypeId);
-                        break;
-
-                    case (KindEquipmentId.FishingLine):
-                        itemEquipment = _staticData.ForFishingLine((FishingLineId)item.SelectedEquipmentTypeId);
-                        break;
-
-                    case (KindEquipmentId.FishingRod):
-                        itemEquipment = _staticData.ForFishingRod((FishingRodId)item.SelectedEquipmentTypeId);
-
-                        break;
-
-                    case (KindEquipmentId.Hook):
-                        itemEquipment = _staticData.ForHook((HookTypeId)item.SelectedEquipmentTypeId);
-                        break;
-
-                    case (KindEquipmentId.Lake):
-                        itemEquipment = _staticData.ForLake((LakeTypeId)item.SelectedEquipmentTypeId);
-                        break;
-
-                    case (KindEquipmentId.Lure):
-                        itemEquipment = _staticData.ForLure((LureTypeId)item.SelectedEquipmentTypeId);
-                        break;
-
-                    default:
-                        return null;
-                }
+                Equipment itemEquipment = _staticData.GetEquipment(item.KindEquipmentId, (int)item.SelectedEquipmentTypeId) ;
 
                 EquipmentConfig config = new EquipmentConfig(itemEquipment);
                 EquipmentItem equipmentItem = item.FindPurchasedByTypeId(item.SelectedEquipmentTypeId);
@@ -113,6 +81,7 @@ namespace CodeBase.Infrastructure.Inventory
 
             return _selectedEquipments;
         }
+
 
         public void BuyEquipment(KindEquipmentId kindEquipmentId, int typeId, int price)
         {

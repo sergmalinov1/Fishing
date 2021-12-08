@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b189e35c1a617a4da3d2d386ac67ddd, type: 3}
   m_Name: Hook_5
   m_EditorClassIdentifier: 
+  EquipmentTypeId: 605
   _kindEquipmentId: 5
   Name: Hook5
   Rating: 5

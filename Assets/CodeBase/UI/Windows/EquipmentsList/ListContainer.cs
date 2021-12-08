@@ -93,9 +93,10 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         private async void DefineItems()
         {
-            List<EquipmentConfig> equipmentsList = _inventoryService.GetEquipmentsConfigByKind();
+            //   List<EquipmentConfig> equipmentsList = _inventoryService.GetEquipmentsConfigByKind();
 
-            foreach(EquipmentConfig equipment in equipmentsList)
+            List<EquipmentConfig> equipmentsList = _inventoryService.GetEquipmentsConfigByKindNew();
+            foreach (EquipmentConfig equipment in equipmentsList)
             {
                 GameObject equipmentCard = null;
 

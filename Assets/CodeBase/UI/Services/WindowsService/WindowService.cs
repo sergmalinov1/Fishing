@@ -26,9 +26,6 @@ namespace CodeBase.UI.Services.WindowsService
                 case WindowId.AchievementsWindow:
                     return _uiFactory.CreateAchievements();
 
-                case WindowId.ShopWindow:
-                    return _uiFactory.CreateShop();
-
                 case WindowId.PrepareWindow:
                     return _uiFactory.CreatePrepareWindow();
 

@@ -5,6 +5,8 @@ namespace CodeBase.StaticData
 {
     public abstract class Equipment : ScriptableObject, IEquipment
     {
+        public EquipmentTypeId EquipmentTypeId;
+
         public KindEquipmentId _kindEquipmentId;
 
         public string Name;
@@ -19,7 +21,8 @@ namespace CodeBase.StaticData
 
         public AssetReferenceGameObject PrefabReference;
 
-    
+
+        public EquipmentTypeId GetEquipmentTypeId() => EquipmentTypeId;
 
         public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
 

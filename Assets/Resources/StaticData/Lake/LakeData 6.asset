@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8ef994112c981408659a5b55e92c37, type: 3}
   m_Name: LakeData 6
   m_EditorClassIdentifier: 
+  EquipmentTypeId: 106
   _kindEquipmentId: 0
   Name: Lake6
   Rating: 6

@@ -10,26 +10,11 @@ namespace CodeBase.StaticData
   {
     void Load();
         Dictionary<FishTypeId, FishStaticData> Fishes();
-        Dictionary<LureTypeId, LureStaticData> Lures();
-        Dictionary<BobberTypeId, BobberStaticData> Bobber();
-        Dictionary<HookTypeId, HookStaticData> Hooks();
-
-        Dictionary<FishingLineId, FishingLineStaticData> FishingLine();
-        Dictionary<FishingRodId, FishingRodStaticData> FishingRod();
-
-        Dictionary<LakeTypeId, LakeStaticData> Lake();
-
 
         WindowConfig ForWindow(WindowId windowId);
         FishStaticData ForFish(FishTypeId typeId);
-        LureStaticData ForLure(LureTypeId lureTypeId);
-        HookStaticData ForHook(HookTypeId hookTypeId);
-        BobberStaticData ForBobber(BobberTypeId bobberTypeId);
-        
-        FishingLineStaticData ForFishingLine(FishingLineId fishingLineTypeId);
-        FishingRodStaticData ForFishingRod(FishingRodId fishingRodTypeId);
-        List<IEquipment> GetListByKind(KindEquipmentId kindEquipmentId);
-        LakeStaticData ForLake(LakeTypeId lakeTypeId);
-       
+
+        List<Equipment> GetListByKindNew(KindEquipmentId kindEquipmentId);
+        Equipment GetEquipment(KindEquipmentId kindEquipmentId, int typeId);
     }
 }

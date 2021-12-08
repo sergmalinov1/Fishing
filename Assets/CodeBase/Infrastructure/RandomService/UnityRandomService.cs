@@ -81,22 +81,23 @@ namespace CodeBase.Infrastructure.RandomService
 
         private Dictionary<FishTypeId, FishStaticData> FilterByLure(Dictionary<FishTypeId, FishStaticData> fishes)
         {
-            LureTypeId lureType = _progressService.Progress.FishOnHook.LureTypeId;
-            LureStaticData lure = _staticData.ForLure(lureType);
-            Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
+            /* LureTypeId lureType = _progressService.Progress.FishOnHook.LureTypeId;
+             LureStaticData lure = _staticData.ForLure(lureType);
+             Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
 
-            foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
-            {
-                foreach (FishTypeId FishEat in lure.TypeFishEat)
-                {
-                    if (fish.Key == FishEat)
-                    {
-                        filteredFishes.Add(fish.Key, fish.Value);
-                    }
-                }
-            }
+             foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
+             {
+                 foreach (FishTypeId FishEat in lure.TypeFishEat)
+                 {
+                     if (fish.Key == FishEat)
+                     {
+                         filteredFishes.Add(fish.Key, fish.Value);
+                     }
+                 }
+             }*/
 
-            return filteredFishes;
+            //  return filteredFishes;
+            return null;
 
         }
 
