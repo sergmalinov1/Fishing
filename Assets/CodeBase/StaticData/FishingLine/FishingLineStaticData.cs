@@ -16,34 +16,12 @@ namespace CodeBase.StaticData
 
         public override int GetTypeId() => (int)FishingLineId;
 
+        public override void Accept(ISelectableEntityVisitor visitor)
+        {
+           // Debug.Log("FishingLineStaticData");
+        }
 
-
-        /* public string FishingLineName;
-
-         [Range(1, 6)]
-         public int Rating = 1;
-
-         [Range(1, 100)]
-         public int Price = 1;*/
-
-
-
-
-        /*   public AssetReferenceGameObject PrefabReference;
-
-           private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingLine;
-           public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
-
-           public string GetName() => FishingLineName;
-
-           public int GetRating() => Rating;
-
-
-
-           public int GetPrice() => Price;
-
-           public string MainImage;
-           public string GetImageName() => MainImage;*/
+       
     }
 
 }

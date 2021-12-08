@@ -12,6 +12,12 @@ namespace CodeBase.StaticData
         [Range(0, 1)]
         public float CoefficientOfLuck = 1;
 
+        public override void Accept(ISelectableEntityVisitor visitor)
+        {
+            //Debug.Log("BobberStaticData");
+            visitor.Visit(this);
+        }
+
         public override int GetTypeId() => (int)BobberTypeId;
 
     }

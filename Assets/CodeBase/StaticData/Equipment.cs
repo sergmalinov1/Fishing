@@ -36,7 +36,7 @@ namespace CodeBase.StaticData
 
         public abstract int GetTypeId();
 
-      //  public void Accept()
+        public abstract void Accept(ISelectableEntityVisitor visitor);
         
     }
 }

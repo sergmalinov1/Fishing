@@ -20,33 +20,10 @@ namespace CodeBase.StaticData
         public int Distance = 1;
         public override int GetTypeId() => (int)FishingRodId;
 
-    /*
-
-    public string FishingRodName;
-
-    [Range(1, 6)]
-    public int Rating = 1;
-
-    [Range(1, 100)]
-    public int Price = 1;
-
-    public AssetReferenceGameObject PrefabReference;
-
-        private KindEquipmentId _kindEquipmentId = KindEquipmentId.FishingRod;
-        public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
-
-        public string GetName() => FishingRodName;
-
-        public int GetPrice() => Price;
-
-
-        public int GetRating() => Rating;
-
-        
-
-        public string MainImage;
-        public string GetImageName() => MainImage;
-    */
+        public override void Accept(ISelectableEntityVisitor visitor)
+        {
+          //  Debug.Log("FishingRodStaticData");
+        }
 
     }
 }

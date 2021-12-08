@@ -50,6 +50,15 @@ namespace CodeBase.StaticData
             SetEquipments<FishingRodStaticData>(StaticDataFishingRodPath);
             SetEquipments<LakeStaticData>(StaticDataLakePath);
 
+
+            ShowType showType = new ShowType();
+
+
+            foreach (KeyValuePair<int, Equipment> item in _equipments)
+            {
+                item.Value.Accept(showType);
+            }
+
         }
 
         private void SetEquipments<TStaticData>(string path) where TStaticData : Equipment

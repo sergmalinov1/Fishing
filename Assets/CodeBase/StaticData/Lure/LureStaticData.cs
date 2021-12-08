@@ -12,6 +12,9 @@ namespace CodeBase.StaticData
         public override int GetTypeId() => (int)LureTypeId;
 
         public FishTypeId[] TypeFishEat;
-
+        public override void Accept(ISelectableEntityVisitor visitor)
+        {
+          //  Debug.Log("LureStaticData");
+        }
     }
 }

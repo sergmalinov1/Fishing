@@ -13,33 +13,11 @@ namespace CodeBase.StaticData
 
         public override int GetTypeId() => (int)HookTypeId;
 
-        /*
-        private KindEquipmentId _kindEquipmentId = KindEquipmentId.Hook;
-
-        public string HookName;
-
-        [Range(1, 6)]
-        public int Rating = 1;
-
-        [Range(1, 100)]
-        public int Price = 1;
-        public KindEquipmentId GetKindEquipment()
+        public override void Accept(ISelectableEntityVisitor visitor)
         {
-            return _kindEquipmentId;
+           // Debug.Log("HookStaticData");
         }
 
-        public string GetName() => HookName;
-
-        public int GetRating() => Rating;
-
-        
-
-        public int GetPrice() => Price;
-
-        public string MainImage;
-        public string GetImageName() => MainImage;
-        //     public AssetReferenceGameObject PrefabReference;
-        */
     }
 }
 
