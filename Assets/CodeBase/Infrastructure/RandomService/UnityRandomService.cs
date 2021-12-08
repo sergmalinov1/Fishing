@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CodeBase.Data;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.StaticData;
@@ -12,12 +13,14 @@ namespace CodeBase.Infrastructure.RandomService
         private readonly IAssetProvider _assets;
         private readonly IPersistentProgress _progressService;
         private readonly IStaticDataService _staticData;
+        private readonly PlayerProgress _progres;
 
         public UnityRandomService(IAssetProvider assets, IPersistentProgress progressService, IStaticDataService staticData)
         {
             _assets = assets;
             _progressService = progressService;
             _staticData = staticData;
+            _progres = progressService.Progress;
         }
 
 
@@ -29,12 +32,20 @@ namespace CodeBase.Infrastructure.RandomService
         public FishStaticData RandomFish()
         {
             float total = 0;
+
+            List<int> fishesId = _progressService.Progress.EquipmentStats.Fishes;
+
+            Debug.Log("count " + fishesId.Count);
+
+            
             Dictionary<FishTypeId, FishStaticData> fishes = new Dictionary<FishTypeId, FishStaticData>();
-            fishes = _staticData.Fishes();
-
-            fishes = FilterByLure(fishes);
-
-
+                 
+            foreach (int fish in fishesId)
+            {
+                FishTypeId fishTypeId = (FishTypeId)fish;
+                FishStaticData temp = _staticData.ForFish(fishTypeId);
+                fishes.Add(fishTypeId, temp);
+            }
 
             foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
             {

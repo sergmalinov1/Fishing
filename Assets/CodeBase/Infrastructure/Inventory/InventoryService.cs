@@ -146,7 +146,7 @@ namespace CodeBase.Infrastructure.Inventory
             }
 
 
-            Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
+            Dictionary<FishTypeId, FishStaticData> temp = new Dictionary<FishTypeId, FishStaticData>();
 
             foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishesInLake)
             {
@@ -154,19 +154,27 @@ namespace CodeBase.Infrastructure.Inventory
                 {
                     if (fish.Key == FishEat)
                     {
-                        filteredFishes.Add(fish.Key, fish.Value);
+                        temp.Add(fish.Key, fish.Value);
                     }
                 }
             }
 
 
-            foreach(var item in filteredFishes)
+          /*  foreach(var item in filteredFishes)
             {
                 Debug.Log(item.Value.FishName);
             }
+            Debug.Log("============");*/
+
+            List<int> tempList = temp.Select(kvp => (int)kvp.Key).ToList();
+
+            foreach (var item in tempList)
+            {
+                Debug.Log(item);
+            }
             Debug.Log("============");
 
-            // _progressService.Progress.EquipmentStats.Fishes = filteredFishes.Select(kvp => (int)kvp.Key).ToList();
+            _progressService.Progress.EquipmentStats.Fishes = temp.Select(kvp => (int)kvp.Key).ToList();
 
         }
      
