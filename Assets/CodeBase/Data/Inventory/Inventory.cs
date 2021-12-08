@@ -11,9 +11,10 @@ namespace CodeBase.Data
         public Action ChangedInventoryConfig;
 
 
-        public List<CategoryEquipment> InstalledEquipments = new List<CategoryEquipment>();     
+        public List<CategoryEquipment> InstalledEquipments = new List<CategoryEquipment>();
 
-     //   public List<InventoryLure> InventoryLures = new List<InventoryLure>();
+        public List<InventoryItem> items = new List<InventoryItem>();
+
 
         public Inventory()
         {

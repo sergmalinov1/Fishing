@@ -13,35 +13,5 @@ namespace CodeBase.StaticData
 
         public FishTypeId[] TypeFishEat;
 
-        /*
-        public string LureName;
-
-        [Range(1, 6)]
-        public int Rating = 1;
-
-        [Range(1, 100)]
-        public int Price = 1;
-
-
-        
-
-
-        public string ProductDescription;
-
-        public string Icon;
-
-        private KindEquipmentId _kindEquipmentId = KindEquipmentId.Lure;
-        public KindEquipmentId GetKindEquipment() => _kindEquipmentId;
-
-        public string GetName() => LureName;
-
-        public int GetRating() => Rating;
-
-
-
-        public int GetPrice() => Price;
-
-        public string MainImage;
-        public string GetImageName() => MainImage;*/
     }
 }

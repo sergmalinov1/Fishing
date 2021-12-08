@@ -35,6 +35,8 @@ namespace CodeBase.StaticData
         public string GetImageName() => MainImage;
 
         public abstract int GetTypeId();
+
+      //  public void Accept()
         
     }
 }

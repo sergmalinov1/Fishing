@@ -11,6 +11,7 @@ namespace CodeBase.Data
         public ResultOfFishing ResultOfFishing;
         public Inventory Inventory;
         public SettingWindow SettingWindow;
+        public EquipmentStats EquipmentStats;
 
         public PlayerProgress()
         {
@@ -19,6 +20,7 @@ namespace CodeBase.Data
             ResultOfFishing = new ResultOfFishing();
             Inventory = new Inventory();
             SettingWindow = new SettingWindow();
+            EquipmentStats = new EquipmentStats();
         }
     }
 }
