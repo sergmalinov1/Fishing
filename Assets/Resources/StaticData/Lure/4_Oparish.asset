@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentTypeId: 204
   _kindEquipmentId: 1
-  Name: Lure4
+  Name: oparash
   Rating: 4
   Price: 50
   MainImage: Bread
@@ -24,4 +24,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   LureTypeId: 4
-  TypeFishEat: 03000000
+  TypeFishEat: 010000000300000004000000050000000600000007000000

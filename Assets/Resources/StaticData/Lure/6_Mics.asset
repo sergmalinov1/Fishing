@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentTypeId: 206
   _kindEquipmentId: 1
-  Name: Lure6
+  Name: Mics
   Rating: 6
   Price: 50
   MainImage: Bread
@@ -24,4 +24,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   LureTypeId: 6
-  TypeFishEat: 03000000
+  TypeFishEat: 0100000003000000040000000500000006000000

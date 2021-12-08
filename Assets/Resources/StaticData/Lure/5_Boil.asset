@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentTypeId: 205
   _kindEquipmentId: 1
-  Name: Lure5
+  Name: Boil
   Rating: 5
   Price: 50
   MainImage: Kooka
@@ -24,4 +24,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   LureTypeId: 5
-  TypeFishEat: 03000000
+  TypeFishEat: 02000000

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26eb36074c541d1a931747b82215509, type: 3}
   m_Name: 7 Karas
   m_EditorClassIdentifier: 
-  FishTypeId: 3
-  FishName: Gold
+  FishTypeId: 7
+  FishName: Karas
+  Rating: 1
   PrizeMoney: 22
   ChanceOfBite: 1
   ChanceToCatch: 75
   PrefabReference:
-    m_AssetGUID: a3ed0a15177e99a49840e2d50612a866
+    m_AssetGUID: 2f39795f03a08e64fb446a1e96e8b8c1
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

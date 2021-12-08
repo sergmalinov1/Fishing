@@ -166,14 +166,6 @@ namespace CodeBase.Infrastructure.Inventory
             }
             Debug.Log("============");*/
 
-            List<int> tempList = temp.Select(kvp => (int)kvp.Key).ToList();
-
-            foreach (var item in tempList)
-            {
-                Debug.Log(item);
-            }
-            Debug.Log("============");
-
             _progressService.Progress.EquipmentStats.Fishes = temp.Select(kvp => (int)kvp.Key).ToList();
 
         }

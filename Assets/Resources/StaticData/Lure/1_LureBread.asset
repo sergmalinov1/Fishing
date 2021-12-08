@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentTypeId: 201
   _kindEquipmentId: 1
-  Name: Lure1
+  Name: Bread
   Rating: 1
   Price: 10
   MainImage: Kooka
@@ -24,4 +24,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   LureTypeId: 0
-  TypeFishEat: 00000000
+  TypeFishEat: 0000000007000000

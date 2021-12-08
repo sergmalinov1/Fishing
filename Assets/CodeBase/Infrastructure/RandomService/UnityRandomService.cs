@@ -35,8 +35,6 @@ namespace CodeBase.Infrastructure.RandomService
 
             List<int> fishesId = _progressService.Progress.EquipmentStats.Fishes;
 
-            Debug.Log("count " + fishesId.Count);
-
             
             Dictionary<FishTypeId, FishStaticData> fishes = new Dictionary<FishTypeId, FishStaticData>();
                  

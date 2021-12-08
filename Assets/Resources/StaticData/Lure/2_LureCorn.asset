@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentTypeId: 202
   _kindEquipmentId: 1
-  Name: Lure2
+  Name: kuka
   Rating: 2
   Price: 25
   MainImage: Kooka
@@ -24,4 +24,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   LureTypeId: 1
-  TypeFishEat: 0100000003000000
+  TypeFishEat: 02000000

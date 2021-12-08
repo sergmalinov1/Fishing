@@ -69,16 +69,16 @@ MonoBehaviour:
     m_Address: LureItemPrepare
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: cf39501f567b9af46be05e10e9bba899
-    m_Address: Amberjack_prefab
+  - m_GUID: ce386cd28c1a6d74ab2141579530c98e
+    m_Address: Clown_triggerfish_prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7cac861ea5353f94a9046eb54271e09c
-    m_Address: Carp_prefab
+  - m_GUID: 0d96ae54bc829af4dad41d8453ee364a
+    m_Address: Brown_trout_prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a3ed0a15177e99a49840e2d50612a866
-    m_Address: Clownfish_prefab
+  - m_GUID: 2f39795f03a08e64fb446a1e96e8b8c1
+    m_Address: Goliath_grouper_prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 536bf722d6b3efc42b4a39dad25ac961
@@ -203,6 +203,22 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: a594afc077dcf69438693aac24418ac6
     m_Address: fishline2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd3d055dd9f3ec34ebf57d4b040a14f4
+    m_Address: Atlantic_cod_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7cac861ea5353f94a9046eb54271e09c
+    m_Address: Carp_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf39501f567b9af46be05e10e9bba899
+    m_Address: Amberjack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3ed0a15177e99a49840e2d50612a866
+    m_Address: Clownfish_prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

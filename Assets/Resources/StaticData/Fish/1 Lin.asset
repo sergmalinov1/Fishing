@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: 1 Lin
   m_EditorClassIdentifier: 
   FishTypeId: 1
-  FishName: "\u041A\u0430\u0440\u0430\u0441\u044C"
+  FishName: Lin
+  Rating: 1
   PrizeMoney: 11
-  ChanceOfBite: 10
+  ChanceOfBite: 1
   ChanceToCatch: 75
   PrefabReference:
-    m_AssetGUID: 7cac861ea5353f94a9046eb54271e09c
+    m_AssetGUID: cf39501f567b9af46be05e10e9bba899
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
