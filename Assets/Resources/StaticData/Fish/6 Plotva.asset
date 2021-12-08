@@ -9,19 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c59e378d0d7b4b5bab0a2e15d3760f25, type: 3}
-  m_Name: LureCorn_2
+  m_Script: {fileID: 11500000, guid: d26eb36074c541d1a931747b82215509, type: 3}
+  m_Name: 6 Plotva
   m_EditorClassIdentifier: 
-  EquipmentTypeId: 202
-  _kindEquipmentId: 1
-  Name: Lure2
-  Rating: 2
-  Price: 25
-  MainImage: Kooka
+  FishTypeId: 0
+  FishName: "\u041C\u0430\u043B\u0435\u043A"
+  PrizeMoney: 33
+  ChanceOfBite: 20
+  ChanceToCatch: 75
   PrefabReference:
-    m_AssetGUID: 
+    m_AssetGUID: cf39501f567b9af46be05e10e9bba899
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  LureTypeId: 1
-  TypeFishEat: 0100000003000000

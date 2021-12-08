@@ -1,10 +1,13 @@
 ﻿namespace CodeBase.StaticData
 {
-  public enum FishTypeId
-  {
-    Fry = 0,
-    Carp = 1,
-    Pike = 2,
-    ColdenFish = 3,
-  }
+    public enum FishTypeId
+    {
+        Lin = 1,
+        Carp = 2,
+        Lesh = 3,
+        Podlesh = 4,
+        Krasnoperka = 5,
+        Plotva = 6,
+        Karas = 7,
+    }
 }

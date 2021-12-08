@@ -9,16 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26eb36074c541d1a931747b82215509, type: 3}
-  m_Name: Carp
+  m_Script: {fileID: 11500000, guid: c59e378d0d7b4b5bab0a2e15d3760f25, type: 3}
+  m_Name: 2_LureCorn
   m_EditorClassIdentifier: 
-  FishTypeId: 1
-  FishName: "\u041A\u0430\u0440\u0430\u0441\u044C"
-  PrizeMoney: 11
-  ChanceOfBite: 10
-  ChanceToCatch: 75
+  EquipmentTypeId: 202
+  _kindEquipmentId: 1
+  Name: Lure2
+  Rating: 2
+  Price: 25
+  MainImage: Kooka
   PrefabReference:
-    m_AssetGUID: 7cac861ea5353f94a9046eb54271e09c
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  LureTypeId: 1
+  TypeFishEat: 0100000003000000

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace CodeBase.Data
 {
@@ -15,6 +15,8 @@ namespace CodeBase.Data
         public int MaxFishWeight;
 
         public float ChanceGettingOffHook;
+
+        public List<int> Fishes = new List<int>();
 
         public EquipmentStats()
         {

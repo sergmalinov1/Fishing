@@ -9,6 +9,8 @@ namespace CodeBase.StaticData
     {
         public LakeTypeId LakeTypeId;
 
+        public FishTypeId[] TypeFishAreFound;
+
         public override int GetTypeId() => (int)LakeTypeId;
 
         public override void Accept(ISelectableEntityVisitor visitor)

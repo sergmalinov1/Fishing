@@ -8,14 +8,9 @@ namespace CodeBase.Data
   [Serializable]
     public class Inventory
     {
-        public Action ChangedInventoryConfig;
-
-
         public List<CategoryEquipment> InstalledEquipments = new List<CategoryEquipment>();
 
-        public List<InventoryItem> items = new List<InventoryItem>();
-
-
+       
         public Inventory()
         {
          
@@ -39,7 +34,6 @@ namespace CodeBase.Data
                 if (category.KindEquipmentId == kindEquipmentId)
                 {
                     category.BuyEquipment(typeEquipmentId);
-                    ChangedInventoryConfig?.Invoke();
                     return;
                 }
             }
@@ -55,7 +49,6 @@ namespace CodeBase.Data
                 if (category.KindEquipmentId == kindEquipmentId)
                 {
                     category.SetSelectedItem(typeEquipmentId);
-                    ChangedInventoryConfig?.Invoke();
                     return;
                 }
             }
@@ -75,7 +68,7 @@ namespace CodeBase.Data
             return null;
         }
 
-        public int GetTypeEquipmentByKind(KindEquipmentId kindEquipmentId)
+        public int GetSelectedEquipmentByKind(KindEquipmentId kindEquipmentId)
         {
             foreach (CategoryEquipment category in InstalledEquipments)
             {
@@ -86,5 +79,26 @@ namespace CodeBase.Data
             }
             return 0;
         }
+
+        public bool IsEquipmentCompete()
+        {
+            if (InstalledEquipments.Count < 6)
+            {
+                Debug.Log("111");
+                return false;
+            }
+
+            foreach (CategoryEquipment item in InstalledEquipments)
+            {
+                if(item.SelectedEquipmentTypeId == -1)
+                {
+                 //   Debug.Log("item" + item.SelectedEquipmentTypeId);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
     }
 }

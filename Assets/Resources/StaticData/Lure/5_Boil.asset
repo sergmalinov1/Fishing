@@ -9,16 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26eb36074c541d1a931747b82215509, type: 3}
-  m_Name: Pike
+  m_Script: {fileID: 11500000, guid: c59e378d0d7b4b5bab0a2e15d3760f25, type: 3}
+  m_Name: 5_Boil
   m_EditorClassIdentifier: 
-  FishTypeId: 3
-  FishName: Gold
-  PrizeMoney: 22
-  ChanceOfBite: 1
-  ChanceToCatch: 75
+  EquipmentTypeId: 205
+  _kindEquipmentId: 1
+  Name: Lure5
+  Rating: 5
+  Price: 50
+  MainImage: Kooka
   PrefabReference:
-    m_AssetGUID: a3ed0a15177e99a49840e2d50612a866
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  LureTypeId: 5
+  TypeFishEat: 03000000

@@ -8,8 +8,6 @@ namespace CodeBase.Infrastructure.States
 {
   public class GameState : IState
   {
-  //  private ILogicStateMachine _logicMachine;
-
     private GameStateMachine _stateMachine;
     private SceneLoader _sceneLoader;
     private IGameFactory _gameFactory;

@@ -74,11 +74,6 @@ namespace CodeBase.GameLogic
       
     }
 
-    private async void CreateFish()
-    {
-      Fish = await _gameFactory.CreateFish(FishTypeId.Carp, new Vector3(-100.0f, 0f, 0f));
-    }
-
     private void Update()
     {
       _activeState.UpdateLogic();

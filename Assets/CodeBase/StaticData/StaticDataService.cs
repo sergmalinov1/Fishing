@@ -51,13 +51,13 @@ namespace CodeBase.StaticData
             SetEquipments<LakeStaticData>(StaticDataLakePath);
 
 
-            ShowType showType = new ShowType();
+           /* ShowType showType = new ShowType();
 
 
             foreach (KeyValuePair<int, Equipment> item in _equipments)
             {
                 item.Value.Accept(showType);
-            }
+            }*/
 
         }
 

@@ -81,6 +81,34 @@ namespace CodeBase.Infrastructure.RandomService
 
         private Dictionary<FishTypeId, FishStaticData> FilterByLure(Dictionary<FishTypeId, FishStaticData> fishes)
         {
+
+            int typeLureId =  _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lure);
+
+            Equipment equipmentLure = _staticData.GetEquipment(KindEquipmentId.Lure, typeLureId);
+            LureStaticData lure = equipmentLure as LureStaticData; //ПЕРЕДЕЛАТЬ!
+
+
+            int typeLaceId = _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lake);
+            Equipment equipmentLake = _staticData.GetEquipment(KindEquipmentId.Lake, typeLaceId);
+            LakeStaticData lake = equipmentLake as LakeStaticData; //ПЕРЕДЕЛАТЬ!
+
+
+
+
+            Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
+
+            foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
+            {
+                foreach (FishTypeId FishEat in lure.TypeFishEat)
+                {
+                    if (fish.Key == FishEat)
+                    {
+                        filteredFishes.Add(fish.Key, fish.Value);
+                    }
+                }
+            }
+            return filteredFishes;
+
             /* LureTypeId lureType = _progressService.Progress.FishOnHook.LureTypeId;
              LureStaticData lure = _staticData.ForLure(lureType);
              Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
@@ -97,7 +125,7 @@ namespace CodeBase.Infrastructure.RandomService
              }*/
 
             //  return filteredFishes;
-            return null;
+            // return null;
 
         }
 
