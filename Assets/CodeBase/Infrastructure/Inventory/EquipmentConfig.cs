@@ -19,7 +19,7 @@ namespace CodeBase.Infrastructure.Inventory
         public int QtyPurchasedEquipment;
         public bool IsSelectetitem = false;
 
-        public EquipmentConfig(IEquipment item)
+        public EquipmentConfig(Equipment item)
         {
             KindEquipmentId = item.GetKindEquipment();
             TypeId = item.GetTypeId();

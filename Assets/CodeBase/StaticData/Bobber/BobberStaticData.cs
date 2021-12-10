@@ -14,7 +14,6 @@ namespace CodeBase.StaticData
 
         public override void Accept(ISelectableEntityVisitor visitor)
         {
-            //Debug.Log("BobberStaticData");
             visitor.Visit(this);
         }
 

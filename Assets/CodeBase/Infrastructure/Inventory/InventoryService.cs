@@ -8,6 +8,7 @@ using CodeBase.StaticData.Fish;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CodeBase.StaticData.Visitor;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Inventory
@@ -43,7 +44,7 @@ namespace CodeBase.Infrastructure.Inventory
 
             int typePurchaseditem = _progressService.Progress.Inventory.GetSelectedEquipmentByKind(_kindEquipmentId);
 
-            foreach (IEquipment item in allEquipments)
+            foreach (Equipment item in allEquipments)
             {
                 EquipmentConfig config = new EquipmentConfig(item);
 
@@ -95,14 +96,13 @@ namespace CodeBase.Infrastructure.Inventory
             _progressService.Progress.MoneyData.Money -= price;
             SetEquipmentState();
 
-            _saveLoadService.SaveProgress();
         }
 
         public void SelectEquipment(KindEquipmentId kindEquipmentId, int equipmentTypeId)
         {
             _progressService.Progress.Inventory.SelectEquipmentItem(kindEquipmentId, equipmentTypeId);
             SetEquipmentState();
-            _saveLoadService.SaveProgress();
+            
         }
 
         public bool IsCanBuy(int ProductPrice)
@@ -118,7 +118,29 @@ namespace CodeBase.Infrastructure.Inventory
 
         }
 
-        private void SetEquipmentState()
+        public void SetEquipmentState() //сделать приватным
+        {
+            GetEquipmentStats getStats = new GetEquipmentStats(_progressService.Progress.EquipmentStats);
+
+            foreach (CategoryEquipment category in _progressService.Progress.Inventory.InstalledEquipments)
+            {
+                KindEquipmentId kindId = category.KindEquipmentId;
+                int selectedId = category.SelectedEquipmentTypeId;
+
+                Equipment equipmen = _staticData.GetEquipment(kindId, selectedId);
+
+                equipmen.Accept(getStats);
+            }
+
+            _progressService.Progress.EquipmentStats.CalculationStats();
+
+
+            _saveLoadService.SaveProgress();
+
+        }
+
+
+        private void SetEquipmentStateOls()
         {
             Dictionary<FishTypeId, FishStaticData> fishes =_staticData.Fishes();
 

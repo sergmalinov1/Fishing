@@ -19,9 +19,14 @@ namespace CodeBase
         public const string CategoryCardtemPath = "CategoryCardtem";
         public const string SelectedICardtemPath = "SelectedICardtem";
 
-
-
-
         public const string LureItemPreparePath = "LureItemPrepare";
+
+
+
+        //------------
+        public const int CountEquipments = 6;
+        public const int CountItemInPacks = 10;
+        public const int MaxRating = 36;
+
     }
 }

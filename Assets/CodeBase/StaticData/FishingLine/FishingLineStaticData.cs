@@ -18,7 +18,7 @@ namespace CodeBase.StaticData
 
         public override void Accept(ISelectableEntityVisitor visitor)
         {
-           // Debug.Log("FishingLineStaticData");
+            visitor.Visit(this);
         }
 
        

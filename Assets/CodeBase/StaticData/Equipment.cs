@@ -3,7 +3,7 @@ using UnityEngine.AddressableAssets;
 
 namespace CodeBase.StaticData
 {
-    public abstract class Equipment : ScriptableObject, IEquipment
+    public abstract class Equipment : ScriptableObject
     {
         public EquipmentTypeId EquipmentTypeId;
 

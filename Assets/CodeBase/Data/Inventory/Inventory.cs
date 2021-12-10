@@ -16,7 +16,7 @@ namespace CodeBase.Data
          
         }
 
-        public void AddStartPack()
+        public void AddStartPack() // вынести в LoadProgressState
         {
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lake, 0, false));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Bobber, 0, false));
@@ -44,6 +44,8 @@ namespace CodeBase.Data
 
         public void SelectEquipmentItem(KindEquipmentId kindEquipmentId, int typeEquipmentId)
         {
+         
+
             foreach (CategoryEquipment category in InstalledEquipments)
             {
                 if (category.KindEquipmentId == kindEquipmentId)
@@ -77,8 +79,29 @@ namespace CodeBase.Data
                     return category.SelectedEquipmentTypeId;
                 }
             }
-            return 0;
+            return -1;
         }
+
+        public int GetCountSelectedEquipmentByKind(KindEquipmentId kindEquipmentId)
+        {
+            foreach (CategoryEquipment category in InstalledEquipments)
+            {
+                if (category.KindEquipmentId == kindEquipmentId)
+                {
+                    foreach(EquipmentItem items in category.PurchasedEquipment)
+                    {
+                        if(items.TypeId == category.SelectedEquipmentTypeId)
+                        {
+                            return items.Count;
+                        }
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+
 
         public bool IsEquipmentCompete()
         {

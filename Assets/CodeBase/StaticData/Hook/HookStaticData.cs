@@ -15,7 +15,7 @@ namespace CodeBase.StaticData
 
         public override void Accept(ISelectableEntityVisitor visitor)
         {
-           // Debug.Log("HookStaticData");
+            visitor.Visit(this);
         }
 
     }

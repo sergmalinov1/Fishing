@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using CodeBase.GameLogic;
 using CodeBase.Infrastructure.Factory;
+using CodeBase.Infrastructure.Inventory;
+using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.Services.PersistentProgress;
@@ -23,7 +25,10 @@ namespace CodeBase.Infrastructure
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
         [typeof(LoadProgressState)] = new LoadProgressState(this, sceneLoader, curtain, 
           services.Single<IPersistentProgress>(),
-          services.Single<ISaveLoadService>()),
+          services.Single<ISaveLoadService>(),
+          services.Single<IInventoryService>(),
+          services.Single<IRandomService>()),
+
         [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, 
           services.Single<IGameFactory>(), services.Single<IUIFactory>()),
     

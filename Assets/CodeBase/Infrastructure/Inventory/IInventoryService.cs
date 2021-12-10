@@ -14,5 +14,6 @@ namespace CodeBase.Infrastructure.Inventory
         bool IsCanBuy(int ProductPrice);
         List<EquipmentConfig> GetEquipmentsConfigByKindNew();
         List<EquipmentConfig> GetSelectedEquipments();
+        void SetEquipmentState();
     }
 }

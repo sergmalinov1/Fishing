@@ -13,15 +13,23 @@ namespace CodeBase.Infrastructure.RandomService
         private readonly IAssetProvider _assets;
         private readonly IPersistentProgress _progressService;
         private readonly IStaticDataService _staticData;
-        private readonly PlayerProgress _progres;
+        //private readonly PlayerProgress _progres;
 
         public UnityRandomService(IAssetProvider assets, IPersistentProgress progressService, IStaticDataService staticData)
         {
             _assets = assets;
             _progressService = progressService;
             _staticData = staticData;
-            _progres = progressService.Progress;
+            //_progres = progressService.Progress;
+
         }
+        
+        public void Initialize()
+        {
+          //  _progressService.Progress.EquipmentStats.NewLureItem += GenerateNewQueue;
+          //  _progressService.Progress.EquipmentStats.BuyMoreLure += GenerateNewQueue;
+        }
+
 
 
         public float TimeToBite()
@@ -166,6 +174,36 @@ namespace CodeBase.Infrastructure.RandomService
             return probs.Length - 1;
         }
 
+        private void AddInQueue()
+        {
+        }
 
+        public void GenerateNewQueue()
+        {
+            _progressService.Progress.EquipmentStats.ChanceToCatchFish.Clear();
+
+           // float chanceToCatchFish = _progres.EquipmentStats.AvgRating;
+
+            int lureCount = _progressService.Progress.Inventory.GetCountSelectedEquipmentByKind(KindEquipmentId.Lure);
+
+            for(int i = 0; i< lureCount; i++)
+            {
+                int rand = Random.Range(0, 2);
+                bool chanse = true;
+
+                if(rand == 0)
+                {
+                    chanse = false;
+                }
+
+                _progressService.Progress.EquipmentStats.ChanceToCatchFish.Add(chanse);
+            }
+
+            foreach(bool temp in _progressService.Progress.EquipmentStats.ChanceToCatchFish)
+            {
+                Debug.Log("C: " + temp);
+            }
+
+        }
     }
 }

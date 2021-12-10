@@ -51,26 +51,15 @@ namespace CodeBase.StaticData
             SetEquipments<LakeStaticData>(StaticDataLakePath);
 
 
-           /* ShowType showType = new ShowType();
+
+            /*(ShowType showType = new ShowType();
 
 
             foreach (KeyValuePair<int, Equipment> item in _equipments)
             {
                 item.Value.Accept(showType);
             }*/
-
         }
-
-        private void SetEquipments<TStaticData>(string path) where TStaticData : Equipment
-        {
-            Dictionary<int, Equipment> tempEquipment = new Dictionary<int, Equipment>();
-            tempEquipment = Resources
-              .LoadAll<TStaticData>(path)
-              .ToDictionary(x => (100 * (int)x._kindEquipmentId + x.GetTypeId()), x => (Equipment)x);
-
-            _equipments = _equipments.Union(tempEquipment).ToDictionary(x => x.Key, x => x.Value);
-        }
-
     
         public FishStaticData ForFish(FishTypeId typeId) =>
           _fishes.TryGetValue(typeId,out FishStaticData staticData) 
@@ -81,9 +70,7 @@ namespace CodeBase.StaticData
           _windows.TryGetValue(windowId, out WindowConfig config)
             ? config
             : null;
-    
-    
-
+  
         public List<Equipment> GetListByKindNew(KindEquipmentId kindEquipmentId)
         {
             List<Equipment> equipments = new List<Equipment>();
@@ -103,6 +90,17 @@ namespace CodeBase.StaticData
             int key = 100 * (int)kindEquipmentId + typeId;
             return _equipments[key];
         }
+
+        private void SetEquipments<TStaticData>(string path) where TStaticData : Equipment
+        {
+            Dictionary<int, Equipment> tempEquipment = new Dictionary<int, Equipment>();
+            tempEquipment = Resources
+              .LoadAll<TStaticData>(path)
+              .ToDictionary(x => (100 * (int)x._kindEquipmentId + x.GetTypeId()), x => (Equipment)x);
+
+            _equipments = _equipments.Union(tempEquipment).ToDictionary(x => x.Key, x => x.Value);
+        }
+
 
     }
 }

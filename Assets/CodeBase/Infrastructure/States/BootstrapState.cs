@@ -69,8 +69,6 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
 
-
-
             _services.RegisterSingle<IRandomService>(new UnityRandomService(
               _services.Single<IAssetProvider>(),
               _services.Single<IPersistentProgress>(),
@@ -91,13 +89,15 @@ namespace CodeBase.Infrastructure.States
         }
 
         private void RegisterStaticData()
-    {
-      IStaticDataService staticData = new StaticDataService();
-      staticData.Load();
-      _services.RegisterSingle<IStaticDataService>(staticData);
-    }
-    
-    private static IInputService RegisterInputService()
+        {
+            IStaticDataService staticData = new StaticDataService();
+            staticData.Load();
+            _services.RegisterSingle<IStaticDataService>(staticData);
+        }
+
+
+
+        private static IInputService RegisterInputService()
     {
       if (Application.isEditor)
         return new StandaloneInputService();
