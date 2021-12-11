@@ -14,6 +14,9 @@
     public const string FishAmberjack  = "Amberjack_prefab";
     public const string FishCarp  = "Carp_prefab";
     public const string FishClownfish  = "Clownfish_prefab";
-    
-  }
+
+        public const string Background = "Background";
+
+
+    }
 }

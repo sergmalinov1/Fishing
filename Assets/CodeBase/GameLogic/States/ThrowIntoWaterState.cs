@@ -39,16 +39,17 @@ namespace CodeBase.GameLogic.States
     }
 
 
-    public void Enter()
-    {
-    //  Debug.Log("ThrowIntoWaterState");
-     // _playerProgress.FishOnHook.LureTypeId = LureTypeId.Corn;
-      _isStartAttack = true;
-      CreateBobber();
-      SetCoutDownTime();
-    }
+        public void Enter()
+        {
+            //  Debug.Log("ThrowIntoWaterState");
+            // _playerProgress.FishOnHook.LureTypeId = LureTypeId.Corn;
+            _logicStateMachine.CameraControl.RotateCameraDown();
+            _isStartAttack = true;
+            CreateBobber();
+            SetCoutDownTime();
+        }
 
-    public void Exit()
+        public void Exit()
     {
       
     }

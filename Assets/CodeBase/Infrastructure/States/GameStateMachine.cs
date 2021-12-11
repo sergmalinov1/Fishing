@@ -26,8 +26,7 @@ namespace CodeBase.Infrastructure
         [typeof(LoadProgressState)] = new LoadProgressState(this, sceneLoader, curtain, 
           services.Single<IPersistentProgress>(),
           services.Single<ISaveLoadService>(),
-          services.Single<IInventoryService>(),
-          services.Single<IRandomService>()),
+          services.Single<IInventoryService>()),
 
         [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, 
           services.Single<IGameFactory>(), services.Single<IUIFactory>()),

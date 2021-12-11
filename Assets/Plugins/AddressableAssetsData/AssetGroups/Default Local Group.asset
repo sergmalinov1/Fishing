@@ -221,6 +221,10 @@ MonoBehaviour:
     m_Address: Clownfish_prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: e45f722cf0169294796e4a4d1fd61963
+    m_Address: Background
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bfae0f3a8267cbf438ae5140c7e7bdb7, type: 2}
   m_SchemaSet:

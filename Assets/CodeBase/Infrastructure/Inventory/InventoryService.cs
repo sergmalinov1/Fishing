@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CodeBase.StaticData.Visitor;
 using UnityEngine;
+using CodeBase.Infrastructure.RandomService;
 
 namespace CodeBase.Infrastructure.Inventory
 {
@@ -20,18 +21,20 @@ namespace CodeBase.Infrastructure.Inventory
         private readonly IAssetProvider _assetsProvider;
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadService _saveLoadService;
-
+        private readonly IRandomService _randomService;
 
         public InventoryService(
             IAssetProvider assetsProvider,
             IPersistentProgress persistentService,
             IStaticDataService staticData,
-            ISaveLoadService saveLoadService)
+            ISaveLoadService saveLoadService,
+            IRandomService randomService)
         {
             _progressService = persistentService;
             _assetsProvider = assetsProvider;
             _staticData = staticData;
             _saveLoadService = saveLoadService;
+            _randomService = randomService;
         }
 
         public List<EquipmentConfig> GetEquipmentsConfigByKindNew()
@@ -133,7 +136,7 @@ namespace CodeBase.Infrastructure.Inventory
             }
 
             _progressService.Progress.EquipmentStats.CalculationStats();
-
+            _randomService.GenerateNewLureStack();
 
             _saveLoadService.SaveProgress();
 

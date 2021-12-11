@@ -20,7 +20,6 @@ namespace CodeBase.Infrastructure
         private LoadingCurtain _curtain;
         private ISaveLoadService _saveLoadService;
         private readonly IInventoryService _inventoryService;
-        private readonly IRandomService _randomService;
 
         public LoadProgressState(
           GameStateMachine stateMachine,
@@ -28,8 +27,7 @@ namespace CodeBase.Infrastructure
           LoadingCurtain curtain,
           IPersistentProgress progressService,
           ISaveLoadService saveLoadService,
-          IInventoryService inventoryService,
-          IRandomService randomService)
+          IInventoryService inventoryService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -37,7 +35,6 @@ namespace CodeBase.Infrastructure
             _progressService = progressService;
             _saveLoadService = saveLoadService;
             _inventoryService = inventoryService;
-            _randomService = randomService;
         }
 
 
@@ -61,7 +58,6 @@ namespace CodeBase.Infrastructure
             {
                 _progressService.Progress = NewProgress();
                 _inventoryService.SetEquipmentState();
-                _randomService.GenerateNewQueue();
 
             }
             else

@@ -20,21 +20,12 @@ namespace CodeBase.Infrastructure.RandomService
             _assets = assets;
             _progressService = progressService;
             _staticData = staticData;
-            //_progres = progressService.Progress;
-
         }
-        
-        public void Initialize()
-        {
-          //  _progressService.Progress.EquipmentStats.NewLureItem += GenerateNewQueue;
-          //  _progressService.Progress.EquipmentStats.BuyMoreLure += GenerateNewQueue;
-        }
-
 
 
         public float TimeToBite()
         {
-            return 4.0f;
+            return 3.0f;
         }
 
         public FishStaticData RandomFish()
@@ -43,14 +34,14 @@ namespace CodeBase.Infrastructure.RandomService
 
             List<int> fishesId = _progressService.Progress.EquipmentStats.Fishes;
 
-            
+
             Dictionary<FishTypeId, FishStaticData> fishes = new Dictionary<FishTypeId, FishStaticData>();
                  
             foreach (int fish in fishesId)
             {
                 FishTypeId fishTypeId = (FishTypeId)fish;
-                FishStaticData temp = _staticData.ForFish(fishTypeId);
-                fishes.Add(fishTypeId, temp);
+                FishStaticData fishStaticData = _staticData.ForFish(fishTypeId);
+                fishes.Add(fishTypeId, fishStaticData);
             }
 
             foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
@@ -81,22 +72,7 @@ namespace CodeBase.Infrastructure.RandomService
         }
 
 
-        private void GenerateLureStack()
-        {
-
-        }
-
-        private void PrintFish(Dictionary<FishTypeId, FishStaticData> fishes)
-        {
-            foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
-            {
-                Debug.Log(fish.Value.FishName);
-            }
-            Debug.Log("==============");
-        }
-
-
-        private Dictionary<FishTypeId, FishStaticData> FilterByLure(Dictionary<FishTypeId, FishStaticData> fishes)
+        private Dictionary<FishTypeId, FishStaticData> FilterByLureOLD(Dictionary<FishTypeId, FishStaticData> fishes)
         {
 
             int typeLureId =  _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lure);
@@ -178,7 +154,8 @@ namespace CodeBase.Infrastructure.RandomService
         {
         }
 
-        public void GenerateNewQueue()
+
+        public void GenerateNewLureStack()
         {
             _progressService.Progress.EquipmentStats.ChanceToCatchFish.Clear();
 
@@ -188,7 +165,7 @@ namespace CodeBase.Infrastructure.RandomService
 
             for(int i = 0; i< lureCount; i++)
             {
-                int rand = Random.Range(0, 2);
+                int rand = Random.Range(0, 3);
                 bool chanse = true;
 
                 if(rand == 0)
@@ -201,7 +178,7 @@ namespace CodeBase.Infrastructure.RandomService
 
             foreach(bool temp in _progressService.Progress.EquipmentStats.ChanceToCatchFish)
             {
-                Debug.Log("C: " + temp);
+              //  Debug.Log("C: " + temp);
             }
 
         }

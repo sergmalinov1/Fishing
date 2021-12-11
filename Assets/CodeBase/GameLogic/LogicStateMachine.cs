@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using CodeBase.BobberObject;
-using CodeBase.BobberObject.DisplayCatchedFish;
 using CodeBase.Data;
 using CodeBase.GameLogic.States;
 using CodeBase.Infrastructure.Factory;
@@ -11,8 +10,8 @@ using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
+using CodeBase.Logic;
 using CodeBase.StaticData;
-using CodeBase.StaticData.Fish;
 using CodeBase.UI.Services.WindowsService;
 using UnityEngine;
 
@@ -69,9 +68,7 @@ namespace CodeBase.GameLogic
 
     public void Initialize()
     {
-  //    CreateFish();
-      Enter<StartState>();
-      
+      Enter<StartState>(); 
     }
 
     private void Update()
@@ -135,9 +132,7 @@ namespace CodeBase.GameLogic
     
     private IEnumerator MoveUpDestroy()
     {
-      yield return new WaitForSeconds(0.6f);
-
-      for (int i = 0; i < 40; i++)
+      for (int i = 0; i < 60; i++)
       {
         Fish.transform.position += new Vector3(0f, 0.1f, 0f);
         yield return new WaitForSeconds(0.01f);

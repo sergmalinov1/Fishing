@@ -23,19 +23,6 @@ namespace CodeBase.BobberObject
         }
       }
     }
-
-    public void StartFishAttack()
-    {
-      _isAttack = true;
-    }
-    
-    public void EndFishAttack()
-    {
-      _isAttack = false;
-    }
-
-    public bool IsCatchFish() => (_isAttack == true);
-
     
   }
 }

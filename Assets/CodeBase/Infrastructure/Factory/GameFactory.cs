@@ -44,91 +44,104 @@ namespace CodeBase.Infrastructure.Factory
     }
 
 
-    public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-    public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+        public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
+        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
 
-    public async Task<GameObject> CreateHud()
-    {
-      GameObject hud = await InstantiateRegistredAsync(AssetsAddress.HudPath);
-     
-
-      foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>()) 
-        openWindowButton.Construct(_windowService);
+        public async Task<GameObject> CreateHud()
+        {
+            GameObject hud = await InstantiateRegistredAsync(AssetsAddress.HudPath);
 
 
-      MoneyCounter moneyObj = hud.GetComponentInChildren<MoneyCounter>();
-      moneyObj.Construct(_progressService.Progress);;
-      
-      return hud;
-    }
+            foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
+                openWindowButton.Construct(_windowService);
 
-    public async Task<GameObject> CreareBobberSpawner()
-    {
-      GameObject bobberLogic = await InstantiateRegistredAsync(AssetsAddress.BobberSpawner);
-      BobberSpawner bobberSpawner = bobberLogic.GetComponent<BobberSpawner>();
-      bobberSpawner.Construct(this, _progressService.Progress, _staticData);
-      
-      return bobberLogic;
-    }
 
-    public async Task<GameObject> CreareFishingLogic()
-    {
-      GameObject fishing = await InstantiateRegistredAsync(AssetsAddress.FishingLogic);
-      
-      LogicStateMachine bobberSpawner = fishing.GetComponent<LogicStateMachine>();
-      bobberSpawner.Construct(this, _windowService, _progressService.Progress, _staticData, _saveLoadService, _randomService);
-      bobberSpawner.Initialize();
-    //  bobberSpawner.Enter<StartState>();
-      
-      
-      return fishing;
-    }
-    
-    public async Task<GameObject> CreateFish(FishTypeId fishTypeId, Vector3 at)
-    {
-      
-      FishStaticData fishData = _staticData.ForFish(fishTypeId);
-      
-      GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
+            MoneyCounter moneyObj = hud.GetComponentInChildren<MoneyCounter>();
+            moneyObj.Construct(_progressService.Progress); ;
 
-      GameObject fish = Object.Instantiate(prefab);
-      fish.transform.position = at;
-      return fish;
-    }
+            return hud;
+        }
 
-    
-    public async Task<GameObject> CreateBobber(Vector3 at)
-    {
-      GameObject bobber = await InstantiateRegistredAsync(AssetsAddress.BobberPrefab, at);
-      return bobber;
-    }
+        public async Task<GameObject> CreareBobberSpawner()
+        {
+            GameObject bobberLogic = await InstantiateRegistredAsync(AssetsAddress.BobberSpawner);
+            BobberSpawner bobberSpawner = bobberLogic.GetComponent<BobberSpawner>();
+            bobberSpawner.Construct(this, _progressService.Progress, _staticData);
 
-    public async Task<GameObject> CreateSplash(Vector3 at)
-    {
-      GameObject splash = await InstantiateRegistredAsync(AssetsAddress.SplashPrefab, at);
-      return splash;
+            return bobberLogic;
+        }
+
+        public async Task<GameObject> CreareFishingLogic()
+        {
+            GameObject fishing = await InstantiateRegistredAsync(AssetsAddress.FishingLogic);
+
+            LogicStateMachine bobberSpawner = fishing.GetComponent<LogicStateMachine>();
+            bobberSpawner.Construct(this, _windowService, _progressService.Progress, _staticData, _saveLoadService, _randomService);
+            bobberSpawner.Initialize();
+            //  bobberSpawner.Enter<StartState>();
+
+
+            return fishing;
+        }
+
+        public async Task<GameObject> CreateFish(FishTypeId fishTypeId, Vector3 at)
+        {
+
+            FishStaticData fishData = _staticData.ForFish(fishTypeId);
+
+            GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
+
+            GameObject fish = Object.Instantiate(prefab);
+            fish.transform.position = at;
+            return fish;
+        }
+
+
+        public async Task<GameObject> CreateBobber(Vector3 at)
+        {
+            GameObject bobber = await InstantiateRegistredAsync(AssetsAddress.BobberPrefab, at);
+            return bobber;
+        }
+
+        public async Task<GameObject> CreateSplash(Vector3 at)
+        {
+            GameObject splash = await InstantiateRegistredAsync(AssetsAddress.SplashPrefab, at);
+            return splash;
+        }
+
+        public async Task<GameObject> CreateFish(FishTypeId typeId, Transform parent)
+        {
+            FishStaticData fishData = _staticData.ForFish(typeId);
+
+            GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
+            GameObject fish = Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
+
+            return fish;
+        }
+
+        public async Task CreateBackground()
+        {
+            Vector3 position = new Vector3(0, 0, 25.0f);
+            GameObject background = await InstantiateRegistredAsync(AssetsAddress.Background, position);
+            BackgroundManager backgroundManager = background.GetComponent<BackgroundManager>();
+            backgroundManager.Construct(_progressService);
+            backgroundManager.Inizialize();
+        }
+
+
+
+        private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
+        {
+            GameObject gameObject = await _assets.Instantiate(prefabPath);
+            return gameObject;
+        }
+
+        private async Task<GameObject> InstantiateRegistredAsync(string prefabPath, Vector3 position)
+        {
+            GameObject gameObject = await _assets.Instantiate(prefabPath, position);
+            return gameObject;
+        }
+
+
     }
-    
-    public async Task<GameObject> CreateFish(FishTypeId typeId, Transform parent)
-    {
-      FishStaticData fishData = _staticData.ForFish(typeId);
-      
-      GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
-      GameObject fish = Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
-      
-      return fish;
-    }
-    
-    private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
-    {
-      GameObject gameObject = await _assets.Instantiate(prefabPath);
-      return gameObject;
-    }
-    
-    private async Task<GameObject> InstantiateRegistredAsync(string prefabPath, Vector3 position)
-    {
-      GameObject gameObject = await _assets.Instantiate(prefabPath, position);
-      return gameObject;
-    }
-  }
 }

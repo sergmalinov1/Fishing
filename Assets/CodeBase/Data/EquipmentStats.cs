@@ -34,6 +34,7 @@ namespace CodeBase.Data
 
         public Action NewLureItem;
         public Action BuyMoreLure;
+        public Action ChangeStats;
 
 
 
@@ -49,13 +50,11 @@ namespace CodeBase.Data
             if(SelectedLureId == lureId)
             {
                 CurrentLure();
-                BuyMoreLure?.Invoke();
             }
             else
             {
                 SelectedLureId = lureId;
                 NewLure();
-                NewLureItem?.Invoke();
             }
         }
 
@@ -68,6 +67,7 @@ namespace CodeBase.Data
 
         public void CalculationStats()
         {
+            ChangeStats?.Invoke();
             UnicFishes();
             CalculateAvgRating();
         }
@@ -83,10 +83,8 @@ namespace CodeBase.Data
 
         private void CalculateAvgRating()
         {
-            AvgRating = (float)SumRatin / Constants.MaxRating; // 
+            AvgRating = (float)SumRatin / Constants.MaxRating;  
             SumRatin = 0;
-         //   Debug.Log("AvgRating: " + AvgRating);
-
         }
 
         public void UnicFishes()

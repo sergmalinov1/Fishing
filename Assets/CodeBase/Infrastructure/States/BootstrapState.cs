@@ -55,11 +55,17 @@ namespace CodeBase.Infrastructure.States
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgress>()));
 
+            _services.RegisterSingle<IRandomService>(new UnityRandomService(
+              _services.Single<IAssetProvider>(),
+              _services.Single<IPersistentProgress>(),
+              _services.Single<IStaticDataService>()));
+
             _services.RegisterSingle<IInventoryService>(new InventoryService(
             _services.Single<IAssetProvider>(),
             _services.Single<IPersistentProgress>(),
             _services.Single<IStaticDataService>(),
-            _services.Single<ISaveLoadService>()));
+            _services.Single<ISaveLoadService>(),
+            _services.Single<IRandomService>()));
 
             _services.RegisterSingle<IUIFactory>(new UIFactory(
                 _services.Single<IStaticDataService>(),
@@ -69,10 +75,7 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
 
-            _services.RegisterSingle<IRandomService>(new UnityRandomService(
-              _services.Single<IAssetProvider>(),
-              _services.Single<IPersistentProgress>(),
-              _services.Single<IStaticDataService>()));
+
 
 
 

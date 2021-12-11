@@ -44,14 +44,16 @@ namespace CodeBase.Infrastructure.States
 
     private async Task InitUIRoot() => 
       await _uiFactory.CreateUIRoot();
-    
-    private async Task InitHud()
-    {
-      await _gameFactory.CreateHud();
-      // hud.GetComponentInChildren<ActorUI>().Construct(hero.GetComponent<HeroHealth>());
-    }
-    
-    private async Task InitGameWorld()
+
+        private async Task InitHud()
+        {
+            await _gameFactory.CreateHud();
+            await _gameFactory.CreateBackground();
+
+            // hud.GetComponentInChildren<ActorUI>().Construct(hero.GetComponent<HeroHealth>());
+        }
+
+        private async Task InitGameWorld()
     {
      // _gameFactory.CreareBobberSpawner();
      _gameFactory.CreareFishingLogic();

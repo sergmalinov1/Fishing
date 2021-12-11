@@ -20,5 +20,6 @@ namespace CodeBase.Infrastructure.Factory
     Task<GameObject> CreateSplash(Vector3 at);
     Task<GameObject> CreareFishingLogic();
     Task<GameObject> CreateFish(FishTypeId fishTypeId, Vector3 at);
-  }
+        Task CreateBackground();
+    }
 }

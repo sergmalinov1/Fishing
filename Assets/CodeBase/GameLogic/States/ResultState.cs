@@ -58,7 +58,7 @@ namespace CodeBase.GameLogic.States
     public void Exit() 
     {
       _windows.CloseWindow();
-      _logicStateMachine.CameraControl.RotateCameraDown();
+     // _logicStateMachine.CameraControl.RotateCameraDown();
       _logicStateMachine.ClenUp();
       _logicStateMachine.FishUPAndDestrou();
 

@@ -9,6 +9,6 @@ namespace CodeBase.Infrastructure.RandomService
 
         public FishStaticData RandomFish();
         public bool IsCatchedFish();
-        void GenerateNewQueue();
+        void GenerateNewLureStack();
     }
 }
