@@ -2,7 +2,7 @@
 
 namespace SimpleInputNamespace
 {
-	[CustomPropertyDrawer( typeof( SimpleInput.ButtonInput ) )]
+	//[CustomPropertyDrawer( typeof( SimpleInput.ButtonInput ) )]
 	public class ButtonInputDrawer : BaseInputDrawer
 	{
 		public override string ValueToString( SerializedProperty valueProperty )

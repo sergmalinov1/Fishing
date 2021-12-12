@@ -1864,8 +1864,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6922793697723135513, guid: 971a8be8c8be5ec428a8eb23da83631f, type: 3}
-  - {fileID: -6478536213147159724, guid: 971a8be8c8be5ec428a8eb23da83631f, type: 3}
+  - {fileID: 2100000, guid: b52eada929efd6e42a4a8d60d85797b8, type: 2}
+  - {fileID: 2100000, guid: b52eada929efd6e42a4a8d60d85797b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1902,7 +1902,7 @@ GameObject:
   - component: {fileID: 4398400166675482062}
   - component: {fileID: 3556624500366993966}
   m_Layer: 0
-  m_Name: Bobber
+  m_Name: Bobber 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1934,7 +1934,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3624389214470957312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 39a04833d5e7c6040aca8856ad53347a, type: 2}
   m_CullingMode: 0

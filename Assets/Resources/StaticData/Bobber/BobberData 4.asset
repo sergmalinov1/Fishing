@@ -19,7 +19,7 @@ MonoBehaviour:
   Price: 1
   MainImage: bobber_01
   PrefabReference:
-    m_AssetGUID: 
+    m_AssetGUID: 746b7d620a48ba14db1b3c547dfa9cc0
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

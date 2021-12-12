@@ -1,8 +1,10 @@
 ﻿using CodeBase.Data;
+using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Input;
 using CodeBase.Infrastructure.States;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.WindowsService;
+using System;
 using UnityEngine;
 
 namespace CodeBase.GameLogic.States
@@ -14,23 +16,34 @@ namespace CodeBase.GameLogic.States
         private readonly IWindowService _windowService;
         private readonly IStaticDataService _staticData;
         private PlayerProgress _playerProgress;
+        private readonly IGameFactory _gameFactory;
+        private Camera _camera;
 
         public PreparationState(
           LogicStateMachine logicMachine,
           IInputService inputService,
           IWindowService windowService,
-          PlayerProgress playerProgress)
+          PlayerProgress playerProgress,
+          IStaticDataService staticData,
+          IGameFactory gameFactory)
         {
             _logicMachine = logicMachine;
             _input = inputService;
             _windowService = windowService;
             _playerProgress = playerProgress;
+            _gameFactory = gameFactory;
+            _staticData = staticData;
+            _camera = Camera.main;
         }
 
         public void Enter()
         {
             _playerProgress.FishOnHook.SelectedLure += SelectLure;
+
+            CreateEquipmentContainer();
         }
+
+      
 
         public void Exit()
         {
@@ -55,6 +68,37 @@ namespace CodeBase.GameLogic.States
         private void SelectLure()
         {
             _logicMachine.Enter<ThrowIntoWaterState>();
+        }
+
+        private async void CreateEquipmentContainer()
+        {
+            DefinePosition();
+
+
+            int equipmentId = _playerProgress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Bobber);
+
+            //  Debug.Log("equipmentId " + equipmentId);
+            //   Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Bobber, equipmentId);
+
+            Transform parent = _logicMachine.ContainerPosition.transform;
+
+            _logicMachine.EquipmentContainer = await _gameFactory.CreateEquipmentContainer(equipmentId, parent);
+
+            _logicMachine.ContainerMoveDown();
+        }
+
+        private async void DefinePosition()
+        {
+            float distanceFromCamera = 13.0f;
+            float angle = _camera.transform.rotation.eulerAngles.y;
+
+            //определение позиции в которой будет создан поплавок
+
+            _logicMachine.ContainerPosition = new GameObject();
+            _logicMachine.ContainerPosition.transform.position = new Vector3(_camera.transform.position.x, 12.0f, _camera.transform.position.z + distanceFromCamera);
+            _logicMachine.ContainerPosition.transform.RotateAround(_camera.transform.position, Vector3.up, angle);
+
+           
         }
     }
 }

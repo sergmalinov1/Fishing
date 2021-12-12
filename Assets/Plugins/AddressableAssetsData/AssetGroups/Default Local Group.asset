@@ -225,6 +225,22 @@ MonoBehaviour:
     m_Address: Background
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dae0e1424e56c734c9a32339e3471f24
+    m_Address: hook_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc7e850fd4d86234f8738884e5495bb5
+    m_Address: EquipmentContainer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 82ded34c8180a3a408670e6a3c71c049
+    m_Address: OnHook
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 746b7d620a48ba14db1b3c547dfa9cc0
+    m_Address: Bobber 2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bfae0f3a8267cbf438ae5140c7e7bdb7, type: 2}
   m_SchemaSet:

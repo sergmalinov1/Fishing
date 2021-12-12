@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.BobberLogic;
-using CodeBase.BobberObject.DisplayCatchedFish;
 using CodeBase.GameLogic;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Inventory;
@@ -129,6 +128,20 @@ namespace CodeBase.Infrastructure.Factory
         }
 
 
+        public async Task<GameObject> CreateEquipmentContainer(int bobberId, Transform parent)
+        {
+            GameObject containerPrafab = await InstantiateRegistredAsync(AssetsAddress.EquipmentContainer, parent.position);
+
+            EquipmentContainer equipmentContainer = containerPrafab.GetComponent<EquipmentContainer>();
+
+            Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Bobber, bobberId);
+            GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
+            GameObject bobber = Object.Instantiate(prefab, containerPrafab.transform.position, Quaternion.identity, containerPrafab.transform);
+
+
+           // bobber.transform.SetParent(equipmentContainer.BobberContainer);
+            return containerPrafab;
+        }
 
         private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
         {
@@ -142,6 +155,6 @@ namespace CodeBase.Infrastructure.Factory
             return gameObject;
         }
 
-
+ 
     }
 }

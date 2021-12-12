@@ -41,11 +41,11 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
-            //  Debug.Log("ThrowIntoWaterState");
-            // _playerProgress.FishOnHook.LureTypeId = LureTypeId.Corn;
+
             _logicStateMachine.CameraControl.RotateCameraDown();
             _isStartAttack = true;
-            CreateBobber();
+            _logicStateMachine.ContainerMoveDown();
+            //  CreateBobber();
             SetCoutDownTime();
         }
 
@@ -81,6 +81,8 @@ namespace CodeBase.GameLogic.States
       _logicStateMachine.Bobber = await _gameFactory.CreateBobber(tempObj.transform.position);
 
       _logicStateMachine.BobberAnimator = _logicStateMachine.Bobber.GetComponent<BobberAnimator>();
+
+
       
     }
 

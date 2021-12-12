@@ -34,6 +34,12 @@ namespace CodeBase.StaticData
 
         public string GetImageName() => MainImage;
 
+        public AssetReferenceGameObject GetReference()
+        {
+            return PrefabReference;
+        }
+            
+
         public abstract int GetTypeId();
 
         public abstract void Accept(ISelectableEntityVisitor visitor);
