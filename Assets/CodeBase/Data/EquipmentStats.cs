@@ -7,9 +7,6 @@ namespace CodeBase.Data
     [Serializable]
     public class EquipmentStats
     {
-
-
-
         public int SumRatin;
         public float AvgRating;
 
@@ -31,14 +28,13 @@ namespace CodeBase.Data
 
         public List<bool> ChanceToCatchFish = new List<bool>();
 
+        public int SelectedLureId = -1;
 
         public Action NewLureItem;
         public Action BuyMoreLure;
         public Action ChangeStats;
 
-
-
-        private int SelectedLureId = -1;
+        
 
         public void Initialize(int newSelectedLureId)
         {
@@ -110,14 +106,16 @@ namespace CodeBase.Data
                 Debug.Log("FishId: " + fishId);
             }
 
+            Debug.Log("FishesInLake ======");
             foreach (int fishId in FishesInLake)
             {
-               // Debug.Log("FishesInLake: " + fishId);
+                Debug.Log("FishesInLake: " + fishId);
             }
 
+            Debug.Log("FishesInLure ======");
             foreach (int fishId in FishesInLure)
             {
-              //  Debug.Log("FishesInLure: " + fishId);
+                Debug.Log("FishesInLure: " + fishId);
             }
         }
 

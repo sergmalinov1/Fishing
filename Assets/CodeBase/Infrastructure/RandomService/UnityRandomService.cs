@@ -30,6 +30,9 @@ namespace CodeBase.Infrastructure.RandomService
 
         public FishStaticData RandomFish()
         {
+            _progressService.Progress.EquipmentStats.Print();
+            _progressService.Progress.EquipmentStats.PrintFishes();
+
             float total = 0;
 
             List<int> fishesId = _progressService.Progress.EquipmentStats.Fishes;

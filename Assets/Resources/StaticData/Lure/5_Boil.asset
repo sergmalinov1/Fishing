@@ -19,7 +19,7 @@ MonoBehaviour:
   Price: 50
   MainImage: Kooka
   PrefabReference:
-    m_AssetGUID: 
+    m_AssetGUID: 4a2ab679c859dd647871cc2cafd4af26
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

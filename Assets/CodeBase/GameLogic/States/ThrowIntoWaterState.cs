@@ -44,49 +44,46 @@ namespace CodeBase.GameLogic.States
 
             _logicStateMachine.CameraControl.RotateCameraDown();
             _isStartAttack = true;
-            _logicStateMachine.ContainerMoveDown();
-            //  CreateBobber();
+            _logicStateMachine.ContainerMoveDown(55);
+
             SetCoutDownTime();
         }
 
         public void Exit()
-    {
-      
-    }
+        {
 
-    public void UpdateLogic()
-    {
-      _coutDown -= Time.deltaTime;
-      if (_coutDown <= 0.0f)
-      {
-        SetCoutDownTime();
+        }
 
-        _logicStateMachine.Enter<FishAttackState>(); //Необходимо переделать. 
-      }
-    }
-    
-    private async void CreateBobber()
-    {
-      float distanceFromCamera = 13.0f;
-      float colibtateAngle = 4.0f; //Выравниваю поплавок по центру экрана
-      float angle = _camera.transform.rotation.eulerAngles.y - colibtateAngle;
+        public void UpdateLogic()
+        {
+            _coutDown -= Time.deltaTime;
+            if (_coutDown <= 0.0f)
+            {
+                SetCoutDownTime();
 
-      //определение позиции в которой будет создан поплавок
-      GameObject tempObj = new GameObject();
-      tempObj.transform.position = new Vector3(_camera.transform.position.x , 0.0f, _camera.transform.position.z + distanceFromCamera);
-      tempObj.transform.RotateAround(_camera.transform.position, Vector3.up, angle);
-      
-      //   Vector3 target = new Vector3(_camera.transform.position.x , 10.0f, _camera.transform.position.z + distanceFromCamera);
+                _logicStateMachine.Enter<FishAttackState>(); //Необходимо переделать. 
+            }
+        }
 
-      _logicStateMachine.Bobber = await _gameFactory.CreateBobber(tempObj.transform.position);
+        /* private async void CreateBobber()
+         {
+           float distanceFromCamera = 13.0f;
+           float colibtateAngle = 4.0f; //Выравниваю поплавок по центру экрана
+           float angle = _camera.transform.rotation.eulerAngles.y - colibtateAngle;
 
-      _logicStateMachine.BobberAnimator = _logicStateMachine.Bobber.GetComponent<BobberAnimator>();
+           //определение позиции в которой будет создан поплавок
+           GameObject tempObj = new GameObject();
+           tempObj.transform.position = new Vector3(_camera.transform.position.x , 0.0f, _camera.transform.position.z + distanceFromCamera);
+           tempObj.transform.RotateAround(_camera.transform.position, Vector3.up, angle);
 
+           //   Vector3 target = new Vector3(_camera.transform.position.x , 10.0f, _camera.transform.position.z + distanceFromCamera);
 
-      
-    }
+           _logicStateMachine.Bobber = await _gameFactory.CreateBobber(tempObj.transform.position);
+
+           _logicStateMachine.BobberAnimator = _logicStateMachine.Bobber.GetComponent<BobberAnimator>();    
+         }*/
 
 
-    private void SetCoutDownTime() => _coutDown = _randomService.TimeToBite();
+        private void SetCoutDownTime() => _coutDown = _randomService.TimeToBite();
   }
 }

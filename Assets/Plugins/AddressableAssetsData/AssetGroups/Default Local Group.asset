@@ -233,12 +233,20 @@ MonoBehaviour:
     m_Address: EquipmentContainer
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 82ded34c8180a3a408670e6a3c71c049
-    m_Address: OnHook
+  - m_GUID: cda84b827bbe33a4ca7464dae1d0d595
+    m_Address: Assets/Resources_moved/Prefab/Lure/OnHook 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 746b7d620a48ba14db1b3c547dfa9cc0
     m_Address: Bobber 2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a2ab679c859dd647871cc2cafd4af26
+    m_Address: Assets/Resources_moved/Prefab/Lure/OnHook 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1a14eb9615d253449a7807810832ffca
+    m_Address: Assets/Resources_moved/Prefab/Lure/OnHook.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -21,6 +21,6 @@ namespace CodeBase.Infrastructure.Factory
         Task<GameObject> CreareFishingLogic();
         Task<GameObject> CreateFish(FishTypeId fishTypeId, Vector3 at);
         Task CreateBackground();
-        Task<GameObject> CreateEquipmentContainer(int bobberId, Transform parent);
+        Task<GameObject> CreateEquipmentContainer(Vector3 position, int bobberId);
     }
 }

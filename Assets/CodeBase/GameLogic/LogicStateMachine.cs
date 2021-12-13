@@ -25,7 +25,7 @@ namespace CodeBase.GameLogic
 
         public GameObject Fish;
 
-        public GameObject ContainerPosition;
+    //    public GameObject ContainerPosition;
         public GameObject EquipmentContainer;
 
 
@@ -111,9 +111,9 @@ namespace CodeBase.GameLogic
             CameraControl = camera.GetComponent<RotateCamera>();
         }
 
-        public void ContainerMoveDown()
+        public void ContainerMoveDown(int count)
         {
-            StartCoroutine(MoveDownContainer());
+            StartCoroutine(MoveDownContainer(count));
         }
 
         public void FishUP()
@@ -148,11 +148,11 @@ namespace CodeBase.GameLogic
             Destroy(Fish);
         }
 
-        private IEnumerator MoveDownContainer()
+        private IEnumerator MoveDownContainer(int count)
         {
-            for (int i = 0; i < 70; i++)
+            for (int i = 0; i < count; i++)
             {
-                EquipmentContainer.transform.position -= new Vector3(0f, 0.1f, 0f);
+                EquipmentContainer.transform.position -= new Vector3(0f, 0.2f, 0f);
                 yield return new WaitForSeconds(0.01f);
             }
         }

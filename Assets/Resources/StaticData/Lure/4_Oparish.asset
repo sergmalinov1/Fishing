@@ -19,7 +19,7 @@ MonoBehaviour:
   Price: 50
   MainImage: Bread
   PrefabReference:
-    m_AssetGUID: 
+    m_AssetGUID: cda84b827bbe33a4ca7464dae1d0d595
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

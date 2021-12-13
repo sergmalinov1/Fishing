@@ -10,11 +10,11 @@ namespace CodeBase.BobberObject
 {
   public class Bobber : MonoBehaviour
   {
- //   private Small_Splash _splash;
+     private Small_Splash _splash;
     
     private void Awake()
     {
-      //_splash = GetComponentInChildren<Small_Splash>();
+      _splash = GetComponentInChildren<Small_Splash>();
 
     }
 
@@ -22,8 +22,8 @@ namespace CodeBase.BobberObject
     {
       if (other.tag == "DynamicWater")
       {
-        Debug.Log("DynamicWater");
-        //_splash.ShowSplash();
+       // Debug.Log("DynamicWater");
+        _splash.ShowSplash();
       }
     }
 

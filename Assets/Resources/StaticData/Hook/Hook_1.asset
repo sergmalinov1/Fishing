@@ -19,7 +19,7 @@ MonoBehaviour:
   Price: 1
   MainImage: hook_01
   PrefabReference:
-    m_AssetGUID: 
+    m_AssetGUID: dae0e1424e56c734c9a32339e3471f24
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

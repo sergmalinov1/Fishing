@@ -41,6 +41,8 @@ namespace CodeBase.GameLogic.States
             _playerProgress.FishOnHook.SelectedLure += SelectLure;
 
             CreateEquipmentContainer();
+
+            _logicMachine.ContainerMoveDown(35);
         }
 
       
@@ -72,19 +74,14 @@ namespace CodeBase.GameLogic.States
 
         private async void CreateEquipmentContainer()
         {
-            DefinePosition();
-
-
             int equipmentId = _playerProgress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Bobber);
 
-            //  Debug.Log("equipmentId " + equipmentId);
-            //   Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Bobber, equipmentId);
+            float distanceFromCamera = 13.0f;
+            float distanceFromWater = 12.0f;
+            Vector3 containerPosition = new Vector3(_camera.transform.position.x, distanceFromWater, _camera.transform.position.z + distanceFromCamera);
 
-            Transform parent = _logicMachine.ContainerPosition.transform;
+            _logicMachine.EquipmentContainer = await _gameFactory.CreateEquipmentContainer(containerPosition, equipmentId);
 
-            _logicMachine.EquipmentContainer = await _gameFactory.CreateEquipmentContainer(equipmentId, parent);
-
-            _logicMachine.ContainerMoveDown();
         }
 
         private async void DefinePosition()
@@ -94,9 +91,9 @@ namespace CodeBase.GameLogic.States
 
             //определение позиции в которой будет создан поплавок
 
-            _logicMachine.ContainerPosition = new GameObject();
-            _logicMachine.ContainerPosition.transform.position = new Vector3(_camera.transform.position.x, 12.0f, _camera.transform.position.z + distanceFromCamera);
-            _logicMachine.ContainerPosition.transform.RotateAround(_camera.transform.position, Vector3.up, angle);
+           // _logicMachine.ContainerPosition = new GameObject();
+           // _logicMachine.ContainerPosition.transform.position = new Vector3(_camera.transform.position.x, 12.0f, _camera.transform.position.z + distanceFromCamera);
+          //  _logicMachine.ContainerPosition.transform.RotateAround(_camera.transform.position, Vector3.up, angle);
 
            
         }

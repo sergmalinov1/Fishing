@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.BobberLogic;
 using CodeBase.GameLogic;
@@ -90,7 +91,7 @@ namespace CodeBase.Infrastructure.Factory
 
             GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
 
-            GameObject fish = Object.Instantiate(prefab);
+            GameObject fish = UnityEngine.Object.Instantiate(prefab);
             fish.transform.position = at;
             return fish;
         }
@@ -113,7 +114,7 @@ namespace CodeBase.Infrastructure.Factory
             FishStaticData fishData = _staticData.ForFish(typeId);
 
             GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
-            GameObject fish = Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
+            GameObject fish = UnityEngine.Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
 
             return fish;
         }
@@ -128,20 +129,40 @@ namespace CodeBase.Infrastructure.Factory
         }
 
 
-        public async Task<GameObject> CreateEquipmentContainer(int bobberId, Transform parent)
+        public async Task<GameObject> CreateEquipmentContainer(Vector3 position, int bobberId)
         {
-            GameObject containerPrafab = await InstantiateRegistredAsync(AssetsAddress.EquipmentContainer, parent.position);
+            GameObject containerPrafab = await InstantiateRegistredAsync(AssetsAddress.EquipmentContainer, position);
+            CreateBobber(containerPrafab, bobberId);
 
+            CreateLure(containerPrafab, bobberId);
+
+
+            return containerPrafab;
+        }
+
+        private async void CreateLure(GameObject containerPrafab, int lureId)
+        {
+            EquipmentContainer equipmentContainer = containerPrafab.GetComponent<EquipmentContainer>();
+
+            Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Lure, lureId);
+            GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
+
+            Transform container = equipmentContainer.OnHookContainer;
+            equipmentContainer.OnHook = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+
+        }
+
+        private async void CreateBobber(GameObject containerPrafab, int bobberId)
+        {
             EquipmentContainer equipmentContainer = containerPrafab.GetComponent<EquipmentContainer>();
 
             Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Bobber, bobberId);
             GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
-            GameObject bobber = Object.Instantiate(prefab, containerPrafab.transform.position, Quaternion.identity, containerPrafab.transform);
 
-
-           // bobber.transform.SetParent(equipmentContainer.BobberContainer);
-            return containerPrafab;
+            Transform container = equipmentContainer.BobberContainer;
+            equipmentContainer.Bobber = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
         }
+
 
         private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
         {

@@ -42,7 +42,6 @@ namespace CodeBase.GameLogic.States
       CreateFish();
       
       _logicStateMachine.CameraControl.RotateCameraUp();
-
    
       _logicStateMachine.BobberAnimator.PlayPushBobber();
       
