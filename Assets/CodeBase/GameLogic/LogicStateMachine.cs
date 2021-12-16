@@ -25,8 +25,8 @@ namespace CodeBase.GameLogic
 
         public GameObject Fish;
 
-    //    public GameObject ContainerPosition;
-        public GameObject EquipmentContainer;
+        public GameObject TackleContainerObject;
+        public TackleContainer TackleContainer;
 
 
         private Dictionary<Type, IStateLogic> _states;
@@ -39,7 +39,6 @@ namespace CodeBase.GameLogic
         private IStaticDataService _staticData;
         private ISaveLoadService _saveLoadService;
         private IRandomService _randomService;
-
 
         public void Construct(
           GameFactory gameFactory,
@@ -61,7 +60,7 @@ namespace CodeBase.GameLogic
 
             _states = new Dictionary<Type, IStateLogic>
             {
-                [typeof(StartState)] = new StartState(this, _input, _randomService),
+                [typeof(StartState)] = new StartState(this, _input, _randomService, _gameFactory),
                 [typeof(PreparationState)] = new PreparationState(this, _input, _windowService, _playerProgress, _staticData, _gameFactory),
                 [typeof(ThrowIntoWaterState)] = new ThrowIntoWaterState(this, _gameFactory, _playerProgress, _staticData, _randomService),
                 [typeof(FishAttackState)] = new FishAttackState(this, _input, _playerProgress, _staticData, _randomService),
@@ -111,6 +110,8 @@ namespace CodeBase.GameLogic
             CameraControl = camera.GetComponent<RotateCamera>();
         }
 
+
+
         public void ContainerMoveDown(int count)
         {
             StartCoroutine(MoveDownContainer(count));
@@ -152,7 +153,7 @@ namespace CodeBase.GameLogic
         {
             for (int i = 0; i < count; i++)
             {
-                EquipmentContainer.transform.position -= new Vector3(0f, 0.2f, 0f);
+                TackleContainerObject.transform.position -= new Vector3(0f, 0.2f, 0f);
                 yield return new WaitForSeconds(0.01f);
             }
         }

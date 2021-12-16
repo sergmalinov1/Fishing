@@ -40,8 +40,8 @@ namespace CodeBase.GameLogic.States
     {
      // Debug.Log("FishAttackState");
      _timeToEndAttack = 5.0f;
-      RandomFish();
-      _logicStateMachine.BobberAnimator.PlayFishBite();
+     // RandomFish();
+     // _logicStateMachine.BobberAnimator.PlayFishBite();
     }
 
     public void Exit()

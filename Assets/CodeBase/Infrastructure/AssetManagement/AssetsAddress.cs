@@ -17,7 +17,7 @@
 
         public const string Background = "Background";
 
-        public const string EquipmentContainer = "EquipmentContainer";
+        public const string TackleContainer = "TackleContainer";
 
     }
 }

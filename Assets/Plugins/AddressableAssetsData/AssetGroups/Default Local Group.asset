@@ -230,7 +230,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: bc7e850fd4d86234f8738884e5495bb5
-    m_Address: EquipmentContainer
+    m_Address: TackleContainer
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: cda84b827bbe33a4ca7464dae1d0d595

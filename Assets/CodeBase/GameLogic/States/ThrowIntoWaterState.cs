@@ -41,10 +41,12 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
+            _isStartAttack = true;
 
             _logicStateMachine.CameraControl.RotateCameraDown();
-            _isStartAttack = true;
-            _logicStateMachine.ContainerMoveDown(55);
+            _logicStateMachine.TackleContainer.MoveToWater();
+            _logicStateMachine.TackleContainer.EnableBobberAnimation();
+
 
             SetCoutDownTime();
         }

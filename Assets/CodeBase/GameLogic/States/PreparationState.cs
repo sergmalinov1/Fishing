@@ -40,9 +40,8 @@ namespace CodeBase.GameLogic.States
         {
             _playerProgress.FishOnHook.SelectedLure += SelectLure;
 
-            CreateEquipmentContainer();
-
-            _logicMachine.ContainerMoveDown(35);
+            SettingTackleContainer();
+            _logicMachine.TackleContainer.MoveToPlayer();
         }
 
       
@@ -72,16 +71,18 @@ namespace CodeBase.GameLogic.States
             _logicMachine.Enter<ThrowIntoWaterState>();
         }
 
-        private async void CreateEquipmentContainer()
+        private async void SettingTackleContainer()
         {
-            int equipmentId = _playerProgress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Bobber);
+            int bobberId = _playerProgress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Bobber);
 
             float distanceFromCamera = 13.0f;
             float distanceFromWater = 12.0f;
             Vector3 containerPosition = new Vector3(_camera.transform.position.x, distanceFromWater, _camera.transform.position.z + distanceFromCamera);
 
-            _logicMachine.EquipmentContainer = await _gameFactory.CreateEquipmentContainer(containerPosition, equipmentId);
+            _logicMachine.TackleContainerObject.transform.position = containerPosition;
 
+            _logicMachine.TackleContainer.Bobber = await _gameFactory.CreateBobberInContainer(_logicMachine.TackleContainer, bobberId);
+            _logicMachine.TackleContainer.OnHook = await _gameFactory.CreateLureInContainer(_logicMachine.TackleContainer, bobberId);
         }
 
         private async void DefinePosition()
