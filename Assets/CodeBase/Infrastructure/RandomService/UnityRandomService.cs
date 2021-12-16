@@ -25,18 +25,17 @@ namespace CodeBase.Infrastructure.RandomService
 
         public float TimeToBite()
         {
-            return 3.0f;
+            return 2.0f;
         }
 
         public FishStaticData RandomFish()
         {
-            _progressService.Progress.EquipmentStats.Print();
-            _progressService.Progress.EquipmentStats.PrintFishes();
+            //  _progressService.Progress.EquipmentStats.Print();
+            //  _progressService.Progress.EquipmentStats.PrintFishes();
 
             float total = 0;
 
             List<int> fishesId = _progressService.Progress.EquipmentStats.Fishes;
-
 
             Dictionary<FishTypeId, FishStaticData> fishes = new Dictionary<FishTypeId, FishStaticData>();
                  
@@ -65,8 +64,8 @@ namespace CodeBase.Infrastructure.RandomService
                     randomPoint -= fish.Value.ChanceOfBite;
                 }
             }
-
-            return fishes[0];
+           
+            return fishes[0];  //Значение по умолчанию. Сюда не должно дойти
         }
 
         public bool IsCatchedFish()
@@ -87,8 +86,6 @@ namespace CodeBase.Infrastructure.RandomService
             int typeLaceId = _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lake);
             Equipment equipmentLake = _staticData.GetEquipment(KindEquipmentId.Lake, typeLaceId);
             LakeStaticData lake = equipmentLake as LakeStaticData; //ПЕРЕДЕЛАТЬ!
-
-
 
 
             Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();

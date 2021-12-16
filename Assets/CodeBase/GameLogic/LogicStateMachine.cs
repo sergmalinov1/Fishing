@@ -19,8 +19,8 @@ namespace CodeBase.GameLogic
 {
   public class LogicStateMachine : MonoBehaviour, ILogicStateMachine
   {
-        public GameObject Bobber;
-        public BobberAnimator BobberAnimator;
+      //  public GameObject Bobber;
+       // public BobberAnimator BobberAnimator;
         public RotateCamera CameraControl;
 
         public GameObject Fish;
@@ -65,6 +65,7 @@ namespace CodeBase.GameLogic
                 [typeof(ThrowIntoWaterState)] = new ThrowIntoWaterState(this, _gameFactory, _playerProgress, _staticData, _randomService),
                 [typeof(FishAttackState)] = new FishAttackState(this, _input, _playerProgress, _staticData, _randomService),
                 [typeof(ResultState)] = new ResultState(this, _input, _windowService, _playerProgress, _saveLoadService, _gameFactory),
+                [typeof(EndFishing)] = new EndFishing(this, _input)
             };
         }
 
@@ -82,12 +83,6 @@ namespace CodeBase.GameLogic
         {
             IState state = ChangeState<TState>();
             state.Enter();
-        }
-
-        public void ClenUp()
-        {
-            Destroy(Bobber);
-            BobberAnimator = null;
         }
 
 
@@ -111,12 +106,13 @@ namespace CodeBase.GameLogic
         }
 
 
-
+        /*
         public void ContainerMoveDown(int count)
         {
             StartCoroutine(MoveDownContainer(count));
         }
 
+   
         public void FishUP()
         {
             StartCoroutine(MoveUp());
@@ -156,6 +152,6 @@ namespace CodeBase.GameLogic
                 TackleContainerObject.transform.position -= new Vector3(0f, 0.2f, 0f);
                 yield return new WaitForSeconds(0.01f);
             }
-        }
+        }*/
     }
 }

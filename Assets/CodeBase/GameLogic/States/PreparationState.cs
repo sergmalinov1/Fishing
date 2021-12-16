@@ -38,7 +38,7 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
-            _playerProgress.FishOnHook.SelectedLure += SelectLure;
+          //  _playerProgress.FishOnHook.SelectedLure += SelectLure;
 
             SettingTackleContainer();
             _logicMachine.TackleContainer.MoveToPlayer();
@@ -48,7 +48,7 @@ namespace CodeBase.GameLogic.States
 
         public void Exit()
         {
-            _playerProgress.FishOnHook.SelectedLure -= SelectLure;
+           // _playerProgress.FishOnHook.SelectedLure -= SelectLure;
         }
 
         public void UpdateLogic()
@@ -68,7 +68,7 @@ namespace CodeBase.GameLogic.States
 
         private void SelectLure()
         {
-            _logicMachine.Enter<ThrowIntoWaterState>();
+          //  _logicMachine.Enter<ThrowIntoWaterState>();
         }
 
         private async void SettingTackleContainer()
@@ -82,7 +82,10 @@ namespace CodeBase.GameLogic.States
             _logicMachine.TackleContainerObject.transform.position = containerPosition;
 
             _logicMachine.TackleContainer.Bobber = await _gameFactory.CreateBobberInContainer(_logicMachine.TackleContainer, bobberId);
-            _logicMachine.TackleContainer.OnHook = await _gameFactory.CreateLureInContainer(_logicMachine.TackleContainer, bobberId);
+            _logicMachine.TackleContainer.SetBobberAnimator(); 
+
+            _logicMachine.TackleContainer.Lure = await _gameFactory.CreateLureInContainer(_logicMachine.TackleContainer, bobberId);
+
         }
 
         private async void DefinePosition()

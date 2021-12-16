@@ -132,12 +132,22 @@ namespace CodeBase.Infrastructure.Factory
         public async Task<GameObject> CreateTackleContainer(Vector3 position)
         {
             GameObject containerPrafab = await InstantiateRegistredAsync(AssetsAddress.TackleContainer, position);
-         //   CreateBobber(containerPrafab, bobberId);
-
-         //   CreateLure(containerPrafab, bobberId);
-
-
             return containerPrafab;
+        }
+
+        public async Task<GameObject> CreateFishInContainer(TackleContainer tackleContainer, FishTypeId fishId)
+        {
+            FishStaticData fishData = _staticData.ForFish(fishId);
+            GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
+
+          //  Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Lure, lureId);
+           // GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
+
+            Transform container = tackleContainer.OnHookContainer;
+          //  GameObject fish = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+            GameObject fish = UnityEngine.Object.Instantiate(prefab, container.transform);
+            return fish;
+
         }
 
         public async Task<GameObject> CreateLureInContainer(TackleContainer tackleContainer, int lureId)
@@ -148,8 +158,8 @@ namespace CodeBase.Infrastructure.Factory
             GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
 
             Transform container = tackleContainer.OnHookContainer;
-            tackleContainer.OnHook = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
-            return prefab;
+            GameObject lure = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+            return lure;
 
         }
 
@@ -163,8 +173,9 @@ namespace CodeBase.Infrastructure.Factory
             GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
 
             Transform container = tackleContainer.BobberContainer;
-            tackleContainer.Bobber = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
-            return prefab;
+            //  tackleContainer.Bobber =
+            GameObject bobber = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+            return bobber;
         }
 
 

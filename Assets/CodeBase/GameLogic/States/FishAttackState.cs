@@ -4,6 +4,7 @@ using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.States;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Fish;
+using System;
 using UnityEngine;
 
 namespace CodeBase.GameLogic.States
@@ -35,60 +36,72 @@ namespace CodeBase.GameLogic.States
       _randomService = randomService;
 
     }
-    
-    public void Enter()
-    {
-     // Debug.Log("FishAttackState");
-     _timeToEndAttack = 5.0f;
-     // RandomFish();
-     // _logicStateMachine.BobberAnimator.PlayFishBite();
-    }
 
-    public void Exit()
-    {
-    }
-
-    public void UpdateLogic()
-    {
-      _timeToEndAttack -= Time.deltaTime;
-      if (_timeToEndAttack <= 0.0f)
-      {
-        NotCatchFish();
-      }
-      
-      if (_input.IsAttackButtonUp())
-      {
-        if (_randomService.IsCatchedFish())
+        public void Enter()
         {
-          CatchFish();
+            _timeToEndAttack = 5.0f;
+            RandomFish();
+            UseLure();
+            _logicStateMachine.TackleContainer.BobberAnimator.PlayFishBite();
         }
-        else
+
+     
+
+        public void Exit()
         {
-          NotCatchFish();
         }
-      }
-    }
 
-    private void CatchFish()
-    {
-      _playerProgress.ResultOfFishing.AddCaughtFish(_playerProgress.FishOnHook.FishName);
-      _playerProgress.FishOnHook.CatchFish();
-      _logicStateMachine.Enter<ResultState>();
-    }
+        public void UpdateLogic()
+        {
+            _timeToEndAttack -= Time.deltaTime;
+            if (_timeToEndAttack <= 0.0f)
+            {
+                NotCatchFish();
+            }
 
-    private void NotCatchFish()
-    {
-      _playerProgress.FishOnHook.NotCatchFish();
-      _logicStateMachine.Enter<ResultState>();
+            if (_input.IsAttackButtonUp())
+            {
+                if (_randomService.IsCatchedFish())
+                {
+                    CatchFish();
+                }
+                else
+                {
+                    NotCatchFish();
+                }
+            }
+        }
+
+        private void CatchFish()
+        {
+            _playerProgress.ResultOfFishing.AddCaughtFish(_playerProgress.FishOnHook.FishName);
+            _playerProgress.FishOnHook.CatchFish();
+            EndAttack();
+        }
+
+        private void NotCatchFish()
+        {
+            _playerProgress.FishOnHook.NotCatchFish();
+            EndAttack();
+        }
+
+        private void EndAttack()
+        {
+            _logicStateMachine.Enter<ResultState>();
+        }
+
+        private void RandomFish()
+        {
+            FishStaticData fishData = _randomService.RandomFish();
+
+            _playerProgress.FishOnHook.SetFish(fishData);
+        }
+
+        private void UseLure()
+        {
+            _logicStateMachine.TackleContainer.DestroyLure();
+        }
+
+
     }
-    
-    private void RandomFish()
-    {
-      FishStaticData fishData = _randomService.RandomFish();
-      
-      _playerProgress.FishOnHook.SetFish(fishData);
-    }
-    
-  
-  }
 }

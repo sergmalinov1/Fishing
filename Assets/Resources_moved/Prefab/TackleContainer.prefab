@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4845058687091032639}
+  - {fileID: 4902715845532543109}
   m_Father: {fileID: 7394975463409564673}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,7 +62,6 @@ Transform:
   m_Children:
   - {fileID: 597521196625486209}
   - {fileID: 7657853886211843417}
-  - {fileID: 4902715845532543109}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,9 +78,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BobberContainer: {fileID: 597521196625486209}
+  HookContainer: {fileID: 7657853886211843417}
   OnHookContainer: {fileID: 4902715845532543109}
   Bobber: {fileID: 0}
   OnHook: {fileID: 0}
+  Fish: {fileID: 0}
+  Lure: {fileID: 0}
 --- !u!1 &6474467525841516056
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,8 +143,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2638849489291647227}
-  m_Father: {fileID: 7394975463409564673}
-  m_RootOrder: 2
+  m_Father: {fileID: 7657853886211843417}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3453424317421575831
 PrefabInstance:
@@ -226,11 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 401418, guid: dae0e1424e56c734c9a32339e3471f24, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 401418, guid: dae0e1424e56c734c9a32339e3471f24, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 401418, guid: dae0e1424e56c734c9a32339e3471f24, type: 3}
       propertyPath: m_LocalScale.z

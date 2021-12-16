@@ -45,7 +45,7 @@ namespace CodeBase.GameLogic.States
 
             _logicStateMachine.CameraControl.RotateCameraDown();
             _logicStateMachine.TackleContainer.MoveToWater();
-            _logicStateMachine.TackleContainer.EnableBobberAnimation();
+           // _logicStateMachine.TackleContainer.EnableBobberAnimation();
 
 
             SetCoutDownTime();

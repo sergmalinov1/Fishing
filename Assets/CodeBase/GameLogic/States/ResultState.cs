@@ -5,6 +5,7 @@ using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Input;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.States;
+using CodeBase.StaticData;
 using CodeBase.StaticData.Fish;
 using CodeBase.UI.Services.WindowsService;
 using CodeBase.UI.Windows;
@@ -36,43 +37,47 @@ namespace CodeBase.GameLogic.States
       _input = inputService;
       _gameFactory = gameFactory;
     }
-    
-    public void Enter()
-    {
-      CreateFish();
-      
-      _logicStateMachine.CameraControl.RotateCameraUp();
-   
-      _logicStateMachine.BobberAnimator.PlayPushBobber();
-      
-      _windows = _windowService.Open(WindowId.Result);
-    }
 
-    private async void CreateFish()
-    {
-      _logicStateMachine.Fish = await _gameFactory.CreateFish(_playerProgress.FishOnHook.FishTypeId, new Vector3(-1.0f, 0f, 0f));
-      _logicStateMachine.FishUP();
-    }
-    
-    public void Exit() 
-    {
-      _windows.CloseWindow();
-     // _logicStateMachine.CameraControl.RotateCameraDown();
-      _logicStateMachine.ClenUp();
-      _logicStateMachine.FishUPAndDestrou();
+        public void Enter()
+        {
+            CreateFish();
+
+            _logicStateMachine.CameraControl.RotateCameraUp();
+
+            _logicStateMachine.TackleContainer.DisableBobberAnimation();
+            _logicStateMachine.TackleContainer.MoveFromWater();
+
+            _windows = _windowService.Open(WindowId.Result);
+        }
+
+        private async void CreateFish()
+        {
+            FishTypeId fishId = _playerProgress.FishOnHook.FishTypeId;
+            _logicStateMachine.TackleContainer.Fish = await _gameFactory.CreateFishInContainer(_logicStateMachine.TackleContainer, fishId);
+        }
+
+        public void Exit()
+        {
+            _windows.CloseWindow();
+
+           // _logicStateMachine.TackleContainer.NextFishingRound();
+
+            // _logicStateMachine.CameraControl.RotateCameraDown();
+
+            // _logicStateMachine.FishUPAndDestrou();
+
+        }
+
+        public void UpdateLogic()
+        {
+            if (_input.IsAttackButtonUp())
+            {
+                _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
+                _saveLoadService.SaveProgress();
+                _logicStateMachine.Enter<EndFishing>();
+            }
+        }
+
 
     }
-
-    public void UpdateLogic()
-    {
-      if (_input.IsAttackButtonUp())
-      {
-        _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
-        _saveLoadService.SaveProgress();
-        _logicStateMachine.Enter<PreparationState>();
-      }
-    }
-    
- 
-  }
 }
