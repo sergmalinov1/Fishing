@@ -157,7 +157,7 @@ namespace CodeBase.Infrastructure.RandomService
 
         public void GenerateNewLureStack()
         {
-            _progressService.Progress.EquipmentStats.ChanceToCatchFish.Clear();
+            _progressService.Progress.EquipmentStats.StackToCatchFish.Clear();
 
            // float chanceToCatchFish = _progres.EquipmentStats.AvgRating;
 
@@ -173,12 +173,12 @@ namespace CodeBase.Infrastructure.RandomService
                     chanse = false;
                 }
 
-                _progressService.Progress.EquipmentStats.ChanceToCatchFish.Add(chanse);
+                _progressService.Progress.EquipmentStats.StackToCatchFish.Add(chanse);
             }
 
-            foreach(bool temp in _progressService.Progress.EquipmentStats.ChanceToCatchFish)
+            foreach(bool temp in _progressService.Progress.EquipmentStats.StackToCatchFish)
             {
-              //  Debug.Log("C: " + temp);
+                Debug.Log("StackToCatchFish: " + temp);
             }
 
         }

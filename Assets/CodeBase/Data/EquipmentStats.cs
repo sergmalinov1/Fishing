@@ -26,7 +26,7 @@ namespace CodeBase.Data
 
         public List<int> FishesInLure = new List<int>();
 
-        public List<bool> ChanceToCatchFish = new List<bool>();
+        public List<bool> StackToCatchFish = new List<bool>();
 
         public int SelectedLureId = -1;
 

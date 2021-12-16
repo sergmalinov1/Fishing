@@ -101,8 +101,6 @@ namespace CodeBase.Data
             return -1;
         }
 
-
-
         public bool IsEquipmentCompete()
         {
             if (InstalledEquipments.Count < 6)
@@ -123,5 +121,25 @@ namespace CodeBase.Data
             return true;
         }
 
+        public void PrintSelectedEquipment()
+        {
+            int Lure =  GetSelectedEquipmentByKind(KindEquipmentId.Lure);
+            Debug.Log("Lure " + Lure);
+
+            int bobberId = GetSelectedEquipmentByKind(KindEquipmentId.Bobber);
+            Debug.Log("BobberId " + bobberId);
+
+            int Lake = GetSelectedEquipmentByKind(KindEquipmentId.Lake);
+            Debug.Log("Lake " + Lake);
+
+            int Hook = GetSelectedEquipmentByKind(KindEquipmentId.Hook);
+            Debug.Log("Hook " + Hook);
+
+            int FishingLine = GetSelectedEquipmentByKind(KindEquipmentId.FishingLine);
+            Debug.Log("FishingLine " + FishingLine);
+
+            int FishingRod = GetSelectedEquipmentByKind(KindEquipmentId.FishingRod);
+            Debug.Log("Hook " + FishingRod);
+        }
     }
 }

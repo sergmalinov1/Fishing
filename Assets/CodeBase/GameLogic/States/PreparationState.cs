@@ -38,8 +38,6 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
-          //  _playerProgress.FishOnHook.SelectedLure += SelectLure;
-
             SettingTackleContainer();
             _logicMachine.TackleContainer.MoveToPlayer();
         }
@@ -48,7 +46,6 @@ namespace CodeBase.GameLogic.States
 
         public void Exit()
         {
-           // _playerProgress.FishOnHook.SelectedLure -= SelectLure;
         }
 
         public void UpdateLogic()
@@ -66,10 +63,6 @@ namespace CodeBase.GameLogic.States
             }
         }
 
-        private void SelectLure()
-        {
-          //  _logicMachine.Enter<ThrowIntoWaterState>();
-        }
 
         private async void SettingTackleContainer()
         {

@@ -59,6 +59,10 @@ namespace CodeBase.Infrastructure.Factory
             MoneyCounter moneyObj = hud.GetComponentInChildren<MoneyCounter>();
             moneyObj.Construct(_progressService.Progress); ;
 
+            LureCounter lureCounter = hud.GetComponentInChildren<LureCounter>();
+            lureCounter.Construct(_progressService.Progress); ;
+
+
             return hud;
         }
 
