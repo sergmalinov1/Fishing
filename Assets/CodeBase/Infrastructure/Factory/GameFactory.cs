@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CodeBase.BobberLogic;
 using CodeBase.GameLogic;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Inventory;
@@ -64,15 +63,6 @@ namespace CodeBase.Infrastructure.Factory
 
 
             return hud;
-        }
-
-        public async Task<GameObject> CreareBobberSpawner()
-        {
-            GameObject bobberLogic = await InstantiateRegistredAsync(AssetsAddress.BobberSpawner);
-            BobberSpawner bobberSpawner = bobberLogic.GetComponent<BobberSpawner>();
-            bobberSpawner.Construct(this, _progressService.Progress, _staticData);
-
-            return bobberLogic;
         }
 
         public async Task<GameObject> CreareFishingLogic()

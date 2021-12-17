@@ -33,7 +33,6 @@ namespace CodeBase.Infrastructure.Factory
 
 
         //-----
-        Task<GameObject> CreareBobberSpawner();
         Task<GameObject> CreateBobber(Vector3 at);
       
     }

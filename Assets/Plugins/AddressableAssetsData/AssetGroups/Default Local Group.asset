@@ -21,32 +21,12 @@ MonoBehaviour:
     m_Address: HUD/Hud
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a7f321ebea9057c42bbd753f8b9b746d
-    m_Address: BobberSpawner
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 5549194571faf9a4bb131b3cfb1228e3
     m_Address: Bobber
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 4111a63ec6a85c744a305e1dfd0869f9
     m_Address: Sardine
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 01e0ef892fcafe94cbebce3da5a2e617
-    m_Address: SmallSplash_Size_A
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2a176afa3f08aea4fabe20d14587ce4b
-    m_Address: SmallSplash_Size_B
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fd2a5cf43b238f24fbaaa9f242f2419c
-    m_Address: SmallSplash_Size_C
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 648422de6a5066b4a8be80d49e569126
-    m_Address: Bobber2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 54d0a8d4762854b428a7d5b35862cb93
@@ -234,7 +214,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: cda84b827bbe33a4ca7464dae1d0d595
-    m_Address: Assets/Resources_moved/Prefab/Lure/OnHook 1.prefab
+    m_Address: OnHook 1
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 746b7d620a48ba14db1b3c547dfa9cc0
@@ -242,11 +222,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 4a2ab679c859dd647871cc2cafd4af26
-    m_Address: Assets/Resources_moved/Prefab/Lure/OnHook 2.prefab
+    m_Address: OnHook 2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 1a14eb9615d253449a7807810832ffca
-    m_Address: Assets/Resources_moved/Prefab/Lure/OnHook.prefab
+    m_Address: OnHook
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
