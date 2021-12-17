@@ -41,6 +41,23 @@ namespace CodeBase.Data
             Debug.Log("NOT FIND KindEquipmentId");
         }
 
+        public void UseEquipmentItem(KindEquipmentId kindEquipmentId, int typeEquipmentId)
+        {
+            foreach (CategoryEquipment category in InstalledEquipments)
+            {
+                if (category.KindEquipmentId == kindEquipmentId)
+                {
+                    category.UseEquipment(typeEquipmentId);
+                   // return;
+                }
+            }
+        }
+
+        public void UseSelectedEquipmentItem(KindEquipmentId kindEquipmentId)
+        {
+            int selectedItem = GetSelectedEquipmentByKind(kindEquipmentId);
+            UseEquipmentItem(kindEquipmentId, selectedItem);
+        }
 
         public void SelectEquipmentItem(KindEquipmentId kindEquipmentId, int typeEquipmentId)
         {
@@ -105,21 +122,32 @@ namespace CodeBase.Data
         {
             if (InstalledEquipments.Count < 6)
             {
-                Debug.Log("111");
                 return false;
             }
 
-            foreach (CategoryEquipment item in InstalledEquipments)
+            foreach (CategoryEquipment category in InstalledEquipments)
             {
-                if(item.SelectedEquipmentTypeId == -1)
+
+                if(category.SelectedEquipmentTypeId == -1) //Check for category availability
                 {
-                 //   Debug.Log("item" + item.SelectedEquipmentTypeId);
+                    return false;
+                }
+
+                EquipmentItem item = category.FindPurchasedByTypeId(category.SelectedEquipmentTypeId); //Check for EquipmentItem availability
+                if (item == null)
+                {
+                    return false;
+                }
+                if (item.Count == 0)
+                {
                     return false;
                 }
             }
 
             return true;
         }
+
+        
 
         public void PrintSelectedEquipment()
         {

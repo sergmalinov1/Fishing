@@ -1,4 +1,5 @@
 ﻿using CodeBase.Data;
+using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Input;
 using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.States;
@@ -11,41 +12,40 @@ namespace CodeBase.GameLogic.States
 {
   public class FishAttackState : IStateLogic
   {
-    
-    private readonly PlayerProgress _playerProgress;
-    private readonly IStaticDataService _staticData;
-    
-    private readonly LogicStateMachine _logicStateMachine;
-    private readonly IRandomService _randomService;
-    
-    private IInputService _input;
 
-    private float _timeToEndAttack = 5.0f;
+        private readonly PlayerProgress _playerProgress;
+        private readonly LogicStateMachine _logicStateMachine;
+        private readonly IRandomService _randomService;
+        private readonly IGameFactory _gameFactory;
+        private IInputService _input;
 
-    public FishAttackState(
-      LogicStateMachine logicStateMachine, 
-      IInputService inputService, 
-      PlayerProgress playerProgress, 
-      IStaticDataService staticData, 
-      IRandomService randomService)
-    {
-      _logicStateMachine = logicStateMachine;
-      _input = inputService;
-      _playerProgress = playerProgress;
-      _staticData = staticData;
-      _randomService = randomService;
+        private float _timeToEndAttack = 5.0f;
+        private bool _isCatch = false;
 
-    }
+        public FishAttackState(
+          LogicStateMachine logicStateMachine,
+          IInputService inputService,
+          PlayerProgress playerProgress,
+          IRandomService randomService,
+          IGameFactory gameFactory)
+        {
+            _logicStateMachine = logicStateMachine;
+            _input = inputService;
+            _playerProgress = playerProgress;
+            _randomService = randomService;
+            _gameFactory = gameFactory;
+        }
 
         public void Enter()
         {
+            _isCatch = false;
             _timeToEndAttack = 5.0f;
             RandomFish();
             UseLure();
             _logicStateMachine.TackleContainer.BobberAnimator.PlayFishBite();
         }
 
-     
+
 
         public void Exit()
         {
@@ -61,7 +61,7 @@ namespace CodeBase.GameLogic.States
 
             if (_input.IsAttackButtonUp())
             {
-                if (_randomService.IsCatchedFish())
+                if (_randomService.IsCatchedFish() && _isCatch)
                 {
                     CatchFish();
                 }
@@ -76,6 +76,7 @@ namespace CodeBase.GameLogic.States
         {
             _playerProgress.ResultOfFishing.AddCaughtFish(_playerProgress.FishOnHook.FishName);
             _playerProgress.FishOnHook.CatchFish();
+            CreateFish();
             EndAttack();
         }
 
@@ -83,6 +84,12 @@ namespace CodeBase.GameLogic.States
         {
             _playerProgress.FishOnHook.NotCatchFish();
             EndAttack();
+        }
+
+        private async void CreateFish()
+        {
+            FishTypeId fishId = _playerProgress.FishOnHook.FishTypeId;
+            _logicStateMachine.TackleContainer.Fish = await _gameFactory.CreateFishInContainer(_logicStateMachine.TackleContainer, fishId);
         }
 
         private void EndAttack()
@@ -99,6 +106,9 @@ namespace CodeBase.GameLogic.States
 
         private void UseLure()
         {
+            _isCatch = _playerProgress.EquipmentStats.PopCatchFishStack();
+
+            _playerProgress.Inventory.UseSelectedEquipmentItem(KindEquipmentId.Lure);
             _logicStateMachine.TackleContainer.DestroyLure();
         }
 

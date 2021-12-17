@@ -19,6 +19,11 @@ namespace CodeBase.GameLogic
 
         private BobberAnimator _bobberAnimator;
 
+        public void MoveToBasicPosition()
+        {
+            transform.DOMoveY(20, 1).OnComplete(DestroyBobberAndFish);
+        }
+
         public void MoveToPlayer()
         {
             transform.DOMoveY(5, 1);
@@ -29,10 +34,7 @@ namespace CodeBase.GameLogic
            transform.DOMoveY(-6, 1).OnComplete(EnableBobberAnimation);
         }
 
-        public void MoveToBasicPosition()
-        { 
-            transform.DOMoveY(20, 1).OnComplete(DestroyBobberAndFish);
-        }
+    
   
         public void MoveFromWater()
         {

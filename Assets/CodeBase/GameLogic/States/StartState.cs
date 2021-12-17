@@ -10,18 +10,15 @@ namespace CodeBase.GameLogic.States
     {
         private readonly LogicStateMachine _logicMachine;
         private readonly IInputService _input;
-        private readonly IRandomService _randomService;
         private readonly IGameFactory _gameFactory;
 
         public StartState(
             LogicStateMachine logicMachine, 
             IInputService input, 
-            IRandomService randomService, 
             IGameFactory gameFactory)
         {
             _logicMachine = logicMachine;
             _input = input;
-            _randomService = randomService;
             _gameFactory = gameFactory;
         }
 
@@ -39,7 +36,7 @@ namespace CodeBase.GameLogic.States
         {
             if (_input.IsAttackButtonUp())
             {
-                _logicMachine.Enter<PreparationState>();
+                _logicMachine.Enter<BasicState>();
             }
         }
 

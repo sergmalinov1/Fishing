@@ -14,7 +14,6 @@ namespace CodeBase.GameLogic.States
         private IInputService _input;
         private readonly LogicStateMachine _logicMachine;
         private readonly IWindowService _windowService;
-        private readonly IStaticDataService _staticData;
         private PlayerProgress _playerProgress;
         private readonly IGameFactory _gameFactory;
         private Camera _camera;
@@ -24,7 +23,6 @@ namespace CodeBase.GameLogic.States
           IInputService inputService,
           IWindowService windowService,
           PlayerProgress playerProgress,
-          IStaticDataService staticData,
           IGameFactory gameFactory)
         {
             _logicMachine = logicMachine;
@@ -32,7 +30,6 @@ namespace CodeBase.GameLogic.States
             _windowService = windowService;
             _playerProgress = playerProgress;
             _gameFactory = gameFactory;
-            _staticData = staticData;
             _camera = Camera.main;
         }
 
@@ -58,6 +55,7 @@ namespace CodeBase.GameLogic.States
                 }
                 else
                 {
+                    Debug.Log("Инвентарь не готов - PrepareState");
                     _windowService.Open(WindowId.PrepareWindow);
                 }
             }

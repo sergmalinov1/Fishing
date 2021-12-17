@@ -20,7 +20,6 @@ namespace CodeBase.GameLogic.States
     private readonly PlayerProgress _playerProgress;
     private readonly ISaveLoadService _saveLoadService;
     private readonly IInputService _input;
-    private readonly IGameFactory _gameFactory;
 
     private BaseWindow _windows;
 
@@ -28,20 +27,17 @@ namespace CodeBase.GameLogic.States
       IInputService inputService,
       IWindowService windowService,
       PlayerProgress playerProgress,
-      ISaveLoadService saveLoadService, IGameFactory gameFactory)
+      ISaveLoadService saveLoadService)
     {
       _logicStateMachine = logicStateMachine;
       _windowService = windowService;
       _playerProgress = playerProgress;
       _saveLoadService = saveLoadService;
       _input = inputService;
-      _gameFactory = gameFactory;
     }
 
         public void Enter()
         {
-            CreateFish();
-
             _logicStateMachine.CameraControl.RotateCameraUp();
 
             _logicStateMachine.TackleContainer.DisableBobberAnimation();
@@ -50,11 +46,7 @@ namespace CodeBase.GameLogic.States
             _windows = _windowService.Open(WindowId.Result);
         }
 
-        private async void CreateFish()
-        {
-            FishTypeId fishId = _playerProgress.FishOnHook.FishTypeId;
-            _logicStateMachine.TackleContainer.Fish = await _gameFactory.CreateFishInContainer(_logicStateMachine.TackleContainer, fishId);
-        }
+      
 
         public void Exit()
         {
@@ -74,7 +66,7 @@ namespace CodeBase.GameLogic.States
             {
                 _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
                 _saveLoadService.SaveProgress();
-                _logicStateMachine.Enter<EndFishing>();
+                _logicStateMachine.Enter<BasicState>();
             }
         }
 

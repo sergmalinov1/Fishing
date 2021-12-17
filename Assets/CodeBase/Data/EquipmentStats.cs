@@ -34,8 +34,6 @@ namespace CodeBase.Data
         public Action BuyMoreLure;
         public Action ChangeStats;
 
-        
-
         public void Initialize(int newSelectedLureId)
         {
             ChangeLure(newSelectedLureId);
@@ -53,8 +51,6 @@ namespace CodeBase.Data
                 NewLure();
             }
         }
-
-       
 
         public void AddRating(int rating)
         {
@@ -98,6 +94,14 @@ namespace CodeBase.Data
             }
         }
 
+        public bool PopCatchFishStack()
+        {
+            bool firstItem = StackToCatchFish[0];
+            StackToCatchFish.RemoveAt(0);
+            ChangeStats?.Invoke();
+            return firstItem;
+        }
+
         public void PrintFishes()
         {
             Debug.Log("FishId======");
@@ -126,6 +130,14 @@ namespace CodeBase.Data
             Debug.Log("MinFishWeight: " + MinFishWeight);
             Debug.Log("MaxFishWeight: " + MaxFishWeight);
             Debug.Log("SelectedLureId: " + SelectedLureId);
+        }
+
+        public void PrintStats()
+        {
+            foreach(bool item in StackToCatchFish)
+            {
+                Debug.Log("IsCatch: " + item);
+            }     
         }
 
 

@@ -81,8 +81,14 @@ namespace CodeBase.Infrastructure.Inventory
 
                 EquipmentConfig config = new EquipmentConfig(itemEquipment);
                 EquipmentItem equipmentItem = item.FindPurchasedByTypeId(item.SelectedEquipmentTypeId);
-                config.QtyPurchasedEquipment = equipmentItem.Count;
-                _selectedEquipments.Add(config);
+
+                if(equipmentItem == null)
+                    config.QtyPurchasedEquipment = 0;
+                else
+                    config.QtyPurchasedEquipment = equipmentItem.Count;
+
+                _selectedEquipments.Add(config); 
+
             }
 
             return _selectedEquipments;
