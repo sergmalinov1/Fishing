@@ -9,22 +9,18 @@ namespace CodeBase.GameLogic.States
     public class StartState : IStateLogic
     {
         private readonly LogicStateMachine _logicMachine;
-        private readonly IInputService _input;
         private readonly IGameFactory _gameFactory;
 
-        public StartState(
-            LogicStateMachine logicMachine, 
-            IInputService input, 
-            IGameFactory gameFactory)
+        public StartState(LogicStateMachine logicMachine, IGameFactory gameFactory)
         {
             _logicMachine = logicMachine;
-            _input = input;
             _gameFactory = gameFactory;
         }
 
         public void Enter()
         {
-            CreateTackleContainer();   
+            CreateTackleContainer();
+            _logicMachine.Enter<BasicState>();
         }
 
         public void Exit()
@@ -34,10 +30,6 @@ namespace CodeBase.GameLogic.States
 
         public void UpdateLogic()
         {
-            if (_input.IsAttackButtonUp())
-            {
-                _logicMachine.Enter<BasicState>();
-            }
         }
 
         private async void CreateTackleContainer()

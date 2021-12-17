@@ -96,6 +96,7 @@ namespace CodeBase.Data
 
         public bool PopCatchFishStack()
         {
+            PrintStats();
             bool firstItem = StackToCatchFish[0];
             StackToCatchFish.RemoveAt(0);
             ChangeStats?.Invoke();

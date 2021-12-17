@@ -48,7 +48,7 @@ namespace CodeBase.Data
 
 
             PurchasedEquipment.Add(new EquipmentItem(typeId, qty));
-            PrintCategoty();
+            //PrintCategoty();
         }
         public void UseEquipment(int typeId)
         {
@@ -78,7 +78,7 @@ namespace CodeBase.Data
             if (itemForRemove != null)
                 PurchasedEquipment.Remove(itemForRemove);
 
-            PrintCategoty();
+            //PrintCategoty();
         }
 
         public void SetSelectedItem(int equipmentTypeId)
