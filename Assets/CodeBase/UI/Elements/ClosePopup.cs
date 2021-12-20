@@ -22,5 +22,6 @@ namespace CodeBase.UI.Elements
         {
             Popup.SetActive(false);
         }
+
     }
 }

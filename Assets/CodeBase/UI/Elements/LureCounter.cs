@@ -22,5 +22,10 @@ namespace CodeBase.UI.Elements
             int count = _playerProgress.EquipmentStats.StackToCatchFish.Count;
             LureCount.text = $"{count}";
         }
+
+        private void OnDestroy()
+        {
+            _playerProgress.EquipmentStats.ChangeStats -= UpdateCounter;
+        }
     }
 }
