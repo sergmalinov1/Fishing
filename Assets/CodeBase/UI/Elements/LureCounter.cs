@@ -25,7 +25,8 @@ namespace CodeBase.UI.Elements
 
         private void OnDestroy()
         {
-            _playerProgress.EquipmentStats.ChangeStats -= UpdateCounter;
+            //Нужно переделать
+          //  _playerProgress.EquipmentStats.ChangeStats -= UpdateCounter;
         }
     }
 }

@@ -24,7 +24,9 @@ namespace CodeBase.UI.Elements
 
         private void OnDestroy()
         {
-            _playerProgress.MoneyData.Changed -= UpdateCounter;
+            //Нужно доделать логику отписки от события
+         //   Debug.Log("MoneyCounter OnDestroy");
+         //   _playerProgress.MoneyData.Changed -= UpdateCounter;
         }
     }
 }

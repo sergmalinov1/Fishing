@@ -40,6 +40,8 @@ namespace CodeBase.GameLogic.States
 
         public void UpdateLogic()
         {
+
+
             _timeToNextRound -= Time.deltaTime;
             if (_timeToNextRound <= 0.0f)
             {
@@ -51,11 +53,15 @@ namespace CodeBase.GameLogic.States
                     }
                     else
                     {
-                        Debug.Log("Инвентарь не готов - PrepareState");
+                        Debug.Log("Не выбраны все элементы в инвентаре");
                         _windowService.Open(WindowId.PrepareWindow);
                     }                  
                 }
             }
         }
+
+
+
+
     }
 }

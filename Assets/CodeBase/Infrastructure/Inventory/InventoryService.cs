@@ -97,6 +97,7 @@ namespace CodeBase.Infrastructure.Inventory
 
         public void BuyEquipment(KindEquipmentId kindEquipmentId, int typeId, int price)
         {
+            Debug.Log("BuyEquipment");
             if(!IsCanBuy(price))
             {
                 return;
@@ -109,6 +110,7 @@ namespace CodeBase.Infrastructure.Inventory
 
         public void SelectEquipment(KindEquipmentId kindEquipmentId, int equipmentTypeId)
         {
+            Debug.Log("SelectEquipment");
             _progressService.Progress.Inventory.SelectEquipmentItem(kindEquipmentId, equipmentTypeId);
             SetEquipmentState();
             
@@ -146,61 +148,7 @@ namespace CodeBase.Infrastructure.Inventory
 
             _saveLoadService.SaveProgress();
 
-        }
-
-
-        private void SetEquipmentStateOls()
-        {
-            Dictionary<FishTypeId, FishStaticData> fishes =_staticData.Fishes();
-
-            int typeLureId = _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lure);
-
-            Equipment equipmentLure = _staticData.GetEquipment(KindEquipmentId.Lure, typeLureId);
-            LureStaticData lure = equipmentLure as LureStaticData; //ПЕРЕДЕЛАТЬ!
-
-
-            int typeLaceId = _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lake);
-            Equipment equipmentLake = _staticData.GetEquipment(KindEquipmentId.Lake, typeLaceId);
-            LakeStaticData lake = equipmentLake as LakeStaticData; //ПЕРЕДЕЛАТЬ!
-
-            Dictionary<FishTypeId, FishStaticData> fishesInLake = new Dictionary<FishTypeId, FishStaticData>();
-
-            foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
-            {
-                foreach (FishTypeId FishInLake in lake.TypeFishAreFound)
-                {
-                    if (fish.Key == FishInLake)
-                    {
-                        fishesInLake.Add(fish.Key, fish.Value);
-                    }
-                }
-            }
-
-
-            Dictionary<FishTypeId, FishStaticData> temp = new Dictionary<FishTypeId, FishStaticData>();
-
-            foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishesInLake)
-            {
-                foreach (FishTypeId FishEat in lure.TypeFishEat)
-                {
-                    if (fish.Key == FishEat)
-                    {
-                        temp.Add(fish.Key, fish.Value);
-                    }
-                }
-            }
-
-
-          /*  foreach(var item in filteredFishes)
-            {
-                Debug.Log(item.Value.FishName);
-            }
-            Debug.Log("============");*/
-
-            _progressService.Progress.EquipmentStats.Fishes = temp.Select(kvp => (int)kvp.Key).ToList();
-
-        }
-     
+        }     
     }
 }
 

@@ -49,6 +49,13 @@ namespace CodeBase.GameLogic.States
         {
             if (_input.IsAttackButtonUp())
             {
+                if (!IsSuitableFish())
+                {
+                    Debug.Log("В озере нет подходящей рыбы");
+                    _windowService.Open(WindowId.PrepareWindow);
+                    return;
+                }
+
                 if (_playerProgress.Inventory.IsEquipmentCompete())
                 {
                     _logicMachine.Enter<ThrowIntoWaterState>();
@@ -61,6 +68,16 @@ namespace CodeBase.GameLogic.States
             }
         }
 
+        // Проверка рыбы в озере. 
+        // Если в озере нет рыбы которая питается выбранной наживкой, то списко EquipmentStats.Fishes - будет пустой. И метод вернет False
+        // Если в озере ЕСТЬ рыба которая питается выбранной наживкой - метод вернет True
+        private bool IsSuitableFish()
+        {
+            if (_playerProgress.EquipmentStats.Fishes.Count == 0)         
+                return false;
+            
+            return true;
+        }
 
         private async void SettingTackleContainer()
         {

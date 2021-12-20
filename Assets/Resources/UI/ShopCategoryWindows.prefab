@@ -124,10 +124,10 @@ RectTransform:
   m_Father: {fileID: 74330431054072032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 143.5, y: -150}
-  m_SizeDelta: {x: 287, y: 300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2848068712189584684
 CanvasRenderer:
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d95e444f161b0d41af26399831ad3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 2067595304219957976}
+  ParentCard: []
 --- !u!1 &2353220003628219268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1157,10 @@ PrefabInstance:
     - target: {fileID: 2491655985884190739, guid: 1d6c859212cec5042a40121fe663cf05, type: 3}
       propertyPath: m_Name
       value: Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174126303122258764, guid: 1d6c859212cec5042a40121fe663cf05, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8118333903150271523, guid: 1d6c859212cec5042a40121fe663cf05, type: 3}
       propertyPath: m_AnchorMax.y

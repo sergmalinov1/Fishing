@@ -37,6 +37,7 @@ namespace CodeBase.Data
         public void Initialize(int newSelectedLureId)
         {
             ChangeLure(newSelectedLureId);
+         //   PrintFishes();
 
         }
         public void ChangeLure(int lureId)
@@ -59,18 +60,19 @@ namespace CodeBase.Data
 
         public void CalculationStats()
         {
+            //PrintFishes();
             ChangeStats?.Invoke();
             UnicFishes();
             CalculateAvgRating();
         }
         private void CurrentLure()
         {
-            Debug.Log("CurrentLure: ");
+           // Debug.Log("CurrentLure: ");
         }
 
         private void NewLure()
         {
-            Debug.Log("NewLure: ");
+          //  Debug.Log("NewLure: ");
         }
 
         private void CalculateAvgRating()
@@ -96,7 +98,7 @@ namespace CodeBase.Data
 
         public bool PopCatchFishStack()
         {
-            PrintStats();
+          //  PrintStats();
             bool firstItem = StackToCatchFish[0];
             StackToCatchFish.RemoveAt(0);
             ChangeStats?.Invoke();

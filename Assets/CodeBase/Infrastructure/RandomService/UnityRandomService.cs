@@ -178,7 +178,7 @@ namespace CodeBase.Infrastructure.RandomService
 
             foreach(bool temp in _progressService.Progress.EquipmentStats.StackToCatchFish)
             {
-               // Debug.Log("StackToCatchFish: " + temp);
+            //   Debug.Log("StackToCatchFish: " + temp);
             }
 
         }

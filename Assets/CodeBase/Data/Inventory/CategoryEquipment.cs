@@ -45,8 +45,6 @@ namespace CodeBase.Data
             }
 
             SetSelectedItem(typeId);
-
-
             PurchasedEquipment.Add(new EquipmentItem(typeId, qty));
             //PrintCategoty();
         }
