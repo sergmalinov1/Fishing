@@ -30,6 +30,7 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
+            _playerProgress.SettingWindow.EndGameLoop?.Invoke();
             _logicMachine.TackleContainer.MoveToBasicPosition();
             //_logicMachine.TackleContainer.DestroyBobber();
             _logicMachine.TackleContainer.DestroyLure();

@@ -13,25 +13,26 @@ namespace CodeBase.UI.Windows.PrepareState
  
     public SettingForFishContainer SettingForFishContainer;
 
-    public void Construct(
-      PlayerProgress progressServiceProgress, 
-      IStaticDataService staticData, 
-      IAssetProvider assetsProvider)
-    {
-   
-      SettingForFishContainer.Construct(progressServiceProgress, staticData, assetsProvider, this);
+        public void Construct(
+          PlayerProgress progressServiceProgress,
+          IStaticDataService staticData,
+          IAssetProvider assetsProvider)
+        {
+
+            SettingForFishContainer.Construct(progressServiceProgress, staticData, assetsProvider, this);
+
+        }
+
+        public void Initialize()
+        {
+            Title.text = "Наживка";
+
+            SettingForFishContainer.Initialize();
+        }
+        protected override void SubscribeUpdate() { }
+
+        protected override void Cleanup() { }
+
+
     }
-
-    public void Initialize()
-    {
-      Title.text = "Наживка";
- 
-      SettingForFishContainer.Initialize();
-    }
-    protected override void SubscribeUpdate(){}
-
-    protected override void Cleanup(){ }
-
-  
-  }
 }

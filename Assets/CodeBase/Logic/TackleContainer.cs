@@ -41,8 +41,20 @@ namespace CodeBase.GameLogic
             transform.DOMoveY(8, 1);
 
             Sequence run = DOTween.Sequence();
+
             Tween rot = HookContainer.transform.DORotate(new Vector3(0, 360, 0), 10, RotateMode.LocalAxisAdd).SetEase(Ease.Linear);
             run.Append(rot).SetLoops(-1);
+        }
+
+        public void MoveFromWaterAndBreak()
+        {
+            BobberContainer.DOMoveY(12, 1);
+
+            Sequence run = DOTween.Sequence();
+            run.Append(HookContainer.DOMoveY(6, 1));
+            run.Append(HookContainer.DOMoveY(-10, 1));
+
+
         }
 
         public void SetBobberAnimator()
@@ -94,6 +106,7 @@ namespace CodeBase.GameLogic
             DestroyBobber();
             DestroyFish();
         }
+
 
     }
 }

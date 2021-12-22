@@ -38,12 +38,7 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
-            _logicStateMachine.CameraControl.RotateCameraUp();
-
-            _logicStateMachine.TackleContainer.DisableBobberAnimation();
-            _logicStateMachine.TackleContainer.MoveFromWater();
-
-            _windows = _windowService.Open(WindowId.Result);
+            PlayFishUpAnimation();
         }
 
       
@@ -57,12 +52,31 @@ namespace CodeBase.GameLogic.States
         {
             if (_input.IsAttackButtonUp())
             {
-                _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
+                if(_playerProgress.FishOnHook.IsFishOnHook)
+                    _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
+
                 _saveLoadService.SaveProgress();
                 _logicStateMachine.Enter<BasicState>();
             }
         }
 
+        private void PlayFishUpAnimation()
+        {
+            _logicStateMachine.CameraControl.RotateCameraUp();
+            _logicStateMachine.TackleContainer.DisableBobberAnimation();
+
+            bool islineBreak = _playerProgress.FishOnHook.IsLineBreak;
+
+            if(islineBreak)
+            {
+                _logicStateMachine.TackleContainer.MoveFromWaterAndBreak();
+            }
+            else
+            {
+                _logicStateMachine.TackleContainer.MoveFromWater();             
+            }
+            _windows = _windowService.Open(WindowId.Result);
+        }
 
     }
 }

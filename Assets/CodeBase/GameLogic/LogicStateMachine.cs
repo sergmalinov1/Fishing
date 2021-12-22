@@ -19,8 +19,11 @@ namespace CodeBase.GameLogic
 {
   public class LogicStateMachine : MonoBehaviour, ILogicStateMachine
   {
-      //  public GameObject Bobber;
-       // public BobberAnimator BobberAnimator;
+        //  public GameObject Bobber;
+        // public BobberAnimator BobberAnimator;
+
+       
+
         public RotateCamera CameraControl;
 
         public GameObject Fish;
@@ -79,6 +82,7 @@ namespace CodeBase.GameLogic
             _activeState.UpdateLogic();
         }
 
+
         public void Enter<TState>() where TState : class, IState
         {
             IState state = ChangeState<TState>();
@@ -105,53 +109,6 @@ namespace CodeBase.GameLogic
             CameraControl = camera.GetComponent<RotateCamera>();
         }
 
-
-        /*
-        public void ContainerMoveDown(int count)
-        {
-            StartCoroutine(MoveDownContainer(count));
-        }
-
-   
-        public void FishUP()
-        {
-            StartCoroutine(MoveUp());
-        }
-
-        public void FishUPAndDestrou()
-        {
-            StartCoroutine(MoveUpDestroy());
-        }
-
-        private IEnumerator MoveUp()
-        {
-            yield return new WaitForSeconds(0.6f);
-
-            for (int i = 0; i < 60; i++)
-            {
-                Fish.transform.position += new Vector3(0f, 0.1f, 0f);
-                yield return new WaitForSeconds(0.01f);
-            }
-        }
-
-        private IEnumerator MoveUpDestroy()
-        {
-            for (int i = 0; i < 60; i++)
-            {
-                Fish.transform.position += new Vector3(0f, 0.1f, 0f);
-                yield return new WaitForSeconds(0.01f);
-            }
-
-            Destroy(Fish);
-        }
-
-        private IEnumerator MoveDownContainer(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                TackleContainerObject.transform.position -= new Vector3(0f, 0.2f, 0f);
-                yield return new WaitForSeconds(0.01f);
-            }
-        }*/
+      
     }
 }

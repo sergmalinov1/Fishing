@@ -18,9 +18,11 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         public CategoryContainer CategoryContainer;
 
 
+
         public void Construct(IUIFactory uIFactory, PlayerProgress progress, IAssetProvider assetsProvider, IStaticDataService staticData, IInventoryService _inventoryService)
         {
             CategoryContainer.Construct(this, uIFactory, progress, assetsProvider, staticData, _inventoryService);
+            
         }
 
 
@@ -32,7 +34,7 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
 
         protected override void SubscribeUpdate() { }
 
-        protected override void Cleanup() { }
+        protected override void Cleanup()  { }
 
         
     }

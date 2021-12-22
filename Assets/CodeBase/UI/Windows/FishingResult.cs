@@ -37,20 +37,28 @@ namespace CodeBase.UI.Windows
     
     private void SetFishData()
     {
-      if (_playerProgress.FishOnHook.IsFishOnHook)
-      {
-        FishName.text = $"{_playerProgress.FishOnHook.FishName}";
-        FishSize.text = $"12 sm";
-        PrizeAmmount.text = $"{_playerProgress.FishOnHook.PrizeMoney}";
-        PrizePoints.text = $"777";
-      }
-      else
-      {
-        FishName.text = $"Попробуй";
-        FishSize.text = $"еще раз";
-        PrizeAmmount.text = "0";
-        PrizePoints.text = "0";
-      }
+            if (_playerProgress.FishOnHook.IsFishOnHook)
+            {
+                FishName.text = $"{_playerProgress.FishOnHook.FishName}";
+                FishSize.text = $"{_playerProgress.FishOnHook.FishWeight} sm";
+                PrizeAmmount.text = $"{_playerProgress.FishOnHook.PrizeMoney}";
+                PrizePoints.text = $"777";
+            }
+            if (_playerProgress.FishOnHook.IsLineBreak)
+            {
+                FishName.text = $"Леска";
+                FishSize.text = $"оборвалась";
+                PrizeAmmount.text = "0";
+                PrizePoints.text = "0";
+            }
+
+            else
+            {
+                FishName.text = $"Попробуй";
+                FishSize.text = $"еще раз";
+                PrizeAmmount.text = "0";
+                PrizePoints.text = "0";
+            }
     }
   }
 }

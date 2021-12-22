@@ -37,6 +37,7 @@ namespace CodeBase.GameLogic.States
         {
             SettingTackleContainer();
             _logicMachine.TackleContainer.MoveToPlayer();
+            _playerProgress.SettingWindow.StartGameLoop?.Invoke();
         }
 
       

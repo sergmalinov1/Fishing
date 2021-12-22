@@ -12,7 +12,7 @@ namespace CodeBase.Data
 
         public float CoefficientOfLuck;
 
-        public int MaxLiftWeight;
+        public int MaxLineLiftWeight;
 
         public int MinFishWeight;
 
@@ -129,7 +129,7 @@ namespace CodeBase.Data
         public void Print()
         {
             Debug.Log("CoefficientOfLuck: " + CoefficientOfLuck);
-            Debug.Log("MaxLiftWeight: " + MaxLiftWeight);
+            Debug.Log("MaxLiftWeight: " + MaxLineLiftWeight);
             Debug.Log("MinFishWeight: " + MinFishWeight);
             Debug.Log("MaxFishWeight: " + MaxFishWeight);
             Debug.Log("SelectedLureId: " + SelectedLureId);

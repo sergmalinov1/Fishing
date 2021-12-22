@@ -23,7 +23,7 @@ namespace CodeBase.StaticData.Visitor
 
         public void Visit(FishingLineStaticData fishingLine)
         {
-            _equipmentStats.MaxLiftWeight = fishingLine.MaxLiftWeight;
+            _equipmentStats.MaxLineLiftWeight = fishingLine.MaxLiftWeight;
             _equipmentStats.AddRating(fishingLine.Rating);
         }
 

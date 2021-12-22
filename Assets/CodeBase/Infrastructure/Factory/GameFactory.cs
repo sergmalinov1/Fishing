@@ -54,6 +54,9 @@ namespace CodeBase.Infrastructure.Factory
             foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
                 openWindowButton.Construct(_windowService);
 
+            HudManager hudManager = hud.GetComponentInChildren<HudManager>();
+            hudManager.Construct(_progressService);
+            hudManager.Initialize();
 
             MoneyCounter moneyObj = hud.GetComponentInChildren<MoneyCounter>();
             moneyObj.Construct(_progressService.Progress); ;

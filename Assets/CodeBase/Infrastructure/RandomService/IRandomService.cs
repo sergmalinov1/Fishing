@@ -5,10 +5,13 @@ namespace CodeBase.Infrastructure.RandomService
 {
     public interface IRandomService : IService
     {
-        public float TimeToBite();
+        float TimeToBite();
 
-        public FishStaticData RandomFish();
-        public bool IsCatchedFish();
+        FishStaticData RandomFish();
+
+        int RandomFishSize();
+        bool IsCatchedFish();
         void GenerateNewLureStack();
+        
     }
 }

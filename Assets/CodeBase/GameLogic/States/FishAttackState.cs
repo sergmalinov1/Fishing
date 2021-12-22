@@ -20,6 +20,7 @@ namespace CodeBase.GameLogic.States
         private IInputService _input;
 
         private float _timeToEndAttack = 5.0f;
+        private bool _isCatchStack = false; //Шанс поимки рыбы на основании стека
         private bool _isCatch = false;
 
         public FishAttackState(
@@ -38,6 +39,7 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
+            _isCatchStack = false;
             _isCatch = false;
             _timeToEndAttack = 5.0f;
             RandomFish();
@@ -61,7 +63,7 @@ namespace CodeBase.GameLogic.States
 
             if (_input.IsAttackButtonUp())
             {
-                if (_randomService.IsCatchedFish() && _isCatch)
+                if (_randomService.IsCatchedFish() && _isCatchStack)
                 {
                     CatchFish();
                 }
@@ -70,6 +72,32 @@ namespace CodeBase.GameLogic.States
                     NotCatchFish();
                 }
             }
+
+            if(_isCatch)
+            {
+                if(!IsHoldLine())
+                {
+                    LineBreak();
+                }
+
+                _logicStateMachine.Enter<ResultState>();
+            }
+        }
+
+        private void LineBreak()
+        {
+            _playerProgress.FishOnHook.IsLineBreak = true;
+        }
+
+        private bool IsHoldLine()
+        {
+            int fishWeight = _playerProgress.FishOnHook.FishWeight;
+            int maxLineLift = _playerProgress.EquipmentStats.MaxLineLiftWeight;
+
+            if(fishWeight > maxLineLift)
+                return false;
+
+            return true;
         }
 
         private void CatchFish()
@@ -77,24 +105,25 @@ namespace CodeBase.GameLogic.States
             _playerProgress.ResultOfFishing.AddCaughtFish(_playerProgress.FishOnHook.FishName);
             _playerProgress.FishOnHook.CatchFish();
             CreateFish();
-            EndAttack();
+            _isCatch = true;
+
         }
 
         private void NotCatchFish()
         {
             _playerProgress.FishOnHook.NotCatchFish();
-            EndAttack();
+            _isCatch = true;
         }
 
         private async void CreateFish()
         {
             FishTypeId fishId = _playerProgress.FishOnHook.FishTypeId;
-            _logicStateMachine.TackleContainer.Fish = await _gameFactory.CreateFishInContainer(_logicStateMachine.TackleContainer, fishId);
-        }
 
-        private void EndAttack()
-        {
-            _logicStateMachine.Enter<ResultState>();
+            int fishWeight = _randomService.RandomFishSize();
+
+            _playerProgress.FishOnHook.SetFishWeight(fishWeight);   
+
+           _logicStateMachine.TackleContainer.Fish = await _gameFactory.CreateFishInContainer(_logicStateMachine.TackleContainer, fishId);
         }
 
         private void RandomFish()
@@ -102,11 +131,12 @@ namespace CodeBase.GameLogic.States
             FishStaticData fishData = _randomService.RandomFish();
 
             _playerProgress.FishOnHook.SetFish(fishData);
+
         }
 
         private void UseLure()
         {
-            _isCatch = _playerProgress.EquipmentStats.PopCatchFishStack();
+            _isCatchStack = _playerProgress.EquipmentStats.PopCatchFishStack();
 
             _playerProgress.Inventory.UseSelectedEquipmentItem(KindEquipmentId.Lure);
             _logicStateMachine.TackleContainer.DestroyLure();

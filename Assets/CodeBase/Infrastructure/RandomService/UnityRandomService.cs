@@ -28,6 +28,8 @@ namespace CodeBase.Infrastructure.RandomService
             return 2.0f;
         }
 
+
+
         public FishStaticData RandomFish()
         {
             //  _progressService.Progress.EquipmentStats.Print();
@@ -68,91 +70,23 @@ namespace CodeBase.Infrastructure.RandomService
             return fishes[0];  //Значение по умолчанию. Сюда не должно дойти
         }
 
+        public int RandomFishSize()
+        {
+
+            int min = _progressService.Progress.EquipmentStats.MinFishWeight;
+            int max = _progressService.Progress.EquipmentStats.MaxFishWeight + 1;
+
+            int veight = Random.Range(min, max);
+
+            return veight;
+        }
+
+
+
         public bool IsCatchedFish()
         {
             return true;
-        }
-
-
-        private Dictionary<FishTypeId, FishStaticData> FilterByLureOLD(Dictionary<FishTypeId, FishStaticData> fishes)
-        {
-
-            int typeLureId =  _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lure);
-
-            Equipment equipmentLure = _staticData.GetEquipment(KindEquipmentId.Lure, typeLureId);
-            LureStaticData lure = equipmentLure as LureStaticData; //ПЕРЕДЕЛАТЬ!
-
-
-            int typeLaceId = _progressService.Progress.Inventory.GetSelectedEquipmentByKind(KindEquipmentId.Lake);
-            Equipment equipmentLake = _staticData.GetEquipment(KindEquipmentId.Lake, typeLaceId);
-            LakeStaticData lake = equipmentLake as LakeStaticData; //ПЕРЕДЕЛАТЬ!
-
-
-            Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
-
-            foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
-            {
-                foreach (FishTypeId FishEat in lure.TypeFishEat)
-                {
-                    if (fish.Key == FishEat)
-                    {
-                        filteredFishes.Add(fish.Key, fish.Value);
-                    }
-                }
-            }
-            return filteredFishes;
-
-            /* LureTypeId lureType = _progressService.Progress.FishOnHook.LureTypeId;
-             LureStaticData lure = _staticData.ForLure(lureType);
-             Dictionary<FishTypeId, FishStaticData> filteredFishes = new Dictionary<FishTypeId, FishStaticData>();
-
-             foreach (KeyValuePair<FishTypeId, FishStaticData> fish in fishes)
-             {
-                 foreach (FishTypeId FishEat in lure.TypeFishEat)
-                 {
-                     if (fish.Key == FishEat)
-                     {
-                         filteredFishes.Add(fish.Key, fish.Value);
-                     }
-                 }
-             }*/
-
-            //  return filteredFishes;
-            // return null;
-
-        }
-
-
-        //Алгоритм рандома на примере массива
-        private float Choose(float[] probs)
-        {
-
-            float total = 0;
-
-            foreach (float elem in probs)
-            {
-                total += elem;
-            }
-
-            float randomPoint = Random.value * total;
-
-            for (int i = 0; i < probs.Length; i++)
-            {
-                if (randomPoint < probs[i])
-                {
-                    return i;
-                }
-                else
-                {
-                    randomPoint -= probs[i];
-                }
-            }
-            return probs.Length - 1;
-        }
-
-        private void AddInQueue()
-        {
-        }
+        }  
 
 
         public void GenerateNewLureStack()
@@ -178,7 +112,7 @@ namespace CodeBase.Infrastructure.RandomService
 
             foreach(bool temp in _progressService.Progress.EquipmentStats.StackToCatchFish)
             {
-            //   Debug.Log("StackToCatchFish: " + temp);
+               Debug.Log("StackToCatchFish: " + temp);
             }
 
         }
