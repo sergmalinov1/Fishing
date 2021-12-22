@@ -97,7 +97,7 @@ namespace CodeBase.Infrastructure.Inventory
 
         public void BuyEquipment(KindEquipmentId kindEquipmentId, int typeId, int price)
         {
-            Debug.Log("BuyEquipment");
+           // Debug.Log("BuyEquipment");
             if(!IsCanBuy(price))
             {
                 return;
@@ -110,7 +110,7 @@ namespace CodeBase.Infrastructure.Inventory
 
         public void SelectEquipment(KindEquipmentId kindEquipmentId, int equipmentTypeId)
         {
-            Debug.Log("SelectEquipment");
+            //Debug.Log("SelectEquipment");
             _progressService.Progress.Inventory.SelectEquipmentItem(kindEquipmentId, equipmentTypeId);
             SetEquipmentState();
             

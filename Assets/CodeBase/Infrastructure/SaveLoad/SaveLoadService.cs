@@ -29,7 +29,7 @@ namespace CodeBase.Infrastructure.SaveLoad
             PlayerPrefs.SetString(ProgressKey, json);
 
 
-            File.WriteAllText("WriteLines.txt", json);
+           // File.WriteAllText("WriteLines.txt", json);
         }
 
 
