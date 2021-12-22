@@ -52,7 +52,7 @@ namespace CodeBase.GameLogic
 
             Sequence run = DOTween.Sequence();
             run.Append(HookContainer.DOMoveY(6, 1));
-            run.Append(HookContainer.DOMoveY(-10, 1));
+            run.Append(HookContainer.DOMoveY(-10, 1)).OnComplete(DestroyBobberAndFish); 
 
 
         }

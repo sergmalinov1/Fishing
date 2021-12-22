@@ -32,7 +32,6 @@ namespace CodeBase.GameLogic.States
         {
             _playerProgress.SettingWindow.EndGameLoop?.Invoke();
             _logicMachine.TackleContainer.MoveToBasicPosition();
-            //_logicMachine.TackleContainer.DestroyBobber();
             _logicMachine.TackleContainer.DestroyLure();
             _timeToNextRound = 1f;
         }

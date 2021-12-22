@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using CodeBase.Data;
 using CodeBase.Infrastructure.Factory;
@@ -38,10 +39,12 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
+            ChangeMoneyAndSave();
+          
             PlayFishUpAnimation();
         }
 
-      
+       
 
         public void Exit()
         {
@@ -52,12 +55,15 @@ namespace CodeBase.GameLogic.States
         {
             if (_input.IsAttackButtonUp())
             {
-                if(_playerProgress.FishOnHook.IsFishOnHook)
-                    _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
-
-                _saveLoadService.SaveProgress();
                 _logicStateMachine.Enter<BasicState>();
             }
+        }
+        private void ChangeMoneyAndSave()
+        {
+            if (_playerProgress.FishOnHook.IsFishOnHook)
+                _playerProgress.MoneyData.Add(_playerProgress.FishOnHook.PrizeMoney);
+
+            _saveLoadService.SaveProgress();
         }
 
         private void PlayFishUpAnimation()
