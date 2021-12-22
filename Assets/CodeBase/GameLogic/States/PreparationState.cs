@@ -52,6 +52,7 @@ namespace CodeBase.GameLogic.States
                 if (!IsSuitableFish())
                 {
                     Debug.Log("В озере нет подходящей рыбы");
+                    _logicMachine.Enter<BasicState>();
                     _windowService.Open(WindowId.PrepareWindow);
                     return;
                 }

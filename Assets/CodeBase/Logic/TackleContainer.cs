@@ -13,7 +13,7 @@ namespace CodeBase.GameLogic
         public Transform OnHookContainer;
 
         [HideInInspector] public GameObject Bobber;
-        [HideInInspector] public GameObject OnHook;
+     //   [HideInInspector] public GameObject OnHook;
         [HideInInspector] public GameObject Fish;
         [HideInInspector] public GameObject Lure;
 
@@ -41,7 +41,7 @@ namespace CodeBase.GameLogic
             transform.DOMoveY(8, 1);
 
             Sequence run = DOTween.Sequence();
-            Tween rot = HookContainer.transform.DORotate(new Vector3(0, 360, 0), 10, RotateMode.FastBeyond360).SetEase(Ease.Linear);
+            Tween rot = HookContainer.transform.DORotate(new Vector3(0, 360, 0), 10, RotateMode.LocalAxisAdd).SetEase(Ease.Linear);
             run.Append(rot).SetLoops(-1);
         }
 
@@ -49,6 +49,27 @@ namespace CodeBase.GameLogic
         {
             _bobberAnimator = Bobber.GetComponent<BobberAnimator>();
         }
+
+     
+        public void DestroyLure()
+        {
+            Destroy(Lure);
+          //  Lure = null;
+        }
+
+        public void DestroyBobber()
+        {
+            Destroy(Bobber);
+           // Bobber = null;
+        }
+
+        public void DestroyFish()
+        {
+            Destroy(Fish);
+           // Fish = null;
+        }
+
+
 
         public BobberAnimator BobberAnimator
         {
@@ -61,20 +82,6 @@ namespace CodeBase.GameLogic
             animator.enabled = false;
         }
 
-        public void DestroyLure()
-        {
-            Destroy(Lure);
-        }
-
-        public void DestroyBobber()
-        {
-            Destroy(Bobber);
-        }
-
-        public void DestroyFish()
-        {
-            Destroy(Fish);
-        }
 
         private void EnableBobberAnimation()
         {

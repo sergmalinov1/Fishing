@@ -6,6 +6,15 @@ using UnityEngine;
 
 namespace CodeBase.GameLogic.States
 {
+
+    /*
+        * StartState
+        * BasicState
+        * PrepareState
+        * TrowInWater
+        * FishAttackState
+        * ResultState
+     */
     public class StartState : IStateLogic
     {
         private readonly LogicStateMachine _logicMachine;

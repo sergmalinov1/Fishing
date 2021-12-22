@@ -31,6 +31,8 @@ namespace CodeBase.GameLogic.States
         public void Enter()
         {
             _logicMachine.TackleContainer.MoveToBasicPosition();
+            //_logicMachine.TackleContainer.DestroyBobber();
+            _logicMachine.TackleContainer.DestroyLure();
             _timeToNextRound = 1f;
         }
 
