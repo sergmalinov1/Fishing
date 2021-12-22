@@ -37,14 +37,6 @@ MonoBehaviour:
     m_Address: UIRoot
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7da709cf842c3644d956dcbf31e962d3
-    m_Address: AchieveItem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ad74c6e30a7737c47821dcdf14f53e15
-    m_Address: ShopItem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 4fa27fb910b6ecb46a03290921bf6b79
     m_Address: LureItemPrepare
     m_ReadOnly: 0
@@ -59,14 +51,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 2f39795f03a08e64fb446a1e96e8b8c1
     m_Address: Goliath_grouper_prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 536bf722d6b3efc42b4a39dad25ac961
-    m_Address: SelectShopCard
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f1b1980157de66c409f6d2a5da04db82
-    m_Address: ShopCardOld
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e75ae33030248fd4483153a46289297a
