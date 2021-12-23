@@ -106,16 +106,6 @@ namespace CodeBase.Infrastructure.Factory
             return splash;
         }
 
-        public async Task<GameObject> CreateFish(FishTypeId typeId, Transform parent)
-        {
-            FishStaticData fishData = _staticData.ForFish(typeId);
-
-            GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
-            GameObject fish = UnityEngine.Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
-
-            return fish;
-        }
-
         public async Task CreateBackground()
         {
             Vector3 position = new Vector3(0, 0, 25.0f);
@@ -175,6 +165,14 @@ namespace CodeBase.Infrastructure.Factory
             return bobber;
         }
 
+
+        public async Task<GameObject> CreateHookInContainer(TackleContainer tackleContainer)
+        {
+            GameObject prefab = await _assets.Load<GameObject>("hook_prefab");
+            Transform container = tackleContainer.HookContainer;
+            GameObject hook = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+            return hook;
+        }
 
         private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
         {

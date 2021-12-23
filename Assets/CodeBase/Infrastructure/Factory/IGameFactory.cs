@@ -31,9 +31,10 @@ namespace CodeBase.Infrastructure.Factory
 
         Task<GameObject> CreateFishInContainer(TackleContainer tackleContainer, FishTypeId fishId);
 
+        Task<GameObject> CreateHookInContainer(TackleContainer tackleContainer);
 
-        //-----
+        //OLD
         Task<GameObject> CreateBobber(Vector3 at);
-      
+
     }
 }

@@ -46,8 +46,8 @@ namespace CodeBase.UI.Windows
             }
             if (_playerProgress.FishOnHook.IsLineBreak)
             {
-                FishName.text = $"Леска";
-                FishSize.text = $"оборвалась";
+                FishName.text = $"Обрыв";
+                FishSize.text = $"лески";
                 PrizeAmmount.text = "0";
                 PrizePoints.text = "0";
             }

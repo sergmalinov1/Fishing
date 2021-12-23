@@ -81,9 +81,9 @@ MonoBehaviour:
   HookContainer: {fileID: 7657853886211843417}
   OnHookContainer: {fileID: 4902715845532543109}
   Bobber: {fileID: 0}
-  OnHook: {fileID: 0}
   Fish: {fileID: 0}
   Lure: {fileID: 0}
+  Hook: {fileID: 0}
 --- !u!1 &6474467525841516056
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 177596, guid: dae0e1424e56c734c9a32339e3471f24, type: 3}
       propertyPath: m_Name
       value: hook_prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 177596, guid: dae0e1424e56c734c9a32339e3471f24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 401418, guid: dae0e1424e56c734c9a32339e3471f24, type: 3}
       propertyPath: m_RootOrder

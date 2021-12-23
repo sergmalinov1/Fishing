@@ -16,6 +16,7 @@ namespace CodeBase.GameLogic
      //   [HideInInspector] public GameObject OnHook;
         [HideInInspector] public GameObject Fish;
         [HideInInspector] public GameObject Lure;
+        [HideInInspector] public GameObject Hook;
 
         private BobberAnimator _bobberAnimator;
 
@@ -66,19 +67,19 @@ namespace CodeBase.GameLogic
         public void DestroyLure()
         {
             Destroy(Lure);
-          //  Lure = null;
+            Lure = null;
         }
 
         public void DestroyBobber()
         {
             Destroy(Bobber);
-           // Bobber = null;
+            Bobber = null;
         }
 
         public void DestroyFish()
         {
             Destroy(Fish);
-           // Fish = null;
+            Fish = null;
         }
 
 

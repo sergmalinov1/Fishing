@@ -96,6 +96,8 @@ namespace CodeBase.GameLogic.States
 
             _logicMachine.TackleContainer.Lure = await _gameFactory.CreateLureInContainer(_logicMachine.TackleContainer, bobberId);
 
+            _logicMachine.TackleContainer.Hook = await _gameFactory.CreateHookInContainer(_logicMachine.TackleContainer);
+
         }
 
         private async void DefinePosition()
