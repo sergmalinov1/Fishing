@@ -35,6 +35,8 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
+            _playerProgress.FishOnHook.ClearBool();
+
             SettingTackleContainer();
             _logicMachine.TackleContainer.MoveToPlayer();
             _playerProgress.SettingWindow.StartGameLoop?.Invoke();

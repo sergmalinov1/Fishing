@@ -9,6 +9,7 @@ using CodeBase.Infrastructure.Input;
 using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
+using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.Infrastructure.States;
 using CodeBase.Logic;
 using CodeBase.StaticData;
@@ -19,11 +20,6 @@ namespace CodeBase.GameLogic
 {
   public class LogicStateMachine : MonoBehaviour, ILogicStateMachine
   {
-        //  public GameObject Bobber;
-        // public BobberAnimator BobberAnimator;
-
-       
-
         public RotateCamera CameraControl;
 
         public GameObject Fish;
@@ -31,14 +27,16 @@ namespace CodeBase.GameLogic
         public GameObject TackleContainerObject;
         public TackleContainer TackleContainer;
 
-
         private Dictionary<Type, IStateLogic> _states;
         private IStateLogic _activeState;
 
         private IGameFactory _gameFactory;
         private IWindowService _windowService;
         private IInputService _input;
+
         private PlayerProgress _playerProgress;
+        private IPersistentProgress _progressService;
+
         private IStaticDataService _staticData;
         private ISaveLoadService _saveLoadService;
         private IRandomService _randomService;
@@ -46,7 +44,7 @@ namespace CodeBase.GameLogic
         public void Construct(
           GameFactory gameFactory,
           IWindowService windowService,
-          PlayerProgress playerProgress,
+          IPersistentProgress progressService,
           IStaticDataService staticData,
           ISaveLoadService saveLoadService,
           IRandomService randomService)
@@ -55,7 +53,8 @@ namespace CodeBase.GameLogic
             _gameFactory = gameFactory;
             _windowService = windowService;
             _input = AllServices.Container.Single<IInputService>();
-            _playerProgress = playerProgress;
+            _playerProgress = progressService.Progress;
+            _progressService = progressService;
             _staticData = staticData;
             _saveLoadService = saveLoadService;
             _randomService = randomService;
@@ -67,8 +66,13 @@ namespace CodeBase.GameLogic
                 [typeof(BasicState)] = new BasicState(this, _input, _windowService, _playerProgress),
                 [typeof(PreparationState)] = new PreparationState(this, _input, _windowService, _playerProgress, _gameFactory),
                 [typeof(ThrowIntoWaterState)] = new ThrowIntoWaterState(this, _randomService),
-                [typeof(FishAttackState)] = new FishAttackState(this, _input, _playerProgress, _randomService,  _gameFactory),
-                [typeof(ResultState)] = new ResultState(this, _input, _windowService, _playerProgress, _saveLoadService)
+                [typeof(FishAttackState)] = new FishAttackState(this, _input, _progressService, _randomService,  _gameFactory, _saveLoadService),
+                [typeof(ResultState)] = new ResultState(this, _input, _windowService, _playerProgress, _saveLoadService),
+
+                [typeof(EmptyHookState)] = new EmptyHookState(this),
+                [typeof(FishOnHookState)] = new FishOnHookState(this),
+                [typeof(FishWithBreakLineState)] = new FishWithBreakLineState(this),
+                [typeof(HookWithLureState)] = new HookWithLureState(this)
             };
         }
 

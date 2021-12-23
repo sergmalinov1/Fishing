@@ -20,6 +20,7 @@ namespace CodeBase.GameLogic
 
         private BobberAnimator _bobberAnimator;
 
+
         public void MoveToBasicPosition()
         {
             transform.DOMoveY(20, 1).OnComplete(DestroyBobberAndFish);
@@ -82,7 +83,11 @@ namespace CodeBase.GameLogic
             Fish = null;
         }
 
-
+        public void DestroyHook()
+        {
+            Destroy(Hook);
+            Hook = null;
+        }
 
         public BobberAnimator BobberAnimator
         {
@@ -94,7 +99,6 @@ namespace CodeBase.GameLogic
             Animator animator = Bobber.GetComponent<Animator>();
             animator.enabled = false;
         }
-
 
         private void EnableBobberAnimation()
         {

@@ -73,7 +73,7 @@ namespace CodeBase.Infrastructure.Factory
             GameObject fishing = await InstantiateRegistredAsync(AssetsAddress.FishingLogic);
 
             LogicStateMachine bobberSpawner = fishing.GetComponent<LogicStateMachine>();
-            bobberSpawner.Construct(this, _windowService, _progressService.Progress, _staticData, _saveLoadService, _randomService);
+            bobberSpawner.Construct(this, _windowService, _progressService, _staticData, _saveLoadService, _randomService);
             bobberSpawner.Initialize();
             //  bobberSpawner.Enter<StartState>();
 

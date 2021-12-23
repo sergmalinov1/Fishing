@@ -11,15 +11,20 @@ namespace CodeBase.Data
         public Action Cathed;
         public Action SelectedLure;
 
+        public bool IsFishOnHook = false;
+        public bool IsLineBreak = false;
+        public bool IsEatLure = false;
+        public bool IsBadLuck = false;
+
+
         public LureTypeId LureTypeId;
         public FishTypeId FishTypeId;
-        public bool IsFishOnHook;
+        
         public string FishName;
         public int PrizeMoney;
         public int ChanceToCatch;
         public int FishWeight;
 
-        public bool IsLineBreak = false;
 
 
         public void SetFishWeight(int fishWeight)
@@ -52,6 +57,14 @@ namespace CodeBase.Data
         {
             LureTypeId = lureTypeId;
             SelectedLure?.Invoke();
+        }
+
+        public void ClearBool()
+        {
+            IsFishOnHook = false;
+            IsLineBreak = false;
+            IsEatLure = false;
+            IsBadLuck = false;
         }
     }
 }

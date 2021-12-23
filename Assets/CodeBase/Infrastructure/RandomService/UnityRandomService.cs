@@ -107,7 +107,8 @@ namespace CodeBase.Infrastructure.RandomService
                     chanse = false;
                 }
 
-                _progressService.Progress.EquipmentStats.StackToCatchFish.Add(chanse);
+                // _progressService.Progress.EquipmentStats.StackToCatchFish.Add(chanse);
+                _progressService.Progress.EquipmentStats.StackToCatchFish.Add(true);
             }
 
             foreach(bool temp in _progressService.Progress.EquipmentStats.StackToCatchFish)

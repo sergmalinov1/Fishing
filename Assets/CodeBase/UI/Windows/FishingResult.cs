@@ -44,15 +44,28 @@ namespace CodeBase.UI.Windows
                 PrizeAmmount.text = $"{_playerProgress.FishOnHook.PrizeMoney}";
                 PrizePoints.text = $"777";
             }
-            if (_playerProgress.FishOnHook.IsLineBreak)
+            else if (_playerProgress.FishOnHook.IsLineBreak)
             {
                 FishName.text = $"Обрыв";
                 FishSize.text = $"лески";
                 PrizeAmmount.text = "0";
                 PrizePoints.text = "0";
             }
-
-            else
+            else if (_playerProgress.FishOnHook.IsEatLure)
+            {
+                FishName.text = $"Съели";
+                FishSize.text = $"приманку";
+                PrizeAmmount.text = "0";
+                PrizePoints.text = "0";
+            }
+            else if(_playerProgress.FishOnHook.IsBadLuck)
+            {
+                FishName.text = $"НЕ";
+                FishSize.text = $"повезло(";
+                PrizeAmmount.text = "0";
+                PrizePoints.text = "0";
+            }
+            else 
             {
                 FishName.text = $"Попробуй";
                 FishSize.text = $"еще раз";

@@ -39,9 +39,9 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
-            ChangeMoneyAndSave();
-          
-            PlayFishUpAnimation();
+            _windows = _windowService.Open(WindowId.Result);
+            //  ChangeMoneyAndSave();
+            // PlayFishUpAnimation();
         }
 
        
@@ -81,7 +81,6 @@ namespace CodeBase.GameLogic.States
             {
                 _logicStateMachine.TackleContainer.MoveFromWater();             
             }
-            _windows = _windowService.Open(WindowId.Result);
         }
 
     }

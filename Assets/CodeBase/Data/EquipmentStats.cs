@@ -44,12 +44,10 @@ namespace CodeBase.Data
         {
             if(SelectedLureId == lureId)
             {
-                CurrentLure();
             }
             else
             {
                 SelectedLureId = lureId;
-                NewLure();
             }
         }
 
@@ -65,15 +63,7 @@ namespace CodeBase.Data
             UnicFishes();
             CalculateAvgRating();
         }
-        private void CurrentLure()
-        {
-           // Debug.Log("CurrentLure: ");
-        }
 
-        private void NewLure()
-        {
-          //  Debug.Log("NewLure: ");
-        }
 
         private void CalculateAvgRating()
         {
@@ -102,6 +92,13 @@ namespace CodeBase.Data
             bool firstItem = StackToCatchFish[0];
             StackToCatchFish.RemoveAt(0);
             ChangeStats?.Invoke();
+            return firstItem;
+        }
+
+        public bool PeekCatchFishStack()
+        {
+            //  PrintStats();
+            bool firstItem = StackToCatchFish[0];
             return firstItem;
         }
 
