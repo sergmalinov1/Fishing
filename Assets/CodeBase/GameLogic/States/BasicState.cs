@@ -1,5 +1,6 @@
 ﻿using CodeBase.Data;
 using CodeBase.Infrastructure.Input;
+using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.Infrastructure.States;
 using CodeBase.UI.Services.WindowsService;
 using System;
@@ -16,21 +17,21 @@ namespace CodeBase.GameLogic.States
         private readonly LogicStateMachine _logicMachine;
         private readonly IInputService _input;
         private readonly IWindowService _windowService;
-        private readonly PlayerProgress _playerProgress;
+        private readonly IPersistentProgress _progressService;
 
         private float _timeToNextRound = 1f;
 
-        public BasicState(LogicStateMachine logicMachine, IInputService input, IWindowService windowService, PlayerProgress playerProgress)
+        public BasicState(LogicStateMachine logicMachine, IInputService input, IWindowService windowService, IPersistentProgress progressService)
         {
             _logicMachine = logicMachine;
             _input = input;
             _windowService = windowService;
-            _playerProgress = playerProgress;
+            _progressService = progressService;
         }
 
         public void Enter()
         {
-            _playerProgress.SettingWindow.EndGameLoop?.Invoke();
+            _progressService.Progress.SettingWindow.EndGameLoop?.Invoke();
             _logicMachine.TackleContainer.MoveToBasicPosition();
             _logicMachine.TackleContainer.DestroyLure();
             _logicMachine.TackleContainer.DestroyHook();
@@ -50,14 +51,16 @@ namespace CodeBase.GameLogic.States
             {
                 if (_input.IsAttackButtonUp())
                 {
-                    if (_playerProgress.Inventory.IsEquipmentCompete())
+                    if (_progressService.Progress.Inventory.IsEquipmentCompete())
                     {
                         _logicMachine.Enter<PreparationState>();
                     }
                     else
                     {
                         Debug.Log("Не выбраны все элементы в инвентаре");
-                        _windowService.Open(WindowId.PrepareWindow);
+
+                        _progressService.Progress.SettingWindow.MsgForPopup = Constants.MsgEquipmentNotCompleted;
+                        _windowService.Open(WindowId.InfoPopup);
                     }                  
                 }
             }

@@ -63,7 +63,7 @@ namespace CodeBase.GameLogic
             _states = new Dictionary<Type, IStateLogic>
             {
                 [typeof(StartState)] = new StartState(this, _gameFactory),
-                [typeof(BasicState)] = new BasicState(this, _input, _windowService, _playerProgress),
+                [typeof(BasicState)] = new BasicState(this, _input, _windowService, _progressService),
                 [typeof(PreparationState)] = new PreparationState(this, _input, _windowService, _playerProgress, _gameFactory),
                 [typeof(ThrowIntoWaterState)] = new ThrowIntoWaterState(this, _randomService),
                 [typeof(FishAttackState)] = new FishAttackState(this, _input, _progressService, _randomService,  _gameFactory, _saveLoadService),

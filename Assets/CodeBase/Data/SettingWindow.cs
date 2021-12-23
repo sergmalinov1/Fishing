@@ -8,6 +8,7 @@ namespace CodeBase.Data
     {
         public KindEquipmentId KindOpenedWindowList = KindEquipmentId.Bobber;
 
+        public string MsgForPopup = "";
 
         //Открытие окна которое ставит на паузу основной процесс игры. 
         //Не используется!

@@ -26,9 +26,6 @@ namespace CodeBase.UI.Services.WindowsService
                 case WindowId.Result:
                     return _uiFactory.CreateResult();
 
-                case WindowId.AchievementsWindow:
-                    return _uiFactory.CreateAchievements();
-
                 case WindowId.PrepareWindow:
                     return _uiFactory.CreatePrepareWindow();
 
@@ -40,6 +37,9 @@ namespace CodeBase.UI.Services.WindowsService
 
                 case WindowId.ListEquipment:
                     return _uiFactory.CreateListEquipment();
+
+                case WindowId.InfoPopup:
+                    return _uiFactory.CreateInfoPopup();
             }
 
             return null;

@@ -54,9 +54,11 @@ namespace CodeBase.GameLogic.States
             {
                 if (!IsSuitableFish())
                 {
-                    Debug.Log("В озере нет подходящей рыбы");
+                   // Debug.Log("В озере нет подходящей рыбы");
                     _logicMachine.Enter<BasicState>();
-                    _windowService.Open(WindowId.PrepareWindow);
+
+                    _playerProgress.SettingWindow.MsgForPopup = Constants.MsgNotFishInLure;
+                    _windowService.Open(WindowId.InfoPopup);
                     return;
                 }
 
@@ -67,7 +69,8 @@ namespace CodeBase.GameLogic.States
                 else
                 {
                     Debug.Log("Инвентарь не готов - PrepareState");
-                    _windowService.Open(WindowId.PrepareWindow);
+                    _playerProgress.SettingWindow.MsgForPopup = Constants.MsgEquipmentNotCompleted;
+                    _windowService.Open(WindowId.InfoPopup);
                 }
             }
         }

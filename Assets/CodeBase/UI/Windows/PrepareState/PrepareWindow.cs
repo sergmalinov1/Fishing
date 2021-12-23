@@ -9,9 +9,9 @@ namespace CodeBase.UI.Windows.PrepareState
 {
   public class PrepareWindow : BaseWindow
   {
-    public TextMeshProUGUI Title;
+        public TextMeshProUGUI Title;
  
-    public SettingForFishContainer SettingForFishContainer;
+        public SettingForFishContainer SettingForFishContainer;
 
         public void Construct(
           PlayerProgress progressServiceProgress,
