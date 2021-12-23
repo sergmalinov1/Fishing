@@ -12,18 +12,19 @@ namespace CodeBase.GameLogic
         public Transform HookContainer;
         public Transform OnHookContainer;
 
+
         [HideInInspector] public GameObject Bobber;
-     //   [HideInInspector] public GameObject OnHook;
         [HideInInspector] public GameObject Fish;
         [HideInInspector] public GameObject Lure;
         [HideInInspector] public GameObject Hook;
 
         private BobberAnimator _bobberAnimator;
 
-
         public void MoveToBasicPosition()
         {
-            transform.DOMoveY(20, 1).OnComplete(DestroyBobberAndFish);
+            transform.DOMoveY(20, 1f).OnComplete(DestroyBobberAndFish);
+            HookContainer.DOLocalMoveY(0, 1f);
+         //   SetBasicContainerPosition();
         }
 
         public void MoveToPlayer()
@@ -50,12 +51,11 @@ namespace CodeBase.GameLogic
 
         public void MoveFromWaterAndBreak()
         {
-            BobberContainer.DOMoveY(12, 1);
+            transform.DOMoveY(8, 1);
 
             Sequence run = DOTween.Sequence();
-            run.Append(HookContainer.DOMoveY(6, 1));
-            run.Append(HookContainer.DOMoveY(-10, 1)).OnComplete(DestroyBobberAndFish); 
-
+            run.Append(transform.DOMoveY(8, 1));
+            run.Append(HookContainer.DOLocalMoveY(-10, 1)).OnComplete(DestroyFishAndHook);
 
         }
 
@@ -73,20 +73,29 @@ namespace CodeBase.GameLogic
 
         public void DestroyBobber()
         {
-            Destroy(Bobber);
-            Bobber = null;
+            if (Bobber != null)
+            {
+                Destroy(Bobber);
+                Bobber = null;
+            }
         }
 
         public void DestroyFish()
         {
-            Destroy(Fish);
-            Fish = null;
+            if (Fish != null)
+            {
+                Destroy(Fish);
+                Fish = null;
+            }
         }
 
         public void DestroyHook()
         {
-            Destroy(Hook);
-            Hook = null;
+            if (Hook != null)
+            {
+                Destroy(Hook);
+                Hook = null;
+            }
         }
 
         public BobberAnimator BobberAnimator
@@ -112,6 +121,12 @@ namespace CodeBase.GameLogic
             DestroyFish();
         }
 
+
+        private void DestroyFishAndHook()
+        {
+            DestroyFish();
+            DestroyHook();
+        }
 
     }
 }

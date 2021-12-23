@@ -10,6 +10,7 @@
     PrepareWindow = 5,
     CategoryEquipment = 6,
     ListEquipment = 7,
+    InfoPopup = 8, 
 
     }
 }

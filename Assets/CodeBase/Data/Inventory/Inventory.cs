@@ -20,7 +20,7 @@ namespace CodeBase.Data
         {
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lake, 0, false));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Bobber, 0, false));
-            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingRod, 0, false));
+            InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingRod, 5, false));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Hook, 0, true));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.FishingLine, 0, true));
             InstalledEquipments.Add(new CategoryEquipment(KindEquipmentId.Lure, 0, true));

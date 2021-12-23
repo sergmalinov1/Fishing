@@ -18,7 +18,12 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
-            
+            _logicStateMachine.CameraControl.RotateCameraUp();
+            _logicStateMachine.TackleContainer.DisableBobberAnimation();
+            _logicStateMachine.TackleContainer.DestroyLure();
+            _logicStateMachine.TackleContainer.MoveFromWaterAndBreak();
+
+            _logicStateMachine.Enter<ResultState>();
         }
 
         public void Exit()
