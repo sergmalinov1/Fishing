@@ -1,4 +1,5 @@
 ﻿using CodeBase.GameLogic;
+using CodeBase.Infrastructure.Ads;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Input;
@@ -45,6 +46,7 @@ namespace CodeBase.Infrastructure.States
         private void RegisterServices()
         {
             RegisterStaticData();
+            RegisterAdsService();
 
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IInputService>(RegisterInputService());
@@ -71,7 +73,8 @@ namespace CodeBase.Infrastructure.States
                 _services.Single<IStaticDataService>(),
                 _services.Single<IAssetProvider>(),
                 _services.Single<IPersistentProgress>(),
-                _services.Single<IInventoryService>()));
+                _services.Single<IInventoryService>(),
+                _services.Single<IAdsService>()));
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
 
@@ -98,14 +101,19 @@ namespace CodeBase.Infrastructure.States
             _services.RegisterSingle<IStaticDataService>(staticData);
         }
 
-
+        private void RegisterAdsService()
+        {
+            AdsService adsService = new AdsService();
+            adsService.Initialize();
+            _services.RegisterSingle<IAdsService>(adsService);
+        }
 
         private static IInputService RegisterInputService()
-    {
-      if (Application.isEditor)
-        return new StandaloneInputService();
-      else
-        return new MobileInputService();
+        {
+            if (Application.isEditor)
+                return new StandaloneInputService();
+            else
+                return new MobileInputService();
+        }
     }
-  }
 }

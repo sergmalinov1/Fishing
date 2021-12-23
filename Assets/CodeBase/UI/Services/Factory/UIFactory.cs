@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using CodeBase.Infrastructure.Ads;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.Services.PersistentProgress;
@@ -7,6 +8,7 @@ using CodeBase.StaticData.Windows;
 using CodeBase.UI.Services.WindowsService;
 using CodeBase.UI.Windows;
 using CodeBase.UI.Windows.Achieve;
+using CodeBase.UI.Windows.Ads;
 using CodeBase.UI.Windows.EquipmentsCategory;
 using CodeBase.UI.Windows.EquipmentsList;
 using CodeBase.UI.Windows.InfoPopup;
@@ -23,6 +25,7 @@ namespace CodeBase.UI.Services.Factory
         private readonly IAssetProvider _assetsProvider;
         private readonly IPersistentProgress _progressService;
         private readonly IInventoryService _inventoryService;
+        private readonly IAdsService _adsService;
 
         private Transform _uiRoot;
 
@@ -30,12 +33,14 @@ namespace CodeBase.UI.Services.Factory
             IStaticDataService staticData,
             IAssetProvider assetsProvider,
             IPersistentProgress progressService,
-            IInventoryService inventoryService)
+            IInventoryService inventoryService,
+            IAdsService adsService)
         {
             _staticData = staticData;
             _assetsProvider = assetsProvider;
             _progressService = progressService;
             _inventoryService = inventoryService;
+            _adsService = adsService;
         }
 
         public async Task CreateUIRoot()
@@ -112,6 +117,19 @@ namespace CodeBase.UI.Services.Factory
 
             InfoPopupWindow popup = window as InfoPopupWindow;
             popup.Initialize(_progressService.Progress.SettingWindow.MsgForPopup);
+
+            return window;
+        }
+
+        public BaseWindow CreateAdsWindow()
+        {
+            WindowConfig config = _staticData.ForWindow(WindowId.AdsWindow);
+            BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
+
+
+            AdsWindow adsWindow = window as AdsWindow;
+
+            adsWindow.Construct(_adsService, _progressService);
 
             return window;
         }

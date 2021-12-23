@@ -40,6 +40,9 @@ namespace CodeBase.UI.Services.WindowsService
 
                 case WindowId.InfoPopup:
                     return _uiFactory.CreateInfoPopup();
+
+                case WindowId.AdsWindow:
+                    return _uiFactory.CreateAdsWindow();
             }
 
             return null;

@@ -14,5 +14,6 @@ namespace CodeBase.UI.Services.Factory
         BaseWindow CreateListEquipment();
 
         BaseWindow CreateInfoPopup();
+        BaseWindow CreateAdsWindow();
     }
 }

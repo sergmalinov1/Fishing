@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.GameLogic;
+using CodeBase.Infrastructure.Ads;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.RandomService;
