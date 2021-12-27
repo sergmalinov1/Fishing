@@ -52,143 +52,142 @@ namespace CodeBase.Infrastructure.Factory
             GameObject hud = await InstantiateRegistredAsync(AssetsAddress.HudPath);
 
 
-           /* foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
+            foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
                 openWindowButton.Construct(_windowService);
-
-            HudManager hudManager = hud.GetComponentInChildren<HudManager>();
-
-
-            hudManager.Construct(_progressService);
-            hudManager.Initialize();
 
             MoneyCounter moneyObj = hud.GetComponentInChildren<MoneyCounter>();
             moneyObj.Construct(_progressService.Progress); 
 
             LureCounter lureCounter = hud.GetComponentInChildren<LureCounter>();
-            lureCounter.Construct(_progressService.Progress); */
+            lureCounter.Construct(_progressService.Progress); 
 
+ //HudManager hudManager = hud.GetComponentInChildren<HudManager>();
 
-            return hud;
-        }
+//  hudManager.Construct(_progressService);
+//  hudManager.Initialize();
 
-        public async Task<GameObject> CreareFishingLogic()
-        {
-            GameObject fishing = await InstantiateRegistredAsync(AssetsAddress.FishingLogic);
-
-            LogicStateMachine bobberSpawner = fishing.GetComponent<LogicStateMachine>();
-            bobberSpawner.Construct(this, _windowService, _progressService, _staticData, _saveLoadService, _randomService);
-            bobberSpawner.Initialize();
-            //  bobberSpawner.Enter<StartState>();
-
-
-            return fishing;
-        }
-
-        public async Task<GameObject> CreateFish(FishTypeId fishTypeId, Vector3 at)
-        {
-
-            FishStaticData fishData = _staticData.ForFish(fishTypeId);
-
-            GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
-
-            GameObject fish = UnityEngine.Object.Instantiate(prefab);
-            fish.transform.position = at;
-            return fish;
-        }
-
-
-        public async Task<GameObject> CreateBobber(Vector3 at)
-        {
-            GameObject bobber = await InstantiateRegistredAsync(AssetsAddress.BobberPrefab, at);
-            return bobber;
-        }
-
-        public async Task<GameObject> CreateSplash(Vector3 at)
-        {
-            GameObject splash = await InstantiateRegistredAsync(AssetsAddress.SplashPrefab, at);
-            return splash;
-        }
-
-        public async Task CreateBackground()
-        {
-            Vector3 position = new Vector3(0, 0, 25.0f);
-            GameObject background = await InstantiateRegistredAsync(AssetsAddress.Background, position);
-            BackgroundManager backgroundManager = background.GetComponent<BackgroundManager>();
-            backgroundManager.Construct(_progressService);
-            backgroundManager.Inizialize();
-        }
-
-
-        public async Task<GameObject> CreateTackleContainer(Vector3 position)
-        {
-            GameObject containerPrafab = await InstantiateRegistredAsync(AssetsAddress.TackleContainer, position);
-            return containerPrafab;
-        }
-
-        public async Task<GameObject> CreateFishInContainer(TackleContainer tackleContainer, FishTypeId fishId)
-        {
-            FishStaticData fishData = _staticData.ForFish(fishId);
-            GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
-
-          //  Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Lure, lureId);
-           // GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
-
-            Transform container = tackleContainer.OnHookContainer;
-          //  GameObject fish = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
-            GameObject fish = UnityEngine.Object.Instantiate(prefab, container.transform);
-            return fish;
-
-        }
-
-        public async Task<GameObject> CreateLureInContainer(TackleContainer tackleContainer, int lureId)
-        {
-            //TackleContainer equipmentContainer = containerPrafab.GetComponent<TackleContainer>();
-
-            Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Lure, lureId);
-            GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
-
-            Transform container = tackleContainer.OnHookContainer;
-            GameObject lure = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
-            return lure;
-
-        }
-
-        public async Task<GameObject> CreateBobberInContainer(TackleContainer tackleContainer, int bobberId)
-        {
-           // Debug.Log("CreateBobberInContainer");
-
-           // TackleContainer equipmentContainer = containerPrafab.GetComponent<TackleContainer>();
-
-            Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Bobber, bobberId);
-            GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
-
-            Transform container = tackleContainer.BobberContainer;
-            //  tackleContainer.Bobber =
-            GameObject bobber = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
-            return bobber;
-        }
-
-
-        public async Task<GameObject> CreateHookInContainer(TackleContainer tackleContainer)
-        {
-            GameObject prefab = await _assets.Load<GameObject>("hook_prefab");
-            Transform container = tackleContainer.HookContainer;
-            GameObject hook = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
-            return hook;
-        }
-
-        private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
-        {
-            GameObject gameObject = await _assets.Instantiate(prefabPath);
-            return gameObject;
-        }
-
-        private async Task<GameObject> InstantiateRegistredAsync(string prefabPath, Vector3 position)
-        {
-            GameObject gameObject = await _assets.Instantiate(prefabPath, position);
-            return gameObject;
-        }
-
- 
-    }
+  return hud;
 }
+
+public async Task<GameObject> CreareFishingLogic()
+{
+  GameObject fishing = await InstantiateRegistredAsync(AssetsAddress.FishingLogic);
+
+  LogicStateMachine bobberSpawner = fishing.GetComponent<LogicStateMachine>();
+  bobberSpawner.Construct(this, _windowService, _progressService, _staticData, _saveLoadService, _randomService);
+  bobberSpawner.Initialize();
+  //  bobberSpawner.Enter<StartState>();
+
+
+  return fishing;
+}
+
+public async Task<GameObject> CreateFish(FishTypeId fishTypeId, Vector3 at)
+{
+
+  FishStaticData fishData = _staticData.ForFish(fishTypeId);
+
+  GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
+
+  GameObject fish = UnityEngine.Object.Instantiate(prefab);
+  fish.transform.position = at;
+  return fish;
+}
+
+
+public async Task<GameObject> CreateBobber(Vector3 at)
+{
+  GameObject bobber = await InstantiateRegistredAsync(AssetsAddress.BobberPrefab, at);
+  return bobber;
+}
+
+public async Task<GameObject> CreateSplash(Vector3 at)
+{
+  GameObject splash = await InstantiateRegistredAsync(AssetsAddress.SplashPrefab, at);
+  return splash;
+}
+
+public async Task CreateBackground()
+{
+  Vector3 position = new Vector3(0, 0, 25.0f);
+  GameObject background = await InstantiateRegistredAsync(AssetsAddress.Background, position);
+  BackgroundManager backgroundManager = background.GetComponent<BackgroundManager>();
+  backgroundManager.Construct(_progressService);
+  backgroundManager.Inizialize();
+}
+
+
+public async Task<GameObject> CreateTackleContainer(Vector3 position)
+{
+  GameObject containerPrafab = await InstantiateRegistredAsync(AssetsAddress.TackleContainer, position);
+  return containerPrafab;
+}
+
+public async Task<GameObject> CreateFishInContainer(TackleContainer tackleContainer, FishTypeId fishId)
+{
+  FishStaticData fishData = _staticData.ForFish(fishId);
+  GameObject prefab = await _assets.Load<GameObject>(fishData.PrefabReference);
+
+//  Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Lure, lureId);
+ // GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
+
+  Transform container = tackleContainer.OnHookContainer;
+//  GameObject fish = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+  GameObject fish = UnityEngine.Object.Instantiate(prefab, container.transform);
+  return fish;
+
+}
+
+public async Task<GameObject> CreateLureInContainer(TackleContainer tackleContainer, int lureId)
+{
+  //TackleContainer equipmentContainer = containerPrafab.GetComponent<TackleContainer>();
+
+  Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Lure, lureId);
+  GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
+
+  Transform container = tackleContainer.OnHookContainer;
+  GameObject lure = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+  return lure;
+
+}
+
+public async Task<GameObject> CreateBobberInContainer(TackleContainer tackleContainer, int bobberId)
+{
+ // Debug.Log("CreateBobberInContainer");
+
+ // TackleContainer equipmentContainer = containerPrafab.GetComponent<TackleContainer>();
+
+  Equipment bobberEquipmentId = _staticData.GetEquipment(KindEquipmentId.Bobber, bobberId);
+  GameObject prefab = await _assets.Load<GameObject>(bobberEquipmentId.GetReference());
+
+  Transform container = tackleContainer.BobberContainer;
+  //  tackleContainer.Bobber =
+  GameObject bobber = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+  return bobber;
+}
+
+
+public async Task<GameObject> CreateHookInContainer(TackleContainer tackleContainer)
+{
+  GameObject prefab = await _assets.Load<GameObject>("hook_prefab");
+  Transform container = tackleContainer.HookContainer;
+  GameObject hook = UnityEngine.Object.Instantiate(prefab, container.position, Quaternion.identity, container.transform);
+  return hook;
+}
+
+private async Task<GameObject> InstantiateRegistredAsync(string prefabPath)
+{
+  GameObject gameObject = await _assets.Instantiate(prefabPath);
+  return gameObject;
+}
+
+private async Task<GameObject> InstantiateRegistredAsync(string prefabPath, Vector3 position)
+{
+  GameObject gameObject = await _assets.Instantiate(prefabPath, position);
+  return gameObject;
+}
+
+
+}
+}
+ 
