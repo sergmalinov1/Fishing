@@ -2,7 +2,7 @@
 {
     public class AssetsAddress
     {
-        public const string HudPath = "Hud";
+        public const string HudPath = "Hud222";
         public const string BobberSpawner = "BobberSpawner";
         public const string BobberPrefab = "Bobber";
 
