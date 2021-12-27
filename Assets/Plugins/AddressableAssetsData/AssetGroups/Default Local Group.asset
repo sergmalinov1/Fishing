@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 70d39cf1263118547927fc7146d6e707
   m_SerializeEntries:
   - m_GUID: 316aab8082b0dcf428885632144277a4
-    m_Address: HUD/Hud
+    m_Address: Hud
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 5549194571faf9a4bb131b3cfb1228e3
