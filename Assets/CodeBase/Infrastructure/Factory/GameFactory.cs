@@ -63,10 +63,10 @@ namespace CodeBase.Infrastructure.Factory
             LureCounter lureCounter = hud.GetComponentInChildren<LureCounter>();
             lureCounter.Construct(_progressService.Progress);
 
-           /* HudManager hudManager = hud.GetComponentInChildren<HudManager>();
+            HudManager hudManager = hud.GetComponentInChildren<HudManager>();
 
             hudManager.Construct(_progressService);
-            hudManager.Initialize();*/
+            hudManager.Initialize();
 
             return hud;
         }
