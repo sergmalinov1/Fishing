@@ -8,42 +8,42 @@ namespace CodeBase.Infrastructure.States
 {
   public class LoadLevelState : IPayloadedState<string>
   {
-    private readonly GameStateMachine _gameStateMachine;
-    private readonly SceneLoader _sceneLoader;
-    private readonly LoadingCurtain _curtain;
-    private readonly IGameFactory _gameFactory;
-    private readonly IUIFactory _uiFactory;
-    
-    public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain,
-      IGameFactory gameFactory, IUIFactory uiFactory)
-    {
-      _gameStateMachine = gameStateMachine;
-      _sceneLoader = sceneLoader;
-      _curtain = curtain;
-      _gameFactory = gameFactory;
-      _uiFactory = uiFactory;
-    }
-    public void Enter(string sceneName)
-    {
-      _curtain.Show();
-      
-      _sceneLoader.Load(sceneName, OnLoaded);
-    }
+        private readonly GameStateMachine _gameStateMachine;
+        private readonly SceneLoader _sceneLoader;
+        private readonly LoadingCurtain _curtain;
+        private readonly IGameFactory _gameFactory;
+        private readonly IUIFactory _uiFactory;
 
-    public void Exit()
-    {
-      _curtain.Hide();
-    }
-    private async void OnLoaded()
-    {
-      await InitUIRoot();
-      await InitHud();
-      await InitGameWorld();
-      _gameStateMachine.Enter<GameState>();
-    }
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain,
+          IGameFactory gameFactory, IUIFactory uiFactory)
+        {
+            _gameStateMachine = gameStateMachine;
+            _sceneLoader = sceneLoader;
+            _curtain = curtain;
+            _gameFactory = gameFactory;
+            _uiFactory = uiFactory;
+        }
+        public void Enter(string sceneName)
+        {
+            _curtain.Show();
 
-    private async Task InitUIRoot() => 
-      await _uiFactory.CreateUIRoot();
+            _sceneLoader.Load(sceneName, OnLoaded);
+        }
+
+        public void Exit()
+        {
+            _curtain.Hide();
+        }
+        private async void OnLoaded()
+        {
+            await InitUIRoot();
+            await InitHud();
+            await InitGameWorld();
+            _gameStateMachine.Enter<GameState>();
+        }
+
+        private async Task InitUIRoot() =>
+          await _uiFactory.CreateUIRoot();
 
         private async Task InitHud()
         {
@@ -54,9 +54,9 @@ namespace CodeBase.Infrastructure.States
         }
 
         private async Task InitGameWorld()
-    {
-     // _gameFactory.CreareBobberSpawner();
-     _gameFactory.CreareFishingLogic();
+        {
+            // _gameFactory.CreareBobberSpawner();
+            _gameFactory.CreareFishingLogic();
+        }
     }
-  }
 }

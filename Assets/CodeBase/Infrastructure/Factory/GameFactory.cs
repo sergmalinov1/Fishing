@@ -52,18 +52,20 @@ namespace CodeBase.Infrastructure.Factory
             GameObject hud = await InstantiateRegistredAsync(AssetsAddress.HudPath);
 
 
-            foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
+           /* foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
                 openWindowButton.Construct(_windowService);
 
             HudManager hudManager = hud.GetComponentInChildren<HudManager>();
+
+
             hudManager.Construct(_progressService);
             hudManager.Initialize();
 
             MoneyCounter moneyObj = hud.GetComponentInChildren<MoneyCounter>();
-            moneyObj.Construct(_progressService.Progress); ;
+            moneyObj.Construct(_progressService.Progress); 
 
             LureCounter lureCounter = hud.GetComponentInChildren<LureCounter>();
-            lureCounter.Construct(_progressService.Progress); ;
+            lureCounter.Construct(_progressService.Progress); */
 
 
             return hud;
