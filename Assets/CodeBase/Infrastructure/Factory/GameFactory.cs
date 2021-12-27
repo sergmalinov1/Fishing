@@ -52,7 +52,7 @@ namespace CodeBase.Infrastructure.Factory
             GameObject hud = await InstantiateRegistredAsync(AssetsAddress.HudPath);
 
 
-            /*foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
+            foreach (OpenWindowButton openWindowButton in hud.GetComponentsInChildren<OpenWindowButton>())
             {
                 openWindowButton.Construct(_windowService);
             }
@@ -61,7 +61,7 @@ namespace CodeBase.Infrastructure.Factory
             moneyObj.Construct(_progressService.Progress); 
 
             LureCounter lureCounter = hud.GetComponentInChildren<LureCounter>();
-            lureCounter.Construct(_progressService.Progress);*/
+            lureCounter.Construct(_progressService.Progress);
 
            /* HudManager hudManager = hud.GetComponentInChildren<HudManager>();
 
