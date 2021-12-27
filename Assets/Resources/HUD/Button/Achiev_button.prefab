@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7603182092074902810}
   - component: {fileID: 7734595904612705836}
   - component: {fileID: 1742381712199969524}
-  - component: {fileID: 3423162105734848394}
   m_Layer: 0
   m_Name: Achiev_button
   m_TagString: Untagged
@@ -121,17 +120,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3423162105734848394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2542277747990449376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3112ad3d287e494b9061733fb5aa458d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1742381712199969524}
-  WindowId: 3
