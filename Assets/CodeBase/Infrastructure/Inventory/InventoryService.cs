@@ -103,7 +103,7 @@ namespace CodeBase.Infrastructure.Inventory
                 return;
             }
             _progressService.Progress.Inventory.BuyEquipmentItem(kindEquipmentId, typeId);
-            _progressService.Progress.MoneyData.Money -= price;
+            _progressService.Progress.MoneyData.Subtract(price);
             SetEquipmentState();
 
         }

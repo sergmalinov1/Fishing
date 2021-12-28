@@ -10,9 +10,11 @@ namespace CodeBase.UI.Elements
 {
     public class HudManager : MonoBehaviour
     {
+        [SerializeField] private GameObject [] Buttons;
 
-        [SerializeField] private GameObject SettingButton;
-        [SerializeField] private GameObject ShopButton;
+
+        //[SerializeField] private GameObject SettingButton;
+       // [SerializeField] private GameObject ShopButton;
 
         private IPersistentProgress _progressService;
 
@@ -36,14 +38,22 @@ namespace CodeBase.UI.Elements
 
         private void EnableButton()
         {
-            SettingButton.SetActive(true);
-            ShopButton.SetActive(true);
+            //   SettingButton.SetActive(true);
+            //   ShopButton.SetActive(true);
+            foreach (GameObject button in Buttons)
+            {
+                button.SetActive(true);
+            }
         }
 
         private void DisableButton()
         {
-            SettingButton.SetActive(false);
-            ShopButton.SetActive(false);
+            //  SettingButton.SetActive(false);
+            // ShopButton.SetActive(false);
+            foreach (GameObject button in Buttons)
+            {
+                button.SetActive(false);
+            }
         }
     }
 }

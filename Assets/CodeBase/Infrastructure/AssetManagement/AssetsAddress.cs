@@ -19,5 +19,7 @@
 
         public const string TackleContainer = "TackleContainer";
 
+        public const string DefaultImage = "Question";
+
     }
 }

@@ -28,13 +28,20 @@ namespace CodeBase.UI.Windows.EquipmentsList
         }
 
 
-        public async void Initialize(EquipmentConfig equipment)
+        public async void Initialize(EquipmentConfig equipment, bool IsSelectedItem)
         {
             _equipment = equipment;
             CategoryButton.onClick.AddListener(OnItemClick);
-            CategoryName.text = equipment.Name;
-            SetImage();
-            DefineRating(equipment.Rating);
+
+            if(IsSelectedItem)
+            {
+                SetSelectedItem();
+            }
+            else
+            {
+                SetEmptyItem();
+            }
+          
         }
 
         private void OnItemClick()
@@ -42,9 +49,23 @@ namespace CodeBase.UI.Windows.EquipmentsList
 
         }
 
-        private async void SetImage()
+        private void SetSelectedItem()
         {
-            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(_equipment.ImageName);
+            CategoryName.text = _equipment.Name;
+            SetImage(_equipment.ImageName);
+            DefineRating(_equipment.Rating);
+        }
+
+        private void SetEmptyItem()
+        {
+            CategoryName.text = "???";
+            SetImage(AssetsAddress.DefaultImage);
+            DefineRating(0);
+        }
+
+        private async void SetImage(string imageName)
+        {
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(imageName);
         }
 
         private async void DefineRating(int rating)

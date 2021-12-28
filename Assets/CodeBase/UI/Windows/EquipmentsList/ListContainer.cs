@@ -106,18 +106,24 @@ namespace CodeBase.UI.Windows.EquipmentsList
                     SelectedICardtem selectedItem = equipmentCard.GetComponent<SelectedICardtem>();
 
                     selectedItem.Construct(_assetsProvider);
-                    selectedItem.Initialize(equipment);
-                }
+
+                    if(equipment.QtyPurchasedEquipment > 0)
+                    {
+                        selectedItem.Initialize(equipment, true);
+                        _cardListItems.Add(equipmentCard);
+                    }
+                    else
+                    {
+                        selectedItem.Initialize(equipment, false);
+                        _cardListItems.Add(equipmentCard);
+                        DefineCardItem(equipment);
+                    }
+                }            
                 else
                 {
-                    equipmentCard = await _assetsProvider.Instantiate(Constants.EquipmentCardPath, CardsListTransform);
-                    EquipmentCardItem itemToSelect = equipmentCard.GetComponent<EquipmentCardItem>();
-            
-
-                    itemToSelect.Constuct(this, _assetsProvider);
-                    itemToSelect.Initialize(equipment);
+                    DefineCardItem(equipment);
                 }
-                _cardListItems.Add(equipmentCard);
+                
             }    
         }
 
@@ -136,6 +142,18 @@ namespace CodeBase.UI.Windows.EquipmentsList
         {
             ClearCardList();
             DefineItems();
+        }
+
+        private async void DefineCardItem(EquipmentConfig equipment)
+        {
+            GameObject equipmentCard = null;
+            equipmentCard = await _assetsProvider.Instantiate(Constants.EquipmentCardPath, CardsListTransform);
+            EquipmentCardItem itemToSelect = equipmentCard.GetComponent<EquipmentCardItem>();
+
+
+            itemToSelect.Constuct(this, _assetsProvider);
+            itemToSelect.Initialize(equipment);
+            _cardListItems.Add(equipmentCard);
         }
     }
 }

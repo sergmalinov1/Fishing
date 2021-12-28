@@ -40,7 +40,7 @@ namespace CodeBase.GameLogic.States
         public void Enter()
         {
             _windows = _windowService.Open(WindowId.Result);
-            //  ChangeMoneyAndSave();
+            ChangeMoneyAndSave();
             // PlayFishUpAnimation();
         }
 

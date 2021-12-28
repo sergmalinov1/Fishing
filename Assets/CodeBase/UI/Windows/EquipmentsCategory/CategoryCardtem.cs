@@ -48,12 +48,13 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
         {
             CategoryButton.onClick.AddListener(OnItemClick);
 
-            CategoryName.text = equipment.Name;
-            CountProduct.text = $"Qty: "+ equipment.QtyPurchasedEquipment.ToString();
-
-            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(equipment.ImageName);
-            DefineRating(equipment.Rating);
+            if (equipment.QtyPurchasedEquipment > 0)
+                ShowEquipmentItem(equipment);
+            else
+                ShowDefaultState();
         }
+
+
 
         private void OnItemClick()
         {
@@ -68,6 +69,22 @@ namespace CodeBase.UI.Windows.EquipmentsCategory
             Rating.sprite = await _assetProvider.Load<Sprite>($"grade_" + rating);
         }
 
-        
+        private async void ShowEquipmentItem(EquipmentConfig equipment)
+        {
+            CategoryName.text = equipment.Name;
+            CountProduct.text = $"Qty: " + equipment.QtyPurchasedEquipment.ToString();
+
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(equipment.ImageName);
+            DefineRating(equipment.Rating);
+        }
+
+        private async void ShowDefaultState()
+        {
+            CategoryName.text = "???";
+            CountProduct.text = $"Qty: 0";
+
+            EquipmentPicture.sprite = await _assetProvider.Load<Sprite>(AssetsAddress.DefaultImage);
+            DefineRating(0);
+        }
     }
 }
