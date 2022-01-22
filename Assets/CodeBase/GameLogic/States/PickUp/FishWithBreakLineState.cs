@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace CodeBase.GameLogic.States
 {
     public class FishWithBreakLineState : IStateLogic
     {
         private readonly LogicStateMachine _logicStateMachine;
+        private float _timeToNextRound = 2f;
 
         public FishWithBreakLineState(LogicStateMachine logicStateMachine)
         {
@@ -33,7 +35,7 @@ namespace CodeBase.GameLogic.States
 
         public void UpdateLogic()
         {
-           
+      
         }
     }
 }

@@ -16,29 +16,32 @@ namespace CodeBase.GameLogic.States
 {
   public class ResultState : IStateLogic
   {
-    private readonly LogicStateMachine _logicStateMachine;
-    private readonly IWindowService _windowService;
-    private readonly PlayerProgress _playerProgress;
-    private readonly ISaveLoadService _saveLoadService;
-    private readonly IInputService _input;
+        private readonly LogicStateMachine _logicStateMachine;
+        private readonly IWindowService _windowService;
+        private readonly PlayerProgress _playerProgress;
+        private readonly ISaveLoadService _saveLoadService;
+        private readonly IInputService _input;
 
-    private BaseWindow _windows;
+        private BaseWindow _windows;
 
-    public ResultState(LogicStateMachine logicStateMachine,
-      IInputService inputService,
-      IWindowService windowService,
-      PlayerProgress playerProgress,
-      ISaveLoadService saveLoadService)
-    {
-      _logicStateMachine = logicStateMachine;
-      _windowService = windowService;
-      _playerProgress = playerProgress;
-      _saveLoadService = saveLoadService;
-      _input = inputService;
-    }
+        private float _timeToNextRound = 2f;
+
+        public ResultState(LogicStateMachine logicStateMachine,
+          IInputService inputService,
+          IWindowService windowService,
+          PlayerProgress playerProgress,
+          ISaveLoadService saveLoadService)
+        {
+            _logicStateMachine = logicStateMachine;
+            _windowService = windowService;
+            _playerProgress = playerProgress;
+            _saveLoadService = saveLoadService;
+            _input = inputService;
+        }
 
         public void Enter()
         {
+            _timeToNextRound = 2f;
             _windows = _windowService.Open(WindowId.Result);
             ChangeMoneyAndSave();
             // PlayFishUpAnimation();
@@ -53,10 +56,17 @@ namespace CodeBase.GameLogic.States
 
         public void UpdateLogic()
         {
-            if (_input.IsAttackButtonUp())
+
+            _timeToNextRound -= Time.deltaTime;
+            if (_timeToNextRound <= 0.0f)
             {
-                _logicStateMachine.Enter<BasicState>();
+                if (_input.IsAttackButtonUp())
+                {
+                    _logicStateMachine.Enter<BasicState>();
+                }
             }
+
+           
         }
         private void ChangeMoneyAndSave()
         {

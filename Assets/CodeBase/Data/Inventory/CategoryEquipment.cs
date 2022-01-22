@@ -8,7 +8,7 @@ namespace CodeBase.Data
     [Serializable]
     public class CategoryEquipment
     {
-        private const int QtyItemsInOrder = 2;
+        private const int QtyItemsInOrder = 6;
         private const int MaxQty = 999;
 
         public KindEquipmentId KindEquipmentId;

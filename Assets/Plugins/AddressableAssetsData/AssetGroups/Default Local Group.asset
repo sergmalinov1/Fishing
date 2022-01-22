@@ -225,6 +225,10 @@ MonoBehaviour:
     m_Address: Question
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9dd40a5d1c8648a409a4ba1d3724998b
+    m_Address: grade_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bfae0f3a8267cbf438ae5140c7e7bdb7, type: 2}
   m_SchemaSet:

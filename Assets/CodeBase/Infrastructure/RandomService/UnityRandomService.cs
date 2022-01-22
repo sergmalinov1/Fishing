@@ -100,12 +100,12 @@ namespace CodeBase.Infrastructure.RandomService
             for(int i = 0; i< lureCount; i++)
             {
                 int rand = Random.Range(0, 3);
-                bool chanse = true;
+             //   bool chanse = true;
 
-                if(rand == 0)
-                {
-                    chanse = false;
-                }
+             //   if(rand == 0)
+              //  {
+             //       chanse = false;
+             //   }
 
                 // _progressService.Progress.EquipmentStats.StackToCatchFish.Add(chanse);
                 _progressService.Progress.EquipmentStats.StackToCatchFish.Add(true);

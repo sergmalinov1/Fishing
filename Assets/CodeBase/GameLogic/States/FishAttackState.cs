@@ -24,6 +24,7 @@ namespace CodeBase.GameLogic.States
         private IInputService _input;
 
         private float _timeToEndAttack = 5.0f;
+        private bool _isButtonPush = false;
 
         public FishAttackState(
           LogicStateMachine logicStateMachine,
@@ -43,6 +44,7 @@ namespace CodeBase.GameLogic.States
 
         public void Enter()
         {
+            _isButtonPush = false;
             _timeToEndAttack = 5.0f;
 
             RandomFish();
@@ -75,8 +77,9 @@ namespace CodeBase.GameLogic.States
                 
             }
 
-            if (_input.IsAttackButtonUp())
+            if (_input.IsAttackButtonUp() && !_isButtonPush)
             {
+                _isButtonPush = true;
                 bool isPoolInTime = _randomService.IsCatchedFish();
                 bool _isCatchStack = _progressService.Progress.EquipmentStats.PeekCatchFishStack();
 
@@ -93,8 +96,8 @@ namespace CodeBase.GameLogic.States
                 else if (isPoolInTime && _isCatchStack) //Если вовремя дернул и в стеке True вероятность поймать рыбы -> то вытягиваем рыбы
                 {
                     UseLure();
-                    CatchFish();
-
+                    CreateFishInContainer();
+                    
                     if (!IsHoldLine()) // проверка выдержит ли леска вес рыбы. Если рвется -> s4 Поднять рыбу и обрыв лески
                     {                
                         _progressService.Progress.FishOnHook.IsLineBreak = true;
@@ -106,6 +109,7 @@ namespace CodeBase.GameLogic.States
                     }
                     else //Если все условия соблюдены вытягиваем рыбу  -> s1 Поднять рыбу
                     {
+                        CatchFish();
                         _progressService.Progress.FishOnHook.IsFishOnHook = true;  
                         _logicStateMachine.Enter<FishOnHookState>();
                     }
@@ -142,7 +146,7 @@ namespace CodeBase.GameLogic.States
         {
            // _progressService.Progress.ResultOfFishing.AddCaughtFish(_progressService.Progress.FishOnHook.FishName);
             _progressService.Progress.FishOnHook.CatchFish();
-            CreateFishInContainer();
+            
 
         }
 
