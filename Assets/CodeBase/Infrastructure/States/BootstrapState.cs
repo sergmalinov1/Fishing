@@ -8,6 +8,7 @@ using CodeBase.Infrastructure.RandomService;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.Services.PersistentProgress;
+using CodeBase.Infrastructure.IAP;
 using CodeBase.StaticData;
 using CodeBase.UI.Services.Factory;
 using CodeBase.UI.Services.WindowsService;
@@ -54,20 +55,22 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IPersistentProgress>(new PersistentProgress());
 
+            RegisterIAPService(new IAPProvider(), _services.Single<IPersistentProgress>());
+
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgress>()));
 
             _services.RegisterSingle<IRandomService>(new UnityRandomService(
-              _services.Single<IAssetProvider>(),
-              _services.Single<IPersistentProgress>(),
-              _services.Single<IStaticDataService>()));
+                _services.Single<IAssetProvider>(),
+                _services.Single<IPersistentProgress>(),
+                _services.Single<IStaticDataService>()));
 
             _services.RegisterSingle<IInventoryService>(new InventoryService(
-            _services.Single<IAssetProvider>(),
-            _services.Single<IPersistentProgress>(),
-            _services.Single<IStaticDataService>(),
-            _services.Single<ISaveLoadService>(),
-            _services.Single<IRandomService>()));
+                _services.Single<IAssetProvider>(),
+                _services.Single<IPersistentProgress>(),
+                _services.Single<IStaticDataService>(),
+                _services.Single<ISaveLoadService>(),
+                _services.Single<IRandomService>()));
 
             _services.RegisterSingle<IUIFactory>(new UIFactory(
                 _services.Single<IStaticDataService>(),
@@ -78,10 +81,6 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
 
-
-
-
-
             _services.RegisterSingle<IGameFactory>(new GameFactory(
                 _services.Single<IAssetProvider>(),
                 _services.Single<IWindowService>(),
@@ -90,8 +89,6 @@ namespace CodeBase.Infrastructure.States
                 _services.Single<ISaveLoadService>(),
                 _services.Single<IRandomService>(),
                 _services.Single<IInventoryService>()));
-
-
         }
 
         private void RegisterStaticData()
@@ -114,6 +111,13 @@ namespace CodeBase.Infrastructure.States
                 return new StandaloneInputService();
             else
                 return new MobileInputService();
+        }
+
+        private void RegisterIAPService(IAPProvider iapProvider, IPersistentProgress progressService)
+        {
+            IAPService iapService = new IAPService(iapProvider, progressService);
+            iapService.Initialize();
+            _services.RegisterSingle<IIAPService>(iapService);
         }
     }
 }

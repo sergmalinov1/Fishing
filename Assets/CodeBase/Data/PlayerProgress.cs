@@ -12,7 +12,7 @@ namespace CodeBase.Data
         public Inventory Inventory;
         public SettingWindow SettingWindow;
         public EquipmentStats EquipmentStats;
-
+        public PurchaseData PurchaseData;
         public PlayerProgress()
         {
             FishOnHook = new FishOnHook();
@@ -21,6 +21,7 @@ namespace CodeBase.Data
             Inventory = new Inventory();
             SettingWindow = new SettingWindow();
             EquipmentStats = new EquipmentStats();
+            PurchaseData = new PurchaseData();
         }
     }
 }
