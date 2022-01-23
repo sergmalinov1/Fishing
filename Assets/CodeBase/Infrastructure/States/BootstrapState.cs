@@ -77,7 +77,8 @@ namespace CodeBase.Infrastructure.States
                 _services.Single<IAssetProvider>(),
                 _services.Single<IPersistentProgress>(),
                 _services.Single<IInventoryService>(),
-                _services.Single<IAdsService>()));
+                _services.Single<IAdsService>(),
+                _services.Single<IIAPService>()));
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
 

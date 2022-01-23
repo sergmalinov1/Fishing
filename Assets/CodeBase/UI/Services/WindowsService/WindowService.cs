@@ -43,6 +43,8 @@ namespace CodeBase.UI.Services.WindowsService
 
                 case WindowId.AdsWindow:
                     return _uiFactory.CreateAdsWindow();
+                case WindowId.IAPWindow:
+                    return _uiFactory.CreateIAPWindow();
             }
 
             return null;

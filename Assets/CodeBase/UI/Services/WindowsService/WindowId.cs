@@ -12,6 +12,7 @@
         ListEquipment = 7,
         InfoPopup = 8,
         AdsWindow = 9,
+        IAPWindow = 10,
 
     }
 }

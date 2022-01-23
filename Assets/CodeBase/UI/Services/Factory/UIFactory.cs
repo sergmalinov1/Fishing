@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CodeBase.Infrastructure.Ads;
+using CodeBase.Infrastructure.IAP;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Inventory;
 using CodeBase.Infrastructure.Services.PersistentProgress;
@@ -7,12 +8,13 @@ using CodeBase.StaticData;
 using CodeBase.StaticData.Windows;
 using CodeBase.UI.Services.WindowsService;
 using CodeBase.UI.Windows;
-using CodeBase.UI.Windows.Achieve;
 using CodeBase.UI.Windows.Ads;
+using CodeBase.UI.Windows.IAPPopup;
 using CodeBase.UI.Windows.EquipmentsCategory;
 using CodeBase.UI.Windows.EquipmentsList;
 using CodeBase.UI.Windows.InfoPopup;
 using CodeBase.UI.Windows.PrepareState;
+
 using UnityEngine;
 
 namespace CodeBase.UI.Services.Factory
@@ -26,6 +28,7 @@ namespace CodeBase.UI.Services.Factory
         private readonly IPersistentProgress _progressService;
         private readonly IInventoryService _inventoryService;
         private readonly IAdsService _adsService;
+        private readonly IIAPService _iapService;
 
         private Transform _uiRoot;
 
@@ -34,13 +37,15 @@ namespace CodeBase.UI.Services.Factory
             IAssetProvider assetsProvider,
             IPersistentProgress progressService,
             IInventoryService inventoryService,
-            IAdsService adsService)
+            IAdsService adsService,
+            IIAPService iapService)
         {
             _staticData = staticData;
             _assetsProvider = assetsProvider;
             _progressService = progressService;
             _inventoryService = inventoryService;
             _adsService = adsService;
+            _iapService = iapService;
         }
 
         public async Task CreateUIRoot()
@@ -126,10 +131,18 @@ namespace CodeBase.UI.Services.Factory
             WindowConfig config = _staticData.ForWindow(WindowId.AdsWindow);
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
 
-
             AdsWindow adsWindow = window as AdsWindow;
-
             adsWindow.Construct(_adsService, _progressService);
+
+            return window;
+        }
+
+        public BaseWindow CreateIAPWindow()
+        {
+            WindowConfig config = _staticData.ForWindow(WindowId.IAPWindow);
+            BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
+            IAPWindow iapWindow = window as IAPWindow;
+            iapWindow.Construct(_progressService, _iapService, _assetsProvider);
 
             return window;
         }
