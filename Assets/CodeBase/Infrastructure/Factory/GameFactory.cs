@@ -111,11 +111,11 @@ namespace CodeBase.Infrastructure.Factory
 
         public async Task CreateBackground()
         {
-            Vector3 position = new Vector3(0, 0, 25.0f);
+          /*  Vector3 position = new Vector3(0, 0, 25.0f);
             GameObject background = await InstantiateRegistredAsync(AssetsAddress.Background, position);
             BackgroundManager backgroundManager = background.GetComponent<BackgroundManager>();
             backgroundManager.Construct(_progressService);
-            backgroundManager.Inizialize();
+            backgroundManager.Inizialize();*/
         }
 
 

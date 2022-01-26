@@ -767,7 +767,7 @@ PlayerSettings:
     Analytics: 1
     Build: 1
     Game Performance: 0
-    Purchasing: 1
+    Purchasing: 0
     UNet: 1
     Unity Ads: 1
   luminIcon:

@@ -81,7 +81,7 @@ namespace CodeBase.GameLogic
             Enter<StartState>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             _activeState.UpdateLogic();
         }

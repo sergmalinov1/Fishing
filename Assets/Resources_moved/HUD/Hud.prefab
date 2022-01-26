@@ -586,6 +586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1198110311400335403}
     m_Modifications:
+    - target: {fileID: 530974571397303307, guid: 5e209d0c433ba8640853960c9d85a4b6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2906879595190067421, guid: 5e209d0c433ba8640853960c9d85a4b6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -928,6 +932,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1868488921322013320, guid: 43c1f642819e9f845bcdae20390e1247, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3980977989949639165, guid: 43c1f642819e9f845bcdae20390e1247, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -958,6 +966,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747117650823283525, guid: 43c1f642819e9f845bcdae20390e1247, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688077038703438942, guid: 43c1f642819e9f845bcdae20390e1247, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7467084564717010089, guid: 43c1f642819e9f845bcdae20390e1247, type: 3}
