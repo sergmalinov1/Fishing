@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using CodeBase.Data;
 using UnityEngine;
-using UnityEngine.Purchasing;
+//using UnityEngine.Purchasing;
 
 namespace CodeBase.Infrastructure.IAP
 {
-    public class IAPProvider : IStoreListener
+    public class IAPProvider //: IStoreListener
     {
-        private const string IAPConfigsPath = "IAP/products";
+      /*  private const string IAPConfigsPath = "IAP/products";
 
         private IStoreController _controller;
         private IExtensionProvider _extensions;
@@ -76,5 +76,6 @@ namespace CodeBase.Infrastructure.IAP
             ToDeserialized<ProductConfigWrapper>().
             Configs.
             ToDictionary(x => x.Id, x => x);
+            */
     }
 }

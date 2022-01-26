@@ -115,9 +115,9 @@ namespace CodeBase.Infrastructure.States
 
         private void RegisterIAPService(IAPProvider iapProvider, IPersistentProgress progressService)
         {
-            IAPService iapService = new IAPService(iapProvider, progressService);
-            iapService.Initialize();
-            _services.RegisterSingle<IIAPService>(iapService);
+           // IAPService iapService = new IAPService(iapProvider, progressService);
+           // iapService.Initialize();
+           // _services.RegisterSingle<IIAPService>(iapService);
         }
     }
 }

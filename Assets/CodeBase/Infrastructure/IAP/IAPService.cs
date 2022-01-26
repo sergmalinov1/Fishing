@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using CodeBase.Data;
 using CodeBase.Infrastructure.Services.PersistentProgress;
-using UnityEngine.Purchasing;
+//using UnityEngine.Purchasing;
 
 namespace CodeBase.Infrastructure.IAP
 {
-    public class IAPService : IIAPService
+    public class IAPService //: IIAPService
     {
-        private readonly IAPProvider _iapProvider;
+      /*  private readonly IAPProvider _iapProvider;
         private readonly IPersistentProgress _progressService;
 
         public bool IsInitialized =>
@@ -76,6 +76,6 @@ namespace CodeBase.Infrastructure.IAP
         }
 
         private static bool ProductBoughtOut(BoughtIAP boughtIAP, ProductConfig config) =>
-          boughtIAP != null && boughtIAP.Count >= config.MaxPurchaseCount;
+          boughtIAP != null && boughtIAP.Count >= config.MaxPurchaseCount;*/
     }
 }

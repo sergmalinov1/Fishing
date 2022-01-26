@@ -1,5 +1,5 @@
 ﻿using System;
-using UnityEngine.Purchasing;
+//using UnityEngine.Purchasing;
 
 namespace CodeBase.Infrastructure.IAP
 {
@@ -7,7 +7,7 @@ namespace CodeBase.Infrastructure.IAP
     public class ProductConfig
     {
         public string Id;
-        public ProductType ProductType;
+       //public ProductType ProductType;
 
         public int MaxPurchaseCount;
         public ItemType ItemType;
