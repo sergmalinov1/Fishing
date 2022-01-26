@@ -28,7 +28,7 @@ namespace CodeBase.UI.Services.Factory
         private readonly IPersistentProgress _progressService;
         private readonly IInventoryService _inventoryService;
         private readonly IAdsService _adsService;
-        private readonly IIAPService _iapService;
+      //  private readonly IIAPService _iapService;
 
         private Transform _uiRoot;
 
@@ -37,15 +37,14 @@ namespace CodeBase.UI.Services.Factory
             IAssetProvider assetsProvider,
             IPersistentProgress progressService,
             IInventoryService inventoryService,
-            IAdsService adsService,
-            IIAPService iapService)
+            IAdsService adsService) //  IIAPService iapService)
         {
             _staticData = staticData;
             _assetsProvider = assetsProvider;
             _progressService = progressService;
             _inventoryService = inventoryService;
             _adsService = adsService;
-            _iapService = iapService;
+          //  _iapService = iapService;
         }
 
         public async Task CreateUIRoot()
@@ -141,8 +140,8 @@ namespace CodeBase.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.IAPWindow);
             BaseWindow window = Object.Instantiate(config.Prefab, _uiRoot);
-            IAPWindow iapWindow = window as IAPWindow;
-            iapWindow.Construct(_progressService, _iapService, _assetsProvider);
+          //  IAPWindow iapWindow = window as IAPWindow;
+        //    iapWindow.Construct(_progressService, _iapService, _assetsProvider);
 
             return window;
         }

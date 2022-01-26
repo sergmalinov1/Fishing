@@ -55,7 +55,7 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IPersistentProgress>(new PersistentProgress());
 
-            RegisterIAPService(new IAPProvider(), _services.Single<IPersistentProgress>());
+            //RegisterIAPService(new IAPProvider(), _services.Single<IPersistentProgress>());
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgress>()));
@@ -77,8 +77,7 @@ namespace CodeBase.Infrastructure.States
                 _services.Single<IAssetProvider>(),
                 _services.Single<IPersistentProgress>(),
                 _services.Single<IInventoryService>(),
-                _services.Single<IAdsService>(),
-                _services.Single<IIAPService>()));
+                _services.Single<IAdsService>()));     // _services.Single<IIAPService>()));
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
 
