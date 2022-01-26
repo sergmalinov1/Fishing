@@ -7,8 +7,8 @@ namespace CodeBase.Logic
   {
     private void Update()
     {
-      Quaternion rorationY = Quaternion.AngleAxis(0.5f, Vector3.forward);
-      transform.rotation *= rorationY;
+   //   Quaternion rorationY = Quaternion.AngleAxis(0.5f, Vector3.forward);
+   //   transform.rotation *= rorationY;
     }
   }
 }
